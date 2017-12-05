@@ -1,36 +1,41 @@
-
-
 //WEATHER MODULE FUNCTIONS////////////////////////////////////////////////////////////////////////////
 function getLocation() {
   if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(usePosition);
   } else {
-      console.log("Geolocation is not supported by this browser. You can still use manuel search.");
+      alert("Geolocation is not supported by this browser. You can still use manuel search.");
+      userInputLocation();
   }
 }
 
 function usePosition(position){
 	let lon = position.coords.latitude;
 	let lat = position.coords.longitude;
-	autoLocation(lon,lat);
+	getWeatherDataCoords(lon,lat);
 }
 
 function userInputLocation(){
 	let input = prompt("Enter your city");
-	getWeatherData(input);
+	getWeatherDataUserInput(input);
 }
 
-function autoLocation(lon,lat){
-	getWeatherData(lon,lat);
-}
 
-function getWeatherData(lon,lat){
+function getWeatherDataCoords(lon,lat){
 	let apiKey = "http://api.apixu.com/v1/current.json?key=844930d1fa3949a8a44111252170512%20&q=";
 	let apiCall = apiKey+lon+","+lat;
 
 	$.getJSON(apiCall, function(data) {
 		assignWeatherData(data);
-	});
+	})
+}
+
+function getWeatherDataUserInput(input){
+	let apiKey = "http://api.apixu.com/v1/current.json?key=844930d1fa3949a8a44111252170512%20&q=";
+	let apiCall = apiKey+input;
+
+		$.getJSON(apiCall, function(data) {
+			assignWeatherData(data);
+		})
 }
 
 function assignWeatherData(data){
