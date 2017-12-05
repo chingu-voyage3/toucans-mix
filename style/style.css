@@ -1,0 +1,45 @@
+html,body{
+	height:100%;
+	margin:0;
+	padding:0;
+	background-color: #555;
+}
+
+.weather-module{
+	font-family: Comfortaa;
+	color:white;
+	opacity: 0.5;
+	float: right;
+	font-size: 15px;
+	border-top: 3px solid #555;
+}
+
+.weather-module:hover{
+	color:white;
+	cursor:pointer;
+	border-top: 3px solid white;
+	opacity: 1;
+}
+
+img{
+	width:50px;
+	height:50px;
+}
+
+
+#wm-icon,#wm-temp,#wm-top-row{
+		display: inline;
+}
+
+#wm-location{
+	position: relative;
+	bottom:15px;
+	left: 10px;
+}
+
+#wm-temp{
+	font-size: 20px;
+	position: relative;
+	bottom:15px;
+	right:10px;
+}

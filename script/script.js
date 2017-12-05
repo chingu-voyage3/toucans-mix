@@ -46,10 +46,18 @@ function assignWeatherData(data){
 	let tempC = data.current.temp_c;
 	let tempF = data.current.temp_f;
 
-	print(locationOutput,weatherDesc,icon,tempC,tempF,region)
+	print(locationOutput,weatherDesc,icon,tempC,tempF,region);
+	toHtml(locationOutput,tempC,tempF,icon);
 }
 
 function print(locationOutput,weatherDesc,icon,tempC,tempF,region){
-	console.log("Location: "+locationOutput+", Region: "+region+", Current weather: "+weatherDesc+", Temperature Celcius: "+tempC+", Temperature farenheit: "+tempF);
+	console.log("Location: "+locationOutput+", Region: "+region+", Current weather: "+weatherDesc+", Temperature Celcius: "+tempC+", Temperature farenheit: "+tempF+", Icon: "+icon);
+}
+
+function toHtml(locationOutput,tempC,tempF,icon){
+	let imgPre = '<img src = "https:';
+	$("#wm-icon").html(imgPre+icon+'">')		
+	$("#wm-temp").html(tempC+"&#176;");
+	$("#wm-location").html(locationOutput);
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
