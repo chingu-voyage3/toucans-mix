@@ -21,7 +21,7 @@ function userInputLocation(){
 
 
 function getWeatherDataCoords(lon,lat){
-	let apiKey = "http://api.apixu.com/v1/current.json?key=844930d1fa3949a8a44111252170512%20&q=";
+	let apiKey = "https://api.apixu.com/v1/current.json?key=844930d1fa3949a8a44111252170512%20&q=";
 	let apiCall = apiKey+lon+","+lat;
 
 	$.getJSON(apiCall, function(data) {
