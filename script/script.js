@@ -24,14 +24,47 @@ else {
 }
 }
 
-
+// the clock function
 function startTime() {
   var dateObj = new Date();
+
+if ($('#timeCheck').is(':checked') === true)
+
+{
+  var h = dateObj.getHours();
+  var ms = dateObj.toLocaleString('en-US', {minute:'numeric', second: 'numeric', hour24: true });
+  document.getElementById("clock").innerHTML= h + ":" + ms;
+  var t = setTimeout(startTime, 1000); //this calls the fuction after every second
+
+  //check and uncheck the radio button
+  $(':radio').mousedown(function(e){
+  var $self = $(this);
+  if( $self.is(':checked') ){
+    var uncheck = function(){
+      setTimeout(function(){$self.removeAttr('checked');},0);
+    };
+    var unbind = function(){
+      $self.unbind('mouseup',up);
+    };
+    var up = function(){
+      uncheck();
+      unbind();
+    };
+    $self.bind('mouseup',up);
+    $self.one('mouseout', unbind);
+  }
+});
+}
+
+else  {
+
   var h = dateObj.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', second: 'numeric', hour12: true });
   document.getElementById("clock").innerHTML= h;
   var t = setTimeout(startTime, 1000); //this calls the fuction after every second
 }
+}
 
+//Compliments next to phrase
 function randomCompliment () {
   var arrayOfCompliments = ["handsome", "cutie", "human", "pal", "smart", "sexy"];
   var randomCompliment = Math.floor(Math.random()*arrayOfCompliments.length);
