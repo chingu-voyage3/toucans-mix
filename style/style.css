@@ -34,7 +34,7 @@ img{
 #wm-location{
 	position: relative;
 	bottom:15px;
-	left: 10px;
+	padding-left: 8px;
 }
 
 #wm-temp{
@@ -43,3 +43,4 @@ img{
 	bottom:15px;
 	right:10px;
 }
+
