@@ -1,7 +1,19 @@
 #clock {
- 
+ font-family: "Josefin Sans", sans-serif;
+ font-size: 1000%;
+ position: absolute;
+   left: 50%;
+   top: 25%;
+   -webkit-transform: translate(-50%, -50%);
+   transform: translate(-50%, -50%);
 }
 
 #phrase {
-
+font-family: "Josefin Sans", sans-serif;
+ font-size: 300%;
+ position: absolute;
+  left: 50%;
+  top: 60%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }

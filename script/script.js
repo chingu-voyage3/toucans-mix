@@ -32,7 +32,7 @@ if ($('#timeCheck').is(':checked') === true)
 
 {
   var h = dateObj.getHours();
-  var ms = dateObj.toLocaleString('en-US', {minute:'numeric', second: 'numeric', hour24: true });
+  var ms = dateObj.toLocaleString('en-US', {minute:'numeric',hour24: true });
   document.getElementById("clock").innerHTML= h + ":" + ms;
   var t = setTimeout(startTime, 1000); //this calls the fuction after every second
 
@@ -58,7 +58,7 @@ if ($('#timeCheck').is(':checked') === true)
 
 else  {
 
-  var h = dateObj.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', second: 'numeric', hour12: true });
+  var h = dateObj.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
   document.getElementById("clock").innerHTML= h;
   var t = setTimeout(startTime, 1000); //this calls the fuction after every second
 }
@@ -66,7 +66,7 @@ else  {
 
 //Compliments next to phrase
 function randomCompliment () {
-  var arrayOfCompliments = ["handsome", "cutie", "human", "pal", "smart", "sexy"];
+  var arrayOfCompliments = ["handsome.", "cutie.", "human.", "pal.", "smart.", "sexy.","classy."];
   var randomCompliment = Math.floor(Math.random()*arrayOfCompliments.length);
   $("#phrase").append(arrayOfCompliments[randomCompliment]);
 }
