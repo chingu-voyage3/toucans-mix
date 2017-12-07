@@ -1,11 +1,18 @@
+body {
+  background-color: gray;
+}
+
+
 #clock {
  font-family: "Josefin Sans", sans-serif;
  font-size: 1000%;
  position: absolute;
    left: 50%;
    top: 25%;
+   color:white;
    -webkit-transform: translate(-50%, -50%);
    transform: translate(-50%, -50%);
+   text-shadow: 0 0 15px #000;
 }
 
 #phrase {
@@ -14,6 +21,8 @@ font-family: "Josefin Sans", sans-serif;
  position: absolute;
   left: 50%;
   top: 60%;
+  color:white;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  text-shadow: 0 0 15px #000;
 }

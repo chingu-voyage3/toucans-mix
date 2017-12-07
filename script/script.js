@@ -24,6 +24,11 @@ else {
 }
 }
 
+
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;}
+
 // the clock function
 function startTime() {
   var dateObj = new Date();
@@ -31,9 +36,11 @@ function startTime() {
 if ($('#timeCheck').is(':checked') === true)
 
 {
-  var h = dateObj.getHours();
-  var ms = dateObj.toLocaleString('en-US', {minute:'numeric',hour24: true });
-  document.getElementById("clock").innerHTML= h + ":" + ms;
+  var getHours = dateObj.getHours();
+  var getMinutes = dateObj.getMinutes();
+  h= checkTime(getHours);
+  m = checkTime(getMinutes);
+  document.getElementById("clock").innerHTML= h + ":" + m;
   var t = setTimeout(startTime, 1000); //this calls the fuction after every second
 
   //check and uncheck the radio button
