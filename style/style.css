@@ -50,8 +50,10 @@ img{
 	position:relative;
 	float: right;
 	width:350px;
-	height:500px;
+	height:450px;
 	background-color: rgba(0, 0, 0, 0.4);
+	top: 100px;
+	border-radius: 5px;
 }
 
 #wm-forecast-title{
@@ -67,12 +69,17 @@ img{
 
 .cell{
 	display: table-cell;
-	text-align: center;
+	width:90px;
 }
 
-#wm-fcIcon img{
+.table-row img{
 	position: relative;
-	width:40px;
-	height:40px;
+	width:30px;
+	height:30px;
 	top:10px;
+}
+
+.table-row{
+	display:table:row;
+	width:100%;
 }

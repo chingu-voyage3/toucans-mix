@@ -77,14 +77,13 @@ function toHtml(locationOutput,tempC,icon){
 
 function toForecast(fcWeatherDesc,fcTempC,fcIcon,fcData){
 		
-	console.log(fcData[0].fcWeatherDesc)
 
 	let imgPre = '<img src = "https:';
 
-	
-	//$("#day").html(date);	
-	$("#wm-fcTemp").html(fcData[0].fcTempC+"&#176;");
-	$("#wm-fcDesc").html(fcData[0].fcWeatherDesc);
-	$("#wm-fcIcon").html(imgPre+fcIcon+'">')	
+	for(let i=1;i<8;i++){
+		$("#wm-fcTemp"+i).html(fcData[i-1].fcTempC+"&#176;");
+		$("#wm-fcDesc"+i).html(fcData[i-1].fcWeatherDesc);
+		$("#wm-fcIcon"+i).html(imgPre+fcData[i-1].fcIcon+'">')	
+	}
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
