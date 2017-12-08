@@ -76,14 +76,25 @@ function toHtml(locationOutput,tempC,icon){
 }
 
 function toForecast(fcWeatherDesc,fcTempC,fcIcon,fcData){
-		
 
 	let imgPre = '<img src = "https:';
+	let today = new Date();
+	let tomorrow = new Date(today);
+	let todayResult = tomorrow.toString().split(" ",3).join(" ");
+	let result;
+
+
+	$("#day1").html(todayResult);
 
 	for(let i=1;i<8;i++){
+		tomorrow.setDate(today.getDate()+i);
+		result = tomorrow.toString().split(" ",3).join(" ");
+		$("#day"+(i+1)).html(result);
 		$("#wm-fcTemp"+i).html(fcData[i-1].fcTempC+"&#176;");
 		$("#wm-fcDesc"+i).html(fcData[i-1].fcWeatherDesc);
 		$("#wm-fcIcon"+i).html(imgPre+fcData[i-1].fcIcon+'">')	
 	}
+
 }
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
