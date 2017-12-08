@@ -3,10 +3,10 @@ html,body{
 	margin:0;
 	padding:0;
 	background-color: #555;
+	font-family: Comfortaa;
 }
 
-.weather-module{
-	font-family: Comfortaa;
+#current-weather-wrapper{
 	color:white;
 	opacity: 0.5;
 	float: right;
@@ -14,7 +14,7 @@ html,body{
 	border-top: 3px solid #555;
 }
 
-.weather-module:hover{
+#current-weather-wrapper:hover{
 	color:white;
 	cursor:pointer;
 	border-top: 3px solid white;
@@ -44,3 +44,35 @@ img{
 	right:10px;
 }
 
+#forecast-wrapper{
+	color:white;
+	font-size: 12px;
+	position:relative;
+	float: right;
+	width:350px;
+	height:500px;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+#wm-forecast-title{
+	padding: 10px;
+	text-align: center;
+	font-size: 15px;
+}
+
+#forecast-data{
+	display:table;
+	width:100%;
+}
+
+.cell{
+	display: table-cell;
+	text-align: center;
+}
+
+#wm-fcIcon img{
+	position: relative;
+	width:40px;
+	height:40px;
+	top:10px;
+}

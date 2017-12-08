@@ -21,8 +21,9 @@ function userInputLocation(){
 
 
 function getWeatherDataCoords(lon,lat){
-	let apiKey = "https://api.apixu.com/v1/current.json?key=844930d1fa3949a8a44111252170512%20&q=";
-	let apiCall = apiKey+lon+","+lat;
+	let apiKey = "https://api.apixu.com/v1/forecast.json?key=844930d1fa3949a8a44111252170512%20&q=";
+	let days = "&days=7";
+	let apiCall = apiKey+lon+","+lat+days;
 
 	$.getJSON(apiCall, function(data) {
 		assignWeatherData(data);
@@ -30,8 +31,9 @@ function getWeatherDataCoords(lon,lat){
 }
 
 function getWeatherDataUserInput(input){
-	let apiKey = "http://api.apixu.com/v1/current.json?key=844930d1fa3949a8a44111252170512%20&q=";
-	let apiCall = apiKey+input;
+	let apiKey = "https://api.apixu.com/v1/forecast.json?key=844930d1fa3949a8a44111252170512%20&q=";
+	let days = "&days=7";
+	let apiCall = apiKey+input+days;
 
 		$.getJSON(apiCall, function(data) {
 			assignWeatherData(data);
@@ -39,25 +41,50 @@ function getWeatherDataUserInput(input){
 }
 
 function assignWeatherData(data){
+	//Current weather data
 	let locationOutput = data.location.name;
 	let region = data.location.region;
 	let weatherDesc = data.current.condition.text;
 	let icon = data.current.condition.icon
 	let tempC = data.current.temp_c;
-	let tempF = data.current.temp_f;
+	let fcData=[];
+	//Forecast data
+	
+	for(let i=0;i<7;i++){
+		fcData.push({
+			fcIcon:data.forecast.forecastday[i].day.condition.icon,
+			fcWeatherDesc:data.forecast.forecastday[i].day.condition.text,
+			fcTempC:data.forecast.forecastday[i].day.avgtemp_c
+		})
+	}
+	let fcIcon = data.forecast.forecastday[0].day.condition.icon;
+	let fcWeatherDesc = data.forecast.forecastday[0].day.condition.text;
+	let fcTempC = data.forecast.forecastday[0].day.avgtemp_c;
 
-	print(locationOutput,weatherDesc,icon,tempC,tempF,region);
-	toHtml(locationOutput,tempC,tempF,icon);
+	toHtml(locationOutput,tempC,icon);
+	toForecast(fcWeatherDesc,fcTempC,fcIcon,fcData)
+
 }
 
-function print(locationOutput,weatherDesc,icon,tempC,tempF,region){
-	console.log("Location: "+locationOutput+", Region: "+region+", Current weather: "+weatherDesc+", Temperature Celcius: "+tempC+", Temperature farenheit: "+tempF+", Icon: "+icon);
-}
 
-function toHtml(locationOutput,tempC,tempF,icon){
+
+function toHtml(locationOutput,tempC,icon){
 	let imgPre = '<img src = "https:';
 	$("#wm-icon").html(imgPre+icon+'">')		
 	$("#wm-temp").html(tempC+"&#176;");
 	$("#wm-location").html(locationOutput);
+}
+
+function toForecast(fcWeatherDesc,fcTempC,fcIcon,fcData){
+		
+	console.log(fcData[0].fcWeatherDesc)
+
+	let imgPre = '<img src = "https:';
+
+	
+	//$("#day").html(date);	
+	$("#wm-fcTemp").html(fcData[0].fcTempC+"&#176;");
+	$("#wm-fcDesc").html(fcData[0].fcWeatherDesc);
+	$("#wm-fcIcon").html(imgPre+fcIcon+'">')	
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
