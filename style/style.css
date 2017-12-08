@@ -26,3 +26,46 @@ font-family: "Josefin Sans", sans-serif;
   transform: translate(-50%, -50%);
   text-shadow: 0 0 15px #000;
 }
+
+.setting {
+  background:none;
+  position:absolute;
+  bottom: 0;
+  left:0;
+  padding:5px 15px 0px 15px;
+  border:0;
+  cursor:pointer;
+  outline:none;
+  z-index:1;
+  opacity: 1;
+  color:white;
+  height:10%;
+}
+
+.setting:hover {
+  border-bottom: 2px solid white;
+}
+
+
+.cross{
+  background:none;
+  padding:7px 15px 0px 15px;
+  color:#999;
+  border:0;
+  font-size:3em;
+  line-height:65px;
+  font-weight:bold;
+  cursor:pointer;
+  outline:none;
+  z-index:3;
+  float: right;
+}
+
+.menu {
+  background-color: black;
+  width:30%;
+  height:30vh;
+  position:absolute;
+  bottom:10vh;
+  color:white;
+}

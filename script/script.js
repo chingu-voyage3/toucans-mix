@@ -4,6 +4,7 @@ window.onload = function(){
   startTime();
   phrase();
   randomCompliment();
+  settingMenu();
 }
 //declaring variables
 var dateObj = new Date();
@@ -76,4 +77,21 @@ function randomCompliment () {
   var arrayOfCompliments = ["handsome.", "cutie.", "human.", "pal.", "smart.", "sexy.","classy."];
   var randomCompliment = Math.floor(Math.random()*arrayOfCompliments.length);
   $("#phrase").append(arrayOfCompliments[randomCompliment]);
+}
+
+function settingMenu() {
+
+$( ".cross" ).hide();
+$( ".menu" ).hide();
+$( ".setting" ).click(function() {
+$( ".menu" ).toggle( "slide", function() {
+$( ".cross" ).show();
+});
+});
+
+$( ".cross" ).click(function() {
+$( ".menu" ).toggle( "slide", function() {
+$( ".cross" ).hide();
+});
+});
 }
