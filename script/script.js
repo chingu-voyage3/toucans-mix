@@ -1,4 +1,5 @@
 //WEATHER MODULE FUNCTIONS////////////////////////////////////////////////////////////////////////////
+let flag = 0;
 function getLocation() {
   if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(usePosition);
@@ -94,7 +95,22 @@ function toForecast(fcWeatherDesc,fcTempC,fcIcon,fcData){
 		$("#wm-fcDesc"+i).html(fcData[i-1].fcWeatherDesc);
 		$("#wm-fcIcon"+i).html(imgPre+fcData[i-1].fcIcon+'">')	
 	}
+}
 
+function weatherSlider(){
+	
+
+	if(flag == 0){
+		$("#forecast-wrapper").addClass("weather-slide-in");
+		$("#forecast-wrapper").removeClass("weather-slide-out");
+		flag = 1;
+	}
+
+	else if(flag == 1){
+		$("#forecast-wrapper").addClass("weather-slide-out");
+		$("#forecast-wrapper").removeClass("weather-slide-in");
+		flag = 0;
+	}
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////

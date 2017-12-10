@@ -12,6 +12,7 @@ html,body{
 	float: right;
 	font-size: 15px;
 	border-top: 3px solid #555;
+	margin-right: 5px;
 }
 
 #current-weather-wrapper:hover{
@@ -45,12 +46,12 @@ img{
 }
 
 #forecast-wrapper{
+	right:-550px;
 	color:white;
 	font-size: 12px;
-	position:relative;
-	float: right;
+	position:fixed;
 	width:450px;
-	height:450px;
+	height:350px;
 	background-color: rgba(0, 0, 0, 0.6);
 	top: 100px;
 	border-radius: 5px;
@@ -73,9 +74,9 @@ img{
 
 .cell{
 	display: table-cell;
-	width:100px;
-	text-align: right;
-	font-size: 15px;
+	width:110px;
+	text-align: center;
+	font-size: 13px;
 }
 
 .table-row img{
@@ -86,7 +87,6 @@ img{
 }
 
 .table-row{
-	display:table:row;
 	width:100%;
 }
 
@@ -94,4 +94,28 @@ img{
 	display:table-cell;
 	font-size: 12px;
 
+}
+
+.weather-slide-in{
+	animation-name: weather-slide-in;
+	animation-delay: 0.1s;
+	animation-duration: 0.5s;
+	animation-fill-mode: both;
+}
+
+@keyframes weather-slide-in{
+	from{right:-550px;}
+	to{right:0%;}
+}
+
+.weather-slide-out{
+	animation-name: weather-slide-out;
+	animation-delay: 0.1s;
+	animation-duration: 0.5s;
+	animation-fill-mode: both;
+}
+
+@keyframes weather-slide-out{
+	from{right:0%;}
+	to{right:-550px;}
 }
