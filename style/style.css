@@ -47,11 +47,11 @@ img{
 
 #forecast-wrapper{
 	right:-550px;
+	padding-bottom: 20px;
 	color:white;
 	font-size: 12px;
 	position:fixed;
 	width:450px;
-	height:350px;
 	background-color: rgba(0, 0, 0, 0.6);
 	top: 100px;
 	border-radius: 5px;
