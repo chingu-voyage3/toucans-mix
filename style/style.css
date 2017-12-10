@@ -40,10 +40,11 @@ font-family: "Josefin Sans", sans-serif;
   opacity: 1;
   color:white;
   height:10%;
+  border-bottom: 2px solid grey;
 }
 
 .setting:hover {
-  border-bottom: 2px solid white;
+  border-bottom-color:white;
 }
 
 
@@ -68,4 +69,10 @@ font-family: "Josefin Sans", sans-serif;
   position:absolute;
   bottom:10vh;
   color:white;
+}
+
+
+#timeCheck{
+  margin-top: 10px;
+  margin-left: 10px;
 }
