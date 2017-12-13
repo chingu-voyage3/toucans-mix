@@ -4,21 +4,21 @@ body {
 
 
 #clock {
- font-family: "Josefin Sans", sans-serif;
- font-size: 1000%;
- position: absolute;
-   left: 50%;
-   top: 25%;
-   color:white;
-   -webkit-transform: translate(-50%, -50%);
-   transform: translate(-50%, -50%);
-   text-shadow: 0 0 15px #000;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 990%;
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  color:white;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-shadow: 0 0 15px #000;
 }
 
 #phrase {
-font-family: "Josefin Sans", sans-serif;
- font-size: 300%;
- position: absolute;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 300%;
+  position: absolute;
   left: 50%;
   top: 60%;
   color:white;
@@ -27,7 +27,7 @@ font-family: "Josefin Sans", sans-serif;
   text-shadow: 0 0 15px #000;
 }
 
-.setting {
+#setting {
   background:none;
   position:absolute;
   bottom: 0;
@@ -42,30 +42,41 @@ font-family: "Josefin Sans", sans-serif;
   height:10%;
 }
 
-.setting:hover {
+#setting:hover {
   border-bottom: 2px solid white;
 }
 
-
-.cross{
-  background:none;
-  padding:7px 15px 0px 15px;
-  color:#999;
-  border:0;
-  font-size:3em;
-  line-height:65px;
-  font-weight:bold;
-  cursor:pointer;
-  outline:none;
-  z-index:3;
-  float: right;
-}
-
-.menu {
-  background-color: black;
+#menu {
+  background-color: rgba(0,0,0,0.9);
   width:30%;
-  height:30vh;
+  height:50vh;
   position:absolute;
   bottom:10vh;
   color:white;
+  -moz-border-radius: 2%;
+  border-radius: 2%;
+}
+
+
+#menu ul li {
+  font-family:"Josefin Sans", "arial";
+  font-size: 100%;
+  list-style-type: none;
+}
+
+#menu ul p {
+    display:inline-block;
+}
+
+#menutitle {
+  display: block;
+  text-align: center;
+  font-family: "Josefin Sans", "arial";
+  font-weight: bold;
+  font-size: 180%;
+  border-bottom: 1px solid rgba(255, 255, 255, .5);
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+  padding:0px;
+  margin-bottom: 0;
 }

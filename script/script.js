@@ -43,25 +43,6 @@ if ($('#timeCheck').is(':checked') === true)
   m = checkTime(getMinutes);
   document.getElementById("clock").innerHTML= h + ":" + m;
   var t = setTimeout(startTime, 1000); //this calls the fuction after every second
-
-  //check and uncheck the radio button
-  $(':radio').mousedown(function(e){
-  var $self = $(this);
-  if( $self.is(':checked') ){
-    var uncheck = function(){
-      setTimeout(function(){$self.removeAttr('checked');},0);
-    };
-    var unbind = function(){
-      $self.unbind('mouseup',up);
-    };
-    var up = function(){
-      uncheck();
-      unbind();
-    };
-    $self.bind('mouseup',up);
-    $self.one('mouseout', unbind);
-  }
-});
 }
 
 else  {
@@ -70,6 +51,7 @@ else  {
   document.getElementById("clock").innerHTML= h;
   var t = setTimeout(startTime, 1000); //this calls the fuction after every second
 }
+
 }
 
 //Compliments next to phrase
@@ -81,17 +63,9 @@ function randomCompliment () {
 
 function settingMenu() {
 
-$( ".cross" ).hide();
-$( ".menu" ).hide();
-$( ".setting" ).click(function() {
-$( ".menu" ).toggle( "slide", function() {
-$( ".cross" ).show();
-});
-});
+$("#menu").hide();
 
-$( ".cross" ).click(function() {
-$( ".menu" ).toggle( "slide", function() {
-$( ".cross" ).hide();
-});
-});
+$( "#setting" ).click(function() {
+$( "#menu" ).toggle("slide");});
+
 }
