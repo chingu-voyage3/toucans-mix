@@ -9,6 +9,7 @@ window.onload = function(){
 //declaring variables
 var dateObj = new Date();
 var internalhour = dateObj.getHours();
+var person = null;
 
 //phrase below the time
 function phrase() {
@@ -56,16 +57,29 @@ else  {
 
 //Compliments next to phrase
 function randomCompliment () {
+
+if (person !== null) {
+  $("#phrase").append(person);
+}
+
+else {
   var arrayOfCompliments = ["handsome.", "cutie.", "human.", "pal.", "smart.", "sexy.","classy."];
   var randomCompliment = Math.floor(Math.random()*arrayOfCompliments.length);
   $("#phrase").append(arrayOfCompliments[randomCompliment]);
+}
 }
 
 function settingMenu() {
 
 $("#menu").hide();
-
 $( "#setting" ).click(function() {
 $( "#menu" ).toggle("slide");});
+}
 
+
+function nameChange () {
+  $("#phrase").empty();
+  person = document.getElementById("enterName").value;
+  phrase();
+  randomCompliment();
 }
