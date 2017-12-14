@@ -3,76 +3,25 @@ body {
 }
 
 
-#clock {
- font-family: "Josefin Sans", sans-serif;
- font-size: 1000%;
- position: absolute;
-   left: 50%;
-   top: 25%;
-   color:white;
-   -webkit-transform: translate(-50%, -50%);
-   transform: translate(-50%, -50%);
-   text-shadow: 0 0 15px #000;
+.quote-container{
+  width:750px;
+  margin:auto;
+  margin-top:10px;
+  display:flex;
+  flex-direction:column;
 }
 
-#phrase {
-font-family: "Josefin Sans", sans-serif;
- font-size: 300%;
- position: absolute;
-  left: 50%;
-  top: 60%;
-  color:white;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-shadow: 0 0 15px #000;
+.quote-style{
+  text-align:center;
+  font-size:20px;
+  color:#fff;
+  font-family:Josefin Sans;
+  align-self:center;
 }
 
-.setting {
-  background:none;
-  position:absolute;
-  bottom: 0;
-  left:0;
-  padding:5px 15px 0px 15px;
-  border:0;
-  cursor:pointer;
-  outline:none;
-  z-index:1;
-  opacity: 1;
-  color:white;
-  height:10%;
-  border-bottom: 2px solid grey;
-}
+.quote{padding:15px;}
 
-.setting:hover {
-  border-bottom-color:white;
-}
-
-
-.cross{
-  background:none;
-  padding:7px 15px 0px 15px;
-  color:#999;
-  border:0;
-  font-size:3em;
-  line-height:65px;
-  font-weight:bold;
-  cursor:pointer;
-  outline:none;
-  z-index:3;
-  float: right;
-}
-
-.menu {
-  background-color: black;
-  width:30%;
-  height:30vh;
-  position:absolute;
-  bottom:10vh;
-  color:white;
-}
-
-
-#timeCheck{
-  margin-top: 10px;
-  margin-left: 10px;
+.author{
+  font-size:15px;
+  font-style:italic;
 }
