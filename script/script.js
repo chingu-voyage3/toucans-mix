@@ -1,5 +1,8 @@
 window.onload = function(){
   quoteGenerator()
+  phrase()
+  randomCompliment()
+  getLocation()
 }
 
 
@@ -93,7 +96,7 @@ $( "#menu" ).toggle("slide");});
 }
 
 
-function nameChange () {
+function nameChange() {
   $("#phrase").empty();
   person = document.getElementById("enterName").value;
   phrase();
