@@ -6,9 +6,14 @@ html,body{
 	font-family: Comfortaa;
 }
 
+#top-row-container{
+	display:flex;
+	flex-direction: row;
+}
+
 .quote-container{
-  width:750px;
-  margin:auto;
+  margin: auto;
+  width:75%;
   margin-top:10px;
   display:flex;
   flex-direction:column;
@@ -66,6 +71,7 @@ html,body{
   opacity: 1;
   color:white;
   height:10%;
+  border-bottom: 2px solid grey;
 }
 
 #setting:hover {
@@ -110,10 +116,8 @@ html,body{
 #current-weather-wrapper{
 	color:white;
 	opacity: 0.5;
-	float: right;
 	font-size: 15px;
-	border-top: 3px solid #555;
-	margin-right: 5px;
+	border-top: 3px solid grey;
 }
 
 #current-weather-wrapper:hover{
@@ -147,13 +151,14 @@ img{
 }
 
 #forecast-wrapper{
+	z-index: 1;
 	right:-550px;
 	padding-bottom: 20px;
 	color:white;
 	font-size: 12px;
 	position:fixed;
 	width:450px;
-	background-color: rgba(0, 0, 0, 0.6);
+	background-color: rgba(0, 0, 0, 0.9);
 	top: 100px;
 	border-radius: 5px;
 }
