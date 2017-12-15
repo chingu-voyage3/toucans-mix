@@ -27,6 +27,7 @@ html,body{
 .author{
   font-size:15px;
   font-style:italic;
+}
 
 #clock {
   font-family: "Josefin Sans", sans-serif;
@@ -130,7 +131,6 @@ img{
 
 #wm-icon,#wm-temp,#wm-top-row{
 		display: inline;
-
 }
 
 #wm-location{
@@ -220,4 +220,3 @@ img{
 	from{right:0%;}
 	to{right:-550px;}
 }
-

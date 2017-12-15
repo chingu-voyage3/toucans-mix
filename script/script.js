@@ -1,12 +1,10 @@
 window.onload = function(){
-  quoteGenerator()
-  phrase()
-  randomCompliment()
-  getLocation()
   startTime();
+  phrase();
+  randomCompliment();
   settingMenu();
+  quoteGenerator();
 }
-
 
 function quoteGenerator(){
   $.get('https://quotes.rest/qod.json', function(responseText) {
@@ -26,6 +24,7 @@ function quoteGenerator(){
     $(".author").html(author);
   }
 }
+
 
 //declaring variables
 var dateObj = new Date();
@@ -50,8 +49,7 @@ else {
 
 function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-    return i;
-	}
+    return i;}
 
 // the clock function
 function startTime() {
@@ -99,7 +97,7 @@ $( "#menu" ).toggle("slide");});
 }
 
 
-function nameChange() {
+function nameChange () {
   $("#phrase").empty();
   person = document.getElementById("enterName").value;
   phrase();
@@ -220,4 +218,3 @@ function weatherSlider(){
 		flag = 0;
 	}
 }
-
