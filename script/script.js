@@ -3,6 +3,8 @@ window.onload = function(){
   phrase()
   randomCompliment()
   getLocation()
+  startTime();
+  settingMenu();
 }
 
 
@@ -48,7 +50,8 @@ else {
 
 function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-    return i;}
+    return i;
+	}
 
 // the clock function
 function startTime() {
