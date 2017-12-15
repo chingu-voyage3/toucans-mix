@@ -161,7 +161,7 @@ img{
 	position:fixed;
 	width:450px;
 	background-color: rgba(0, 0, 0, 0.9);
-	top: 100px;
+	top: 120px;
 	border-radius: 5px;
 }
 
@@ -262,6 +262,12 @@ img{
 		top: 45%;
 	}
 
+	#menu {
+  		width:75%;
+  		height:75%;
+
+	}
+
 }
 
 @media (max-width:600px){
@@ -279,8 +285,27 @@ img{
 		align-items: center;
 	}
 
-	#wm-temp{
+	#current-weather-wrapper{
 		border-top: 0px;
+	}
+
+	#current-weather-wrapper:hover{
+		border-top: 0px;
+	}
+
+	#forecast-wrapper{
+		width:100%;
+		height:75%;
+	}
+
+
+	.quote-style{
+	  font-size:15px;
+	}
+
+	.author{
+  		font-size:12px;
+  		font-style:italic;
 	}
 	
 }
@@ -293,19 +318,6 @@ img{
 	#phrase{
 		font-size:75%;
 		top: 35%;
-	}
-
-	#top-row-container{
-		flex-direction: column;
-		align-items: center;
-	}
-
-	#current-weather-wrapper{
-		border-top: 0px;
-	}
-
-	#current-weather-wrapper:hover{
-		border-top: 0px;
 	}
 	
 }
