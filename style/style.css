@@ -38,7 +38,7 @@ width:75px;
 
 #clock {
   font-family: "Josefin Sans", sans-serif;
-  font-size: 990%;
+  font-size: 800%;
   position: absolute;
   left: 50%;
   top: 25%;
@@ -149,7 +149,7 @@ img{
 	font-size: 20px;
 	position: relative;
 	bottom:15px;
-	right:10px;
+	right:5px;
 }
 
 #forecast-wrapper{
@@ -226,4 +226,86 @@ img{
 @keyframes weather-slide-out{
 	from{right:0%;}
 	to{right:-550px;}
+}
+
+@media (max-width:1100px){
+	#clock{
+		font-size: 600%;
+	}
+
+	#phrase{
+		font-size:250%;
+		top: 50%;
+	}
+
+}
+
+@media (max-width:900px){
+	#clock{
+		font-size: 550%;
+	}
+
+	#phrase{
+		font-size:200%;
+		top: 50%;
+	}
+
+}
+
+@media (max-width:750px){
+	#clock{
+		font-size: 450%;
+	}
+
+	#phrase{
+		font-size:150%;
+		top: 45%;
+	}
+
+}
+
+@media (max-width:600px){
+	#clock{
+		font-size: 300%;
+	}
+
+	#phrase{
+		font-size:100%;
+		top: 40%;
+	}
+
+	#top-row-container{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#wm-temp{
+		border-top: 0px;
+	}
+	
+}
+
+@media (max-width:450px){
+	#clock{
+		font-size: 200%;
+	}
+
+	#phrase{
+		font-size:75%;
+		top: 35%;
+	}
+
+	#top-row-container{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#current-weather-wrapper{
+		border-top: 0px;
+	}
+
+	#current-weather-wrapper:hover{
+		border-top: 0px;
+	}
+	
 }
