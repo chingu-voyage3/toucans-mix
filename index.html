@@ -3,11 +3,105 @@
 <head>
   <meta http-equiv="Content-Type" content="width=device-width" charset="utf-8" name="viewport"/>
   <link rel="stylesheet" type"text/css" href="style/style.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
   <script src="script/script.js" type="text/javascript"></script>
   <title> Momentum Project </title>
 </head>
 
 <body>
+	<div class="weather-module">
+		<div id="current-weather-wrapper" onclick="weatherSlider()">
+			<div id="wm-top-row">
+				<div id ="wm-icon">
+				</div>
+				<div id="wm-temp">
+				</div>
+			</div>
+			<div id="wm-location">
+			</div>
+		</div>
+		<div id="forecast-wrapper">
+			<div id="wm-forecast-title">
+				7 Day Forecast
+			</div>
+			<div id="forecast-data">
+				<div class="table-row">
+					<div id="day1" class="days cell">
+					</div>
+					<div id="wm-fcTemp1" class="cell">
+					</div>
+					<div id="wm-fcDesc1" class="cell">
+					</div>
+					<div id="wm-fcIcon1" class="cell">
+					</div>
+				</div>
+				<div class="table-row">
+					<div id="day2" class="days cell">
+					</div>
+					<div id="wm-fcTemp2" class="cell">
+					</div>
+					<div id="wm-fcDesc2" class="cell">
+					</div>
+					<div id="wm-fcIcon2" class="cell">
+					</div>
+				</div>
+				<div class="table-row">
+					<div id="day3" class="days cell">
+					</div>
+					<div id="wm-fcTemp3" class="cell">
+					</div>
+					<div id="wm-fcDesc3" class="cell">
+					</div>
+					<div id="wm-fcIcon3" class="cell">
+					</div>
+				</div>
+				<div class="table-row">
+					<div id="day4" class="days cell">
+					</div>
+					<div id="wm-fcTemp4" class="cell">
+					</div>
+					<div id="wm-fcDesc4" class="cell">
+					</div>
+					<div id="wm-fcIcon4" class="cell">
+					</div>
+				</div>
+				<div class="table-row">
+					<div id="day5" class="days cell">
+					</div>
+					<div id="wm-fcTemp5" class="cell">
+					</div>
+					<div id="wm-fcDesc5" class="cell">
+					</div>
+					<div id="wm-fcIcon5" class="cell">
+					</div>
+				</div>
+				<div class="table-row">
+					<div id="day6" class="days cell">
+					</div>
+					<div id="wm-fcTemp6" class="cell">
+					</div>
+					<div id="wm-fcDesc6" class="cell">
+					</div>
+					<div id="wm-fcIcon6" class="cell">
+					</div>
+				</div>
+				<div class="table-row">
+					<div id="day7" class="days cell">
+					</div>
+					<div id="wm-fcTemp7" class="cell">
+					</div>
+					<div id="wm-fcDesc7" class="cell">
+					</div>
+					<div id="wm-fcIcon7" class="cell">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		getLocation();
+	</script>
 
 </body>

@@ -1,0 +1,121 @@
+html,body{
+	height:100%;
+	margin:0;
+	padding:0;
+	background-color: #555;
+	font-family: Comfortaa;
+}
+
+#current-weather-wrapper{
+	color:white;
+	opacity: 0.5;
+	float: right;
+	font-size: 15px;
+	border-top: 3px solid #555;
+	margin-right: 5px;
+}
+
+#current-weather-wrapper:hover{
+	color:white;
+	cursor:pointer;
+	border-top: 3px solid white;
+	opacity: 1;
+}
+
+img{
+	width:50px;
+	height:50px;
+}
+
+
+#wm-icon,#wm-temp,#wm-top-row{
+		display: inline;
+}
+
+#wm-location{
+	position: relative;
+	bottom:8px;
+	padding-left: 8px;
+}
+
+#wm-temp{
+	font-size: 20px;
+	position: relative;
+	bottom:15px;
+	right:10px;
+}
+
+#forecast-wrapper{
+	right:-550px;
+	padding-bottom: 20px;
+	color:white;
+	font-size: 12px;
+	position:fixed;
+	width:450px;
+	background-color: rgba(0, 0, 0, 0.6);
+	top: 100px;
+	border-radius: 5px;
+}
+
+#wm-forecast-title{
+	padding: 10px;
+	text-align: left;
+	margin-left:12px;
+	font-size: 25px;
+
+}
+
+#forecast-data{
+	display:table;
+	width:90%;
+	border-top: 2px solid white;
+	margin:auto;
+}
+
+.cell{
+	display: table-cell;
+	width:110px;
+	text-align: center;
+	font-size: 13px;
+}
+
+.table-row img{
+	position: relative;
+	width:40px;
+	height:30px;
+	top:10px;
+}
+
+.table-row{
+	width:100%;
+}
+
+.days{
+	display:table-cell;
+	font-size: 12px;
+
+}
+
+.weather-slide-in{
+	animation-name: weather-slide-in;
+	animation-delay: 0.1s;
+	animation-duration: 0.5s;
+	animation-fill-mode: both;
+}
+
+@keyframes weather-slide-in{
+	from{right:-550px;}
+	to{right:0%;}
+}
+
+.weather-slide-out{
+	animation-name: weather-slide-out;
+	animation-delay: 0.1s;
+	animation-duration: 0.5s;
+	animation-fill-mode: both;
+}
+
+@keyframes weather-slide-out{
+	from{right:0%;}
+	to{right:-550px;}
+}
