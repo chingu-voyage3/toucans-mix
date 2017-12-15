@@ -9,12 +9,14 @@ html,body{
 #top-row-container{
 	display:flex;
 	flex-direction: row;
+	justify-content: space-between; ;
+}
+
+#invisible-flex-item{
+width:75px;
 }
 
 .quote-container{
-  margin: auto;
-  width:75%;
-  margin-top:10px;
   display:flex;
   flex-direction:column;
 }
