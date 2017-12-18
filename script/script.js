@@ -96,18 +96,22 @@ var todoList = {
         this.todos.splice(this.todos(index, 1));
         this.displayTodos();
     },
+    //Toggle one specific todo
     toggleCompleted: function(index) {
         this.todos[index].completed = !this.todos[index].completed;
         this.displayTodos();
     },
+    //Toggle all todos to incomplete or to complete
     toggleAll: function() {
         var all = true;
+        //If a todo is not completed, change to completed
         for (i=0; i<this.todos.length; i++) {
             if (this.todos[i].completed === false) {
                 this.todos[i].completed = true;
                 all = false;
             }
         }
+        //If all todos were already completed, change them all to not completed
         if (all === true) {
             for (i=0; i<this.todos.length; i++) {
                 this.todos[i].completed = false;
