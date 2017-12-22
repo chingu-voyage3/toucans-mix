@@ -9,11 +9,41 @@
 </head>
 
 <body>
-//////////// MAIN INPUT FORM /////////////////////
+<!-- MAIN INPUT FORM ------------------------------------------------------->
     <form>
         What is your main focus today? <br />
         <input type="text" id="mainFocusQuestion">
         <input type="button" value="Add" onClick="getMainFocus()"/>
     </form>
     <p id="mainFocusParagraph"></p>
+
+<!-- TO DO LIST ELEMENTS --------------------------------------------------->
+    <div>
+      <form name="todoList" onsubmit="handlers.addTodo(); return false">
+        <input id="textInput" type="text" placeholder="Add a task"/>
+        <input type="submit" style="display:none"/>
+      </form>
+    </div>
+
+    <div>
+      <button onclick="handlers.deleteTodo()">Delete</button>
+      <input id="deleteTodoPositionInput" type="number"/>
+    </div>
+
+    <div>
+      <button onclick="handlers.toggleCompleted()">Toggle Completed</button>
+      <input id="toggleCompletedPositionInput" type="number"/>
+    </div>
+
+    <div>
+      <button onclick = "handlers.toggleAll()">Toggle All</button>
+    </div>
+
+    <div id="todoDisplay">
+
+    </div>
+
+    <ul>
+    </ul>
+
 </body>
