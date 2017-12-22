@@ -6,6 +6,8 @@ window.onload = function(){
   settingMenu();
   quoteGenerator();
   toDoMenu();
+  checkboxToDo();
+  checkboxWeather();
 }
 
 function quoteGenerator(){
@@ -109,7 +111,29 @@ function getCheckedOnLoad () {
 
 //Hide and show weather module on click
 function checkboxWeather () {
+$("#weatherCheck").click( function ()
+	{if ( $("#weatherCheck").is(":checked") === true) {
+		$("#current-weather-wrapper").show();
+	}
 
+	else {
+		$("#current-weather-wrapper").hide();
+	}}
+);}
+
+//Hide and show ToDo module on click
+function checkboxToDo () {
+	$("#toDoCheck").click( function () {
+		
+		if (this.checked === true)
+		{
+				$("#toDo").show();
+		}
+	
+		else {
+			$("#toDo").hide();
+		}
+	});
 }
 
 //Function to change name of the greeting phrase

@@ -21,6 +21,7 @@
 	  		<div class="quote quote-style"></div>
 	  		<div class="author quote-style"></div>
 		</div>
+	
 		<div id="current-weather-wrapper" onclick="weatherSlider()">
 			<div id="wm-top-row">
 				<div id ="wm-icon">
@@ -128,8 +129,8 @@
     <ul>
       <li> <input type="text" name="enterName" id="enterName" placeholder="Enter name ... " onchange="nameChange()"> </input></li>
       <li> <p> 24-Hour clock </p> <input type="checkbox" name="Setting" id="timeCheck" > </input> </li>
-      <li> <p> Show Weather </p> <input type="checkbox" name="Setting" id="weatherCheck"> </input></li>
-      <li> <p> Show To-dos </p> <input type="checkbox" name="Setting" id="toDoCheck"> </input></li>
+      <li> <p> Show Weather </p> <input type="checkbox" name="Setting" id="weatherCheck" onclick="checkboxWeather()"> </input></li>
+      <li> <p> Show To-dos </p> <input type="checkbox" name="Setting" id="toDoCheck" onclick="checkboxToDo()"> </input></li>
 	  <button id="saveSettings" class="buttonSettings"> Save Settings </button>
       <button id="clearSettings" class="buttonSettings"> Clear Settings </button>
     </ul>
