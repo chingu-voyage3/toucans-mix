@@ -1,9 +1,11 @@
 window.onload = function(){
+  getCheckedOnLoad();
   startTime();
   phrase();
   randomCompliment();
   settingMenu();
   quoteGenerator();
+  toDoMenu();
 }
 
 function quoteGenerator(){
@@ -26,7 +28,7 @@ function quoteGenerator(){
 }
 
 
-//declaring variables
+//declaring variables of clock
 var dateObj = new Date();
 var internalhour = dateObj.getHours();
 var person = null;
@@ -89,6 +91,7 @@ else {
 }
 }
 
+//setting Menu slide 
 function settingMenu() {
 
 $("#menu").hide();
@@ -97,12 +100,33 @@ $( "#menu" ).toggle("slide");});
 }
 
 
+//Get all checkboxes in Settings checked on Load
+
+function getCheckedOnLoad () {
+	$(':checkbox').each(
+		function() {this.checked = true;});
+}
+
+//Hide and show weather module on click
+function checkboxWeather () {
+
+}
+
+//Function to change name of the greeting phrase
 function nameChange () {
   $("#phrase").empty();
   person = document.getElementById("enterName").value;
   phrase();
   randomCompliment();
 }
+
+//toDoMenu
+function toDoMenu() {
+
+	$("#toDoMenu").hide();
+	$( "#toDo" ).click(function() {
+	$( "#toDoMenu" ).toggle("slide", {direction: "right"});});
+	}
 
 //WEATHER MODULE FUNCTIONS////////////////////////////////////////////////////////////////////////////
 let flag = 0;

@@ -322,3 +322,35 @@ img{
 	}
 	
 }
+
+
+#toDo {
+	position: absolute;
+	bottom:0;
+	right:0;
+	cursor:pointer;
+	outline:none;
+	border:none;
+	background: none;
+	color: white;
+	font-family: "Roboto", arial;
+	font-weight:bold;
+	font-size: 150%;
+  }
+  
+  #toDo:hover {
+	border-bottom: 2px solid white;
+  }
+  
+  #toDoMenu { 
+	background-color: rgba(0,0,0,0.9);
+	width:30%;
+	height:80vh;
+	position:absolute;
+	bottom:10vh;
+	color:white;
+	right:0;
+	-moz-border-radius: 2%;
+	border-radius: 2%;
+  }
+  
