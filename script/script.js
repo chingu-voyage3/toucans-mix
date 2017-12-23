@@ -86,8 +86,27 @@ var display = {
       else {
         todoTextWithCompletion = '( )' + todo.todoText;
       }
+      todoLi.id = i;
       todoLi.textContent = todoTextWithCompletion;
+      todoLi.appendChild(this.createDeleteButton());
       todosUl.appendChild(todoLi);
     }
+  },
+  createDeleteButton: function(){
+    var deleteButton = document.createElement('button');
+    deleteButton.textContent = 'X';
+    deleteButton.className = 'deleteButton';
+    return deleteButton;
+  },
+  setEventListeners: function() {
+    var todosUl = document.querySelector('ul');
+    todosUl.addEventListener('click', function() {
+      var elementClicked = event.target;
+      if (elementClicked.className === 'deleteButton') {
+        handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
+      }
+    })
   }
-}
+};
+
+display.setEventListeners();
