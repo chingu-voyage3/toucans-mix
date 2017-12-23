@@ -98,7 +98,16 @@ function settingMenu() {
 
 $("#menu").hide();
 $( "#setting" ).click(function() {
-$( "#menu" ).toggle("slide");});
+
+	$( "#menu" ).toggle("slide");
+
+if ($("#grayBackground").length)
+{$("#grayBackground").remove();}
+
+else
+{$("body").append("<div id='grayBackground'> </div>");}
+
+});
 }
 
 
