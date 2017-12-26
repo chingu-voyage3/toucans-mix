@@ -161,31 +161,29 @@ function saveName () {
 	localStorage.setItem("Name", JSON.stringify(textNameInput));
 }
 
-//Function to retrieve name data and set var person --this still doesn't works
+//Function to retrieve name data and set var person on load
 
- /*function retName () {
-	var nameValue= window.localStorage.getItem("Name");
+ function retName () {
+	var storedName =  JSON.parse(localStorage.getItem("Name"));
 	 
-	if ( nameValue === undefined || nameValue === null || nameValue.length === 0) 
-	{var storedName =  JSON.parse(localStorage.getItem("Name"));
-	document.getElementById("enterName").value = storedName;
+	if ( storedName !== undefined || storedName !== null || storedName.length !== 0) 
+	{document.getElementById("enterName").value = storedName;
 	person = storedName;
-	nameChange();}
-
-	else {
-		person = null;
-		nameChange();
+	$("#phrase").empty();
+	phrase();
+	randomCompliment();}
 	}
-	} */
 
 
-//Functions to clear name data --this still doesn't works
+//Functions to clear name data 
 
 function clearName () {
 	document.getElementById("enterName").value = "";
 	localStorage.removeItem("Name");
 	person=null;
-	nameChange();
+	$("#phrase").empty();
+	phrase();
+	randomCompliment();
 }
 
 
