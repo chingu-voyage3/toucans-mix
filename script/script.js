@@ -158,15 +158,15 @@ function nameChange () {
 
 function saveName () {
 	 var textNameInput = document.getElementById("enterName").value;
-	localStorage.setItem("Name", JSON.stringify(textNameInput));
+	localStorage.setItem("Name", textNameInput);
 }
 
 //Function to retrieve name data and set var person on load
 
  function retName () {
-	var storedName =  JSON.parse(localStorage.getItem("Name"));
+	var storedName = localStorage.getItem("Name").toString();
 	 
-	if ( storedName !== undefined || storedName !== null || storedName.length !== 0) 
+	if ( storedName !== "undefined") 
 	{document.getElementById("enterName").value = storedName;
 	person = storedName;
 	$("#phrase").empty();
@@ -186,6 +186,13 @@ function clearName () {
 	randomCompliment();
 }
 
+//Function to store setting checkboxes data
+
+function saveCheckbox () {
+	var checkboxInput = document.getElementsByName("Setting").value;
+	console.log(checkboxInput);
+   localStorage.setItem("CheckboxSave", JSON.stringify(checkboxInput));
+}
 
 
 //toDoMenu
