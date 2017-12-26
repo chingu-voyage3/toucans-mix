@@ -127,12 +127,12 @@
 
   <div id="menu"> <div id="menutitle"> <p> Settings </p></div>
     <ul>
-      <li> <input type="text" name="enterName" id="enterName" placeholder="Enter your name... " onchange="nameChange()"> </input></li>
+      <li> <input type="text" name="enterName" id="enterName"  placeholder="Enter your name... " onchange="nameChange()"> </input></li>
       <li> <p> 24-Hour clock </p> <input type="checkbox" name="Setting" id="timeCheck" > </input> </li>
       <li> <p> Show Weather </p> <input type="checkbox" name="Setting" id="weatherCheck" onclick="checkboxWeather()"> </input></li>
       <li> <p> Show To-dos </p> <input type="checkbox" name="Setting" id="toDoCheck" onclick="checkboxToDo()"> </input></li>
-	  <button id="saveSettings" class="buttonSettings"> Save Settings </button>
-      <button id="clearSettings" class="buttonSettings"> Clear Settings </button>
+	  <button id="saveSettings" class="buttonSettings" onclick="saveName()"> Save Settings </button>
+      <button id="clearSettings" class="buttonSettings" onclick="clearName()"> Clear Settings </button>
     </ul>
   </div>
 
@@ -140,7 +140,6 @@
 <button id="toDo"> To Do </button>
 <div id="toDoMenu">
 <input type="text" name=addTask id="enterTask" placeholder="Enter task"> </input>
-
 </div>
 
 </body>

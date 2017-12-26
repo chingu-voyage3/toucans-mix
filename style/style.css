@@ -338,6 +338,7 @@ img{
 	font-family: "Roboto", arial;
 	font-weight:bold;
 	font-size: 150%;
+	z-index:50;
   }
   
   #toDo:hover {
@@ -354,6 +355,7 @@ img{
 	right:0;
 	-moz-border-radius: 2%;
 	border-radius: 2%;
+	z-index: 50;
   }
   
   #grayBackground {

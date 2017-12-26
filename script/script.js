@@ -6,8 +6,9 @@ window.onload = function(){
   settingMenu();
   quoteGenerator();
   toDoMenu();
-  checkboxToDo();
+  checkboxToDo(); //checkboxToDo & checkboxWeather are needed here to make the first click works.
   checkboxWeather();
+  retName();
 }
 
 function quoteGenerator(){
@@ -148,18 +149,61 @@ function checkboxToDo () {
 //Function to change name of the greeting phrase
 function nameChange () {
   $("#phrase").empty();
-  person = document.getElementById("enterName").value;
+	person = document.getElementById("enterName").value;
   phrase();
   randomCompliment();
 }
+
+//Function to store setting name data.
+
+function saveName () {
+	 var textNameInput = document.getElementById("enterName").value;
+	localStorage.setItem("Name", JSON.stringify(textNameInput));
+}
+
+//Function to retrieve name data and set var person --this still doesn't works
+
+ /*function retName () {
+	var nameValue= window.localStorage.getItem("Name");
+	 
+	if ( nameValue === undefined || nameValue === null || nameValue.length === 0) 
+	{var storedName =  JSON.parse(localStorage.getItem("Name"));
+	document.getElementById("enterName").value = storedName;
+	person = storedName;
+	nameChange();}
+
+	else {
+		person = null;
+		nameChange();
+	}
+	} */
+
+
+//Functions to clear name data --this still doesn't works
+
+function clearName () {
+	document.getElementById("enterName").value = "";
+	localStorage.removeItem("Name");
+	person=null;
+	nameChange();
+}
+
+
 
 //toDoMenu
 function toDoMenu() {
 
 	$("#toDoMenu").hide();
 	$( "#toDo" ).click(function() {
-	$( "#toDoMenu" ).toggle("slide", {direction: "right"});});
-	}
+	$( "#toDoMenu" ).toggle("slide", {direction: "right"});
+
+	if ($("#grayBackground").length)
+		{$("#grayBackground").remove();}
+
+	else
+		{$("body").append("<div id='grayBackground'> </div>");}
+	});
+}
 
 //WEATHER MODULE FUNCTIONS////////////////////////////////////////////////////////////////////////////
 let flag = 0;
