@@ -128,9 +128,9 @@
   <div id="menu"> <div id="menutitle"> <p> Settings </p></div>
     <ul>
       <li> <input type="text" name="enterName" id="enterName"  placeholder="Enter your name... " onchange="nameChange()"> </input></li>
-      <li> <p> 24-Hour clock </p> <input type="checkbox" name="Setting" id="timeCheck" onclick="saveCheckbox()" > </input> </li>
-      <li> <p> Show Weather </p> <input type="checkbox" name="Setting" id="weatherCheck" onclick="checkboxWeather(); saveCheckbox();"> </input></li>
-      <li> <p> Show To-dos </p> <input type="checkbox" name="Setting" id="toDoCheck" onclick="checkboxToDo(); saveCheckbox();"> </input></li>
+      <li> <p> 24-Hour clock </p> <input type="checkbox" name="Setting" id="timeCheck" class="settingCheck" onclick="saveCheckbox()" > </input> </li>
+      <li> <p> Show Weather </p> <input type="checkbox" name="Setting" id="weatherCheck"class="settingCheck" onclick="checkboxWeather(); saveCheckbox();"> </input></li>
+      <li> <p> Show To-dos </p> <input type="checkbox" name="Setting" id="toDoCheck" class="settingCheck" onclick="checkboxToDo(); saveCheckbox();"> </input></li>
 	  <button id="saveSettings" class="buttonSettings" onclick="saveName()"> Save Settings </button>
       <button id="clearSettings" class="buttonSettings" onclick="clearName()"> Clear Settings </button>
     </ul>

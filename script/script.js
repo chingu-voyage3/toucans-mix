@@ -164,9 +164,11 @@ function saveName () {
 //Function to retrieve name data and set var person on load
 
  function retName () {
-	var storedName = localStorage.getItem("Name").toString();
-	 
-	if ( storedName !== "undefined") 
+	var string = "";
+	var storedName = localStorage.getItem("Name") + string;
+
+//When you concatenate undefined with a string it becomes a string
+	if ( storedName !== "null") 
 	{document.getElementById("enterName").value = storedName;
 	person = storedName;
 	$("#phrase").empty();
@@ -189,11 +191,16 @@ function clearName () {
 //Function to store setting checkboxes data
 
 function saveCheckbox () {
-	var checkboxInput = document.getElementsByName("Setting").value;
-	console.log(checkboxInput);
-   localStorage.setItem("CheckboxSave", JSON.stringify(checkboxInput));
-}
+   var savCheck;
+   var savedChecks = [];
 
+   $('.settingCheck').each (
+	   function () {
+		savCheck = {id: $(this).attr('id'), value: $(this).prop('checked')};
+		savedChecks.push(savCheck);
+		localStorage.setItem("checkedCheckboxes", JSON.stringify(savedChecks));
+	});
+}
 
 //toDoMenu
 function toDoMenu() {
