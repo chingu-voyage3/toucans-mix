@@ -9,6 +9,7 @@ window.onload = function(){
   checkboxToDo(); //checkboxToDo & checkboxWeather are needed here to make the first click works.
   checkboxWeather();
   retName();
+  retCheckbox(); 
 }
 
 function quoteGenerator(){
@@ -161,13 +162,11 @@ function saveName () {
 	localStorage.setItem("Name", textNameInput);
 }
 
-//Function to retrieve name data and set var person on load
+//Function to retrieve name data and set var person on load // Note: When you concatenate undefined with a string it becomes a string
 
  function retName () {
 	var string = "";
 	var storedName = localStorage.getItem("Name") + string;
-
-//When you concatenate undefined with a string it becomes a string
 	if ( storedName !== "null") 
 	{document.getElementById("enterName").value = storedName;
 	person = storedName;
@@ -201,7 +200,15 @@ function saveCheckbox () {
 		localStorage.setItem("checkedCheckboxes", JSON.stringify(savedChecks));
 	});
 }
+// Function to retrieve checkboxes data
 
+function retCheckbox () {
+	var checkedCheckboxes = JSON.parse(localStorage.getItem('checkedCheckboxes'));
+
+	for (var i=0; i<checkedCheckboxes.length; i++) {
+		$('#' + checkedCheckboxes[i].id ).prop('checked', checkedCheckboxes[i].value);
+	}
+}
 //toDoMenu
 function toDoMenu() {
 
