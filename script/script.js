@@ -28,19 +28,18 @@ var todoList = {
     //Toggle all todos to incomplete or to complete
     toggleAll: function() {
         var all = true;
-        //If a todo is not completed, change to completed
-        for (i=0; i<this.todos.length; i++) {
-            if (this.todos[i].completed === false) {
-                this.todos[i].completed = true;
-                all = false;
-            }
-        }
-        //If all todos were already completed, change them all to not completed
-        if (all === true) {
-            for (i=0; i<this.todos.length; i++) {
-                this.todos[i].completed = false;
-            }
-        }
+        //If a todo is not complete, change to completed
+        this.todos.forEach(function(todo) {
+          if (todo.completed === false) {
+            todo.completed = true;
+            all = false;
+          }
+        });
+          if (all === true) {
+             this.todos.forEach(function(todo) {
+               todo.completed = false;
+             })
+         };
     }
 };
 
@@ -52,10 +51,8 @@ var handlers = {
     display.displayTodos();
   },
 
-  deleteTodo: function() {
-    var deleteTodoPositionInput = document.getElementById('deleteTodoPositionInput').innerHTML;
-    todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
-    deleteTodoPositionInput.value = '';
+  deleteTodo: function(index) {
+    todoList.deleteTodo(index);
     display.displayTodos();
   },
 
@@ -76,28 +73,38 @@ var display = {
   displayTodos: function() {
     var todosUl = document.querySelector('ul');
     todosUl.innerHTML = '';
-    for (var i = 0; i < todoList.todos.length; i++) {
+    todoList.todos.forEach(function(todo, index) {
       var todoLi = document.createElement('li');
-      var todo = todoList.todos[i];
+      var checkbox = document.createElement('INPUT');
+         checkbox.type = "checkbox";
+         checkbox.id = "checkbox";
       var todoTextWithCompletion = '';
+      // if (checkbox.checked = true) {
+      //   todoTextWithCompletion = "This works!!!";
+      // }
       if (todo.completed === true) {
         todoTextWithCompletion = '(X)' + todo.todoText;
-      }
-      else {
-        todoTextWithCompletion = '( )' + todo.todoText;
-      }
-      todoLi.id = i;
-      todoLi.textContent = todoTextWithCompletion;
-      todoLi.appendChild(this.createDeleteButton());
-      todosUl.appendChild(todoLi);
-    }
+       }
+       else {
+         todoTextWithCompletion = '( )' + todo.todoText;
+       }
+       todoLi.id = index;
+       todoLi.appendChild(checkbox);
+       var textNode = document.createTextNode(todoTextWithCompletion);
+       todoLi.appendChild(textNode);
+       //todoLi.textContent = todoTextWithCompletion;
+       todoLi.appendChild(this.createDeleteButton());
+       todosUl.appendChild(todoLi);
+    }, this)
   },
+
   createDeleteButton: function(){
     var deleteButton = document.createElement('button');
     deleteButton.textContent = 'X';
     deleteButton.className = 'deleteButton';
     return deleteButton;
   },
+
   setEventListeners: function() {
     var todosUl = document.querySelector('ul');
     todosUl.addEventListener('click', function() {
