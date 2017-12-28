@@ -187,6 +187,7 @@ function saveName () {
 	}
 
 	else {
+		$("#phrase").empty();
 		phrase();
   		randomCompliment();
 	}
