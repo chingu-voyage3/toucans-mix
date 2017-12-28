@@ -9,6 +9,7 @@ window.onload = function(){
   toDoMenu();
 }
 
+/////////////////////// RANDOM QUOTES MODULE/////////////////////////////////////////////////////////////
 function quoteGenerator(){
   $.get('https://quotes.rest/qod.json', function(responseText) {
       formatter(responseText);
@@ -28,7 +29,7 @@ function quoteGenerator(){
   }
 }
 
-
+///////////////////////////////////// CLOCK ELEMENT /////////////////////////////////////////////////////////
 //declaring variables of clock
 var dateObj = new Date();
 var internalhour = dateObj.getHours();
@@ -109,7 +110,7 @@ else {
   $("#phrase").append(arrayOfCompliments[randomCompliment]);
 }
 }
-
+/////////////////////////////////SETTING MENU ////////////////////////////////////////////////////////////
 //setting Menu slide 
 function settingMenu() {
 
@@ -240,6 +241,31 @@ function clearCheckbox () {
 	
 	$('.settingCheck').prop('checked', true);
 }
+
+//setting buttons
+function saveSettings(){
+	saveName(); 
+	saveCheckbox(); 
+	retName(); 
+	retCheckbox(); 
+	clockFormat();
+	checkboxWeather(); 
+	checkboxToDo();
+	$("#menu").hide();
+	$("#grayBackground").hide();
+} 
+
+
+function clearSettings () {
+	clearName();
+	clearCheckbox();
+	clockFormat();
+	checkboxWeather(); 
+	checkboxToDo();
+	$("#menu").hide();
+	$("#grayBackground").hide();
+}
+
 //toDoMenu
 function toDoMenu() {
 
@@ -370,23 +396,6 @@ function weatherSlider(){
 	}
 }
 
-function saveSettings(){
-	saveName(); 
-	saveCheckbox(); 
-	retName(); 
-	retCheckbox(); 
-	clockFormat();
-	checkboxWeather(); 
-	checkboxToDo();
-	$("#menu").hide();
-	$("#grayBackground").hide();
-} 
 
 
-function clearSettings () {
-	clearName();
-	clearCheckbox();
-}
-
-//fix a checkbox issue. Test everything a lot.
-
+///Test review, it still got some issues with z-index and the hide/show grayBackground. They aren't that bad.
