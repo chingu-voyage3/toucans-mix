@@ -1,15 +1,12 @@
 window.onload = function(){
-  getCheckedOnLoad();
-  startTime();
+  retName();
+  retCheckbox();	
+  clockFormat();
   phrase();
   randomCompliment();
   settingMenu();
   quoteGenerator();
   toDoMenu();
-  checkboxToDo(); //checkboxToDo & checkboxWeather are needed here to make the first click works.
-  checkboxWeather();
-  retName();
-  retCheckbox(); 
 }
 
 function quoteGenerator(){
@@ -36,6 +33,22 @@ function quoteGenerator(){
 var dateObj = new Date();
 var internalhour = dateObj.getHours();
 var person = null;
+var clockChange;
+
+
+function clockFormat () {
+	if ($('#timeCheck').is(':checked'))
+	{
+		clockChange = true;
+		startTime();
+	}
+
+	else 
+	{
+		clockChange = false;
+		startTime();
+	}
+}
 
 //phrase below the time
 function phrase() {
@@ -61,7 +74,8 @@ function checkTime(i) {
 function startTime() {
   var dateObj = new Date();
 
-if ($('#timeCheck').is(':checked') === true)
+
+if ( clockChange === true)
 
 {
   var getHours = dateObj.getHours();
@@ -81,10 +95,11 @@ else  {
 
 }
 
-//Compliments next to phrase
+//Compliments or name next to phrase
 function randomCompliment () {
 
-if (person !== null) {
+if (person !== null) 
+{
   $("#phrase").append(person);
 }
 
@@ -112,48 +127,34 @@ else
 });
 }
 
-
-//Get all checkboxes in Settings checked on Load
-
-function getCheckedOnLoad () {
-	$(':checkbox').each(
-		function() {this.checked = true;});
-}
-
 //Hide and show weather module on click
 function checkboxWeather () {
-$("#weatherCheck").click( function ()
-	{if ( $("#weatherCheck").is(":checked") === true) {
+	if ( $("#weatherCheck").prop("checked") === true) 
+	{
 		$("#current-weather-wrapper").show();
 	}
 
-	else {
+	else if ( $("#weatherCheck").prop("checked") === false) 
+	{
 		$("#current-weather-wrapper").hide();
-	}}
-);}
+	}
+}
 
 //Hide and show ToDo module on click
 function checkboxToDo () {
-	$("#toDoCheck").click( function () {
-		
-		if (this.checked === true)
+
+		if ($("#toDoCheck").prop("checked") === true)
 		{
 				$("#toDo").show();
 		}
 	
-		else {
+		else if ($("#toDoCheck").prop("checked") === false)
+		
+		{
 			$("#toDo").hide();
 		}
-	});
 }
 
-//Function to change name of the greeting phrase
-function nameChange () {
-  $("#phrase").empty();
-	person = document.getElementById("enterName").value;
-  phrase();
-  randomCompliment();
-}
 
 //Function to store setting name data.
 
@@ -167,13 +168,23 @@ function saveName () {
  function retName () {
 	var string = "";
 	var storedName = localStorage.getItem("Name") + string;
-	if ( storedName !== "null") 
-	{document.getElementById("enterName").value = storedName;
+
+		if ( storedName !== "null" && storedName !== "" && storedName !== undefined && storedName.length>0) 
+	{
+	document.getElementById("enterName").value = storedName;
 	person = storedName;
 	$("#phrase").empty();
 	phrase();
-	randomCompliment();}
+	randomCompliment();
 	}
+
+	else if (storedName == null) {
+		$("#phrase").empty();
+		person = null;
+  		phrase();
+  		randomCompliment();
+	}
+}
 
 
 //Functions to clear name data 
@@ -200,14 +211,33 @@ function saveCheckbox () {
 		localStorage.setItem("checkedCheckboxes", JSON.stringify(savedChecks));
 	});
 }
-// Function to retrieve checkboxes data
+// Function to retrieve checkboxes data and check all by default
 
 function retCheckbox () {
 	var checkedCheckboxes = JSON.parse(localStorage.getItem('checkedCheckboxes'));
-
-	for (var i=0; i<checkedCheckboxes.length; i++) {
-		$('#' + checkedCheckboxes[i].id ).prop('checked', checkedCheckboxes[i].value);
+	console.log(checkedCheckboxes); //this code is to check things 
+	if (checkedCheckboxes === null) {
+		$('.settingCheck').each(
+			function() {this.checked = true;});	
+			checkboxWeather(); 
+			checkboxToDo();
 	}
+
+	else {
+			for (var i=0; i<checkedCheckboxes.length; i++) 
+			{$('#' + checkedCheckboxes[i].id ).prop('checked', checkedCheckboxes[i].value);}
+			checkboxWeather(); 
+			checkboxToDo();
+	}
+}
+
+
+// clear checkbox 
+
+function clearCheckbox () {
+	localStorage.removeItem("checkedCheckboxes");
+	
+	$('.settingCheck').prop('checked', true);
 }
 //toDoMenu
 function toDoMenu() {
@@ -338,3 +368,22 @@ function weatherSlider(){
 		flag = 0;
 	}
 }
+
+function saveSettings(){
+	saveName(); 
+	saveCheckbox(); 
+	retName(); 
+	retCheckbox(); 
+	clockFormat();
+	$("#menu").hide();
+	$("#grayBackground").hide();
+} 
+
+
+function clearSettings () {
+	clearName();
+	clearCheckbox();
+}
+
+//fix a checkbox issue. Test everything a lot.
+

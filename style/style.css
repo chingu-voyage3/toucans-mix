@@ -325,7 +325,7 @@ img{
 	
 }
 
-/* To Do element style */
+
 #toDo {
 	position: absolute;
 	bottom:0;
@@ -368,3 +368,10 @@ img{
     opacity: 0.5;
     z-index: 5;
   }
+
+ #enterName {
+	 width: 60%;
+ }
+  input[placeholder] { 
+	  text-overflow: ellipsis; 
+	}
