@@ -19,25 +19,17 @@
 
 <!-- TO DO LIST ELEMENTS --------------------------------------------------->
     <div>
-    <form name="todoList" onsubmit="handlers.addTodo(); return false">
-    <input id="textInput" type="text" placeholder="Add a task"/>
-    <input type="submit" style="display:none"/>
-    </form>
+        <form name="todoList" onsubmit="handlers.addTodo(); return false">
+        <input id="textInput" type="text" placeholder="Add a task"/>
+        <input type="submit" style="display:none"/>
+        </form>
     </div>
 
     <div>
-    <button onclick="handlers.toggleCompleted()">Toggle Completed</button>
-    <input id="toggleCompletedPositionInput" type="number"/>
-    </div>
-
-    <div>
-    <button onclick = "handlers.toggleAll()">Toggle All</button>
-    </div>
-
-    <div id="todoDisplay">
-
+        <button onclick = "handlers.toggleAll()">Toggle All</button>
     </div>
 
     <ul>
     </ul>
+
 </body>

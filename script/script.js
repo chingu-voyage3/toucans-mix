@@ -56,10 +56,13 @@ var handlers = {
     display.displayTodos();
   },
 
-  toggleCompleted: function() {
-    var toggleCompletedPositionInput = document.getElementById('toggleCompletedPositionInput');
-    todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
-    toggleCompletedPositionInput.value = '';
+  completeTodo: function(index) {
+    todoList.completeTodo(index);
+    display.displayTodos();
+  },
+
+  toggleCompleted: function(index) {
+    todoList.toggleCompleted(index);
     display.displayTodos();
   },
 
@@ -77,23 +80,22 @@ var display = {
       var todoLi = document.createElement('li');
       var checkbox = document.createElement('INPUT');
          checkbox.type = "checkbox";
-         checkbox.id = "checkbox";
+         checkbox.className = "checkbox";
       var todoTextWithCompletion = '';
-      // if (checkbox.checked = true) {
-      //   todoTextWithCompletion = "This works!!!";
-      // }
       if (todo.completed === true) {
-        todoTextWithCompletion = '(X)' + todo.todoText;
+        todoLi.className = "complete";
+        checkbox.checked = true;
+        todoTextWithCompletion = todo.todoText;
        }
        else {
-         todoTextWithCompletion = '( )' + todo.todoText;
+         todoLi.classNAme = "incomplete";
+         todoTextWithCompletion = todo.todoText;
        }
        todoLi.id = index;
-       todoLi.appendChild(checkbox);
+       todoLi.append(checkbox);
        var textNode = document.createTextNode(todoTextWithCompletion);
-       todoLi.appendChild(textNode);
-       //todoLi.textContent = todoTextWithCompletion;
-       todoLi.appendChild(this.createDeleteButton());
+       todoLi.append(textNode);
+       todoLi.append(this.createDeleteButton());
        todosUl.appendChild(todoLi);
     }, this)
   },
@@ -111,6 +113,9 @@ var display = {
       var elementClicked = event.target;
       if (elementClicked.className === 'deleteButton') {
         handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
+      }
+      if (elementClicked.className === 'checkbox') {
+        handlers.toggleCompleted(parseInt(elementClicked.parentNode.id));
       }
     })
   }
