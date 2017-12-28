@@ -2,8 +2,8 @@ window.onload = function(){
   retName();
   retCheckbox();	
   clockFormat();
-  phrase();
-  randomCompliment();
+  checkboxWeather(); 
+  checkboxToDo();
   settingMenu();
   quoteGenerator();
   toDoMenu();
@@ -184,6 +184,11 @@ function saveName () {
   		phrase();
   		randomCompliment();
 	}
+
+	else {
+		phrase();
+  		randomCompliment();
+	}
 }
 
 
@@ -219,15 +224,11 @@ function retCheckbox () {
 	if (checkedCheckboxes === null) {
 		$('.settingCheck').each(
 			function() {this.checked = true;});	
-			checkboxWeather(); 
-			checkboxToDo();
 	}
 
 	else {
 			for (var i=0; i<checkedCheckboxes.length; i++) 
 			{$('#' + checkedCheckboxes[i].id ).prop('checked', checkedCheckboxes[i].value);}
-			checkboxWeather(); 
-			checkboxToDo();
 	}
 }
 
@@ -375,6 +376,8 @@ function saveSettings(){
 	retName(); 
 	retCheckbox(); 
 	clockFormat();
+	checkboxWeather(); 
+	checkboxToDo();
 	$("#menu").hide();
 	$("#grayBackground").hide();
 } 
