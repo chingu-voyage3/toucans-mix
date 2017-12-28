@@ -9,7 +9,7 @@ html,body{
 #top-row-container{
 	display:flex;
 	flex-direction: row;
-	justify-content: space-between; ;
+	justify-content: space-between;
 }
 
 #invisible-flex-item{
@@ -310,7 +310,7 @@ img{
   		font-size:12px;
   		font-style:italic;
 	}
-	
+
 }
 
 @media (max-width:450px){
@@ -322,7 +322,7 @@ img{
 		font-size:75%;
 		top: 35%;
 	}
-	
+
 }
 
 
@@ -340,12 +340,12 @@ img{
 	font-size: 150%;
 	z-index:50;
   }
-  
+
   #toDo:hover {
 	border-bottom: 2px solid white;
   }
-  
-  #toDoMenu { 
+
+  #toDoMenu {
 	background-color: rgba(0,0,0,0.9);
 	width:30%;
 	height:80vh;
@@ -357,7 +357,7 @@ img{
 	border-radius: 2%;
 	z-index: 50;
   }
-  
+
   #grayBackground {
 	position: fixed;
     top: 0;
@@ -372,6 +372,6 @@ img{
  #enterName {
 	 width: 60%;
  }
-  input[placeholder] { 
-	  text-overflow: ellipsis; 
+  input[placeholder] {
+	  text-overflow: ellipsis;
 	}

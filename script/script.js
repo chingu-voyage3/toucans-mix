@@ -1,12 +1,13 @@
 window.onload = function(){
   retName();
-  retCheckbox();	
+  retCheckbox();
   clockFormat();
-  checkboxWeather(); 
+  checkboxWeather();
   checkboxToDo();
   settingMenu();
   quoteGenerator();
   toDoMenu();
+  getLocation();
 }
 
 /////////////////////// RANDOM QUOTES MODULE/////////////////////////////////////////////////////////////
@@ -44,7 +45,7 @@ function clockFormat () {
 		startTime();
 	}
 
-	else 
+	else
 	{
 		clockChange = false;
 		startTime();
@@ -99,7 +100,7 @@ else  {
 //Compliments or name next to phrase
 function randomCompliment () {
 
-if (person !== null) 
+if (person !== null)
 {
   $("#phrase").append(person);
 }
@@ -111,7 +112,7 @@ else {
 }
 }
 /////////////////////////////////SETTING MENU ////////////////////////////////////////////////////////////
-//setting Menu slide 
+//setting Menu slide
 function settingMenu() {
 
 $("#menu").hide();
@@ -130,14 +131,18 @@ else
 
 //Hide and show weather module on click
 function checkboxWeather () {
-	if ( $("#weatherCheck").prop("checked") === true) 
+	if ( $("#weatherCheck").prop("checked") === true)
 	{
 		$("#current-weather-wrapper").show();
+    $("#invisible-flex-item").show();
+    $("#top-row-container").css("justify-content","space-between");
 	}
 
-	else if ( $("#weatherCheck").prop("checked") === false) 
+	else if ( $("#weatherCheck").prop("checked") === false)
 	{
 		$("#current-weather-wrapper").hide();
+    $("#invisible-flex-item").hide();
+    $("#top-row-container").css("justify-content","center") ;
 	}
 }
 
@@ -148,9 +153,9 @@ function checkboxToDo () {
 		{
 				$("#toDo").show();
 		}
-	
+
 		else if ($("#toDoCheck").prop("checked") === false)
-		
+
 		{
 			$("#toDo").hide();
 		}
@@ -170,7 +175,7 @@ function saveName () {
 	var string = "";
 	var storedName = localStorage.getItem("Name") + string;
 
-		if ( storedName !== "null" && storedName !== "" && storedName !== undefined && storedName.length>0) 
+		if ( storedName !== "null" && storedName !== "" && storedName !== undefined && storedName.length>0)
 	{
 	document.getElementById("enterName").value = storedName;
 	person = storedName;
@@ -194,7 +199,7 @@ function saveName () {
 }
 
 
-//Functions to clear name data 
+//Functions to clear name data
 
 function clearName () {
 	document.getElementById("enterName").value = "";
@@ -222,46 +227,46 @@ function saveCheckbox () {
 
 function retCheckbox () {
 	var checkedCheckboxes = JSON.parse(localStorage.getItem('checkedCheckboxes'));
-	console.log(checkedCheckboxes); //this code is to check things 
+	console.log(checkedCheckboxes); //this code is to check things
 	if (checkedCheckboxes === null) {
 		$('.settingCheck').each(
-			function() {this.checked = true;});	
+			function() {this.checked = true;});
 	}
 
 	else {
-			for (var i=0; i<checkedCheckboxes.length; i++) 
+			for (var i=0; i<checkedCheckboxes.length; i++)
 			{$('#' + checkedCheckboxes[i].id ).prop('checked', checkedCheckboxes[i].value);}
 	}
 }
 
 
-// clear checkbox 
+// clear checkbox
 
 function clearCheckbox () {
 	localStorage.removeItem("checkedCheckboxes");
-	
+
 	$('.settingCheck').prop('checked', true);
 }
 
 //setting buttons
 function saveSettings(){
-	saveName(); 
-	saveCheckbox(); 
-	retName(); 
-	retCheckbox(); 
+	saveName();
+	saveCheckbox();
+	retName();
+	retCheckbox();
 	clockFormat();
-	checkboxWeather(); 
+	checkboxWeather();
 	checkboxToDo();
 	$("#menu").hide();
 	$("#grayBackground").hide();
-} 
+}
 
 
 function clearSettings () {
 	clearName();
 	clearCheckbox();
 	clockFormat();
-	checkboxWeather(); 
+	checkboxWeather();
 	checkboxToDo();
 	$("#menu").hide();
 	$("#grayBackground").hide();
@@ -334,7 +339,7 @@ function assignWeatherData(data){
 	let tempC = data.current.temp_c;
 	let fcData=[];
 	//Forecast data
-	
+
 	for(let i=0;i<7;i++){
 		fcData.push({
 			fcIcon:data.forecast.forecastday[i].day.condition.icon,
@@ -355,7 +360,7 @@ function assignWeatherData(data){
 
 function toHtml(locationOutput,tempC,icon){
 	let imgPre = '<img src = "https:';
-	$("#wm-icon").html(imgPre+icon+'">')		
+	$("#wm-icon").html(imgPre+icon+'">')
 	$("#wm-temp").html(tempC+"&#176;");
 	$("#wm-location").html(locationOutput);
 }
@@ -377,12 +382,12 @@ function toForecast(fcWeatherDesc,fcTempC,fcIcon,fcData){
 		$("#day"+(i+1)).html(result);
 		$("#wm-fcTemp"+i).html(fcData[i-1].fcTempC+"&#176;");
 		$("#wm-fcDesc"+i).html(fcData[i-1].fcWeatherDesc);
-		$("#wm-fcIcon"+i).html(imgPre+fcData[i-1].fcIcon+'">')	
+		$("#wm-fcIcon"+i).html(imgPre+fcData[i-1].fcIcon+'">')
 	}
 }
 
 function weatherSlider(){
-	
+
 
 	if(flag == 0){
 		$("#forecast-wrapper").addClass("weather-slide-in");
