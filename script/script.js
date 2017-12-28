@@ -1,9 +1,28 @@
 //MAIN INPUT//////////////////////////////////////////////////////////////////////////////////////
 
-function getMainFocus() {
-    var mainFocus = document.getElementById('mainFocusQuestion').value;
-    document.getElementById('mainFocusParagraph').innerHTML = mainFocus
+function displayMainFocus() {
+  var mainFocusUl = document.getElementById('mainFocusUl');
+  var mainFocusLi = document.createElement('li');
+  var output = document.createTextNode(document.getElementById('mainFocusQuestion').value);
+  mainFocusLi.append(createCheckbox());
+  mainFocusLi.append(output);
+  mainFocusLi.append(createDeleteButton());
+  mainFocusUl.append(mainFocusLi);
 }
+
+function createCheckbox() {
+  var checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.className = 'checkbox';
+  return checkbox;
+}
+
+function createDeleteButton() {
+    var deleteButton = document.createElement('button');
+    deleteButton.textContent = 'X';
+    deleteButton.className = 'deleteButton';
+    return deleteButton;
+  }
 
 //TO DO LIST//////////////////////////////////////////////////////////////////////////////////////
 var todoList = {
