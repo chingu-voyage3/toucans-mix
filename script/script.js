@@ -1,13 +1,23 @@
 //MAIN INPUT//////////////////////////////////////////////////////////////////////////////////////
 
-function displayMainFocus() {
+function displayMainFocus(completed) {
+  var checkbox = createCheckbox();
   var mainFocusUl = document.getElementById('mainFocusUl');
+  mainFocusUl.innerHTML = '';
   var mainFocusLi = document.createElement('li');
   var output = document.createTextNode(document.getElementById('mainFocusQuestion').value);
-  mainFocusLi.append(createCheckbox());
+  mainFocusLi.append(checkbox);
   mainFocusLi.append(output);
-  mainFocusLi.append(createDeleteButton());
-  mainFocusUl.append(mainFocusLi);
+  if (completed === true) {
+     mainFocusUl.className = 'complete';
+     checkbox.checked = true;
+     mainFocusLi.append(createAddButton());
+   }
+   else {
+     mainFocusLi.append(createDeleteButton());
+     mainFocusUl.className = '';
+   }
+  mainFocusUl.appendChild(mainFocusLi);
 }
 
 function createCheckbox() {
@@ -23,6 +33,34 @@ function createDeleteButton() {
     deleteButton.className = 'deleteButton';
     return deleteButton;
   }
+
+function createAddButton() {
+  var addButton = document.createElement('button');
+  addButton.textContent = '+';
+  addButton.className = 'addButton';
+  return addButton;
+}
+
+function setEventListeners() {
+    var mainFocusUl = document.getElementById('mainFocusUl');
+    mainFocusUl.addEventListener('click', function() {
+      var elementClicked = event.target;
+      if (elementClicked.className === 'deleteButton') {
+        document.getElementById('mainFocusUl').innerHTML = '';
+      }
+      if (elementClicked.className === 'checkbox') {
+        var checkbox = elementClicked;
+        if (elementClicked.checked) {
+          displayMainFocus(true);
+        }
+        else {
+          displayMainFocus(false);
+        }
+      }
+    })
+  }
+
+setEventListeners();
 
 //TO DO LIST//////////////////////////////////////////////////////////////////////////////////////
 var todoList = {
