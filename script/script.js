@@ -130,14 +130,18 @@ else
 
 //Hide and show weather module on click
 function checkboxWeather () {
-	if ( $("#weatherCheck").prop("checked") === true) 
+	if ( $("#weatherCheck").prop("checked") === true)
 	{
 		$("#current-weather-wrapper").show();
+    $("#invisible-flex-item").show();
+    $("#top-row-container").css("justify-content","space-between");
 	}
 
-	else if ( $("#weatherCheck").prop("checked") === false) 
+	else if ( $("#weatherCheck").prop("checked") === false)
 	{
 		$("#current-weather-wrapper").hide();
+    $("#invisible-flex-item").hide();
+    $("#top-row-container").css("justify-content","center") ;
 	}
 }
 
