@@ -1,13 +1,16 @@
 window.onload = function(){
-  getCheckedOnLoad();
-  startTime();
-  phrase();
-  randomCompliment();
+  retName();
+  retCheckbox();
+  clockFormat();
+  checkboxWeather();
+  checkboxToDo();
   settingMenu();
   quoteGenerator();
   toDoMenu();
+  getLocation();
 }
 
+/////////////////////// RANDOM QUOTES MODULE/////////////////////////////////////////////////////////////
 function quoteGenerator(){
   $.get('https://quotes.rest/qod.json', function(responseText) {
       formatter(responseText);
@@ -27,11 +30,27 @@ function quoteGenerator(){
   }
 }
 
-
+///////////////////////////////////// CLOCK ELEMENT /////////////////////////////////////////////////////////
 //declaring variables of clock
 var dateObj = new Date();
 var internalhour = dateObj.getHours();
 var person = null;
+var clockChange;
+
+
+function clockFormat () {
+	if ($('#timeCheck').is(':checked'))
+	{
+		clockChange = true;
+		startTime();
+	}
+
+	else
+	{
+		clockChange = false;
+		startTime();
+	}
+}
 
 //phrase below the time
 function phrase() {
@@ -57,7 +76,8 @@ function checkTime(i) {
 function startTime() {
   var dateObj = new Date();
 
-if ($('#timeCheck').is(':checked') === true)
+
+if ( clockChange === true)
 
 {
   var getHours = dateObj.getHours();
@@ -77,10 +97,11 @@ else  {
 
 }
 
-//Compliments next to phrase
+//Compliments or name next to phrase
 function randomCompliment () {
 
-if (person !== null) {
+if (person !== null)
+{
   $("#phrase").append(person);
 }
 
@@ -90,34 +111,165 @@ else {
   $("#phrase").append(arrayOfCompliments[randomCompliment]);
 }
 }
-
-//setting Menu slide 
+/////////////////////////////////SETTING MENU ////////////////////////////////////////////////////////////
+//setting Menu slide
 function settingMenu() {
 
 $("#menu").hide();
 $( "#setting" ).click(function() {
-$( "#menu" ).toggle("slide");});
-}
 
+	$( "#menu" ).toggle("slide");
 
-//Get all checkboxes in Settings checked on Load
+if ($("#grayBackground").length)
+{$("#grayBackground").remove();}
 
-function getCheckedOnLoad () {
-	$(':checkbox').each(
-		function() {this.checked = true;});
+else
+{$("body").append("<div id='grayBackground'> </div>");}
+
+});
 }
 
 //Hide and show weather module on click
 function checkboxWeather () {
+	if ( $("#weatherCheck").prop("checked") === true)
+	{
+		$("#current-weather-wrapper").show();
+    $("#invisible-flex-item").show();
+    $("#top-row-container").css("justify-content","space-between");
+	}
 
+	else if ( $("#weatherCheck").prop("checked") === false)
+	{
+		$("#current-weather-wrapper").hide();
+    $("#invisible-flex-item").hide();
+    $("#top-row-container").css("justify-content","center") ;
+	}
 }
 
-//Function to change name of the greeting phrase
-function nameChange () {
-  $("#phrase").empty();
-  person = document.getElementById("enterName").value;
-  phrase();
-  randomCompliment();
+//Hide and show ToDo module on click
+function checkboxToDo () {
+
+		if ($("#toDoCheck").prop("checked") === true)
+		{
+				$("#toDo").show();
+		}
+
+		else if ($("#toDoCheck").prop("checked") === false)
+
+		{
+			$("#toDo").hide();
+		}
+}
+
+
+//Function to store setting name data.
+
+function saveName () {
+	 var textNameInput = document.getElementById("enterName").value;
+	localStorage.setItem("Name", textNameInput);
+}
+
+//Function to retrieve name data and set var person on load // Note: When you concatenate undefined with a string it becomes a string
+
+ function retName () {
+	var string = "";
+	var storedName = localStorage.getItem("Name") + string;
+
+		if ( storedName !== "null" && storedName !== "" && storedName !== undefined && storedName.length>0)
+	{
+	document.getElementById("enterName").value = storedName;
+	person = storedName;
+	$("#phrase").empty();
+	phrase();
+	randomCompliment();
+	}
+
+	else if (storedName == null) {
+		$("#phrase").empty();
+		person = null;
+  		phrase();
+  		randomCompliment();
+	}
+
+	else {
+		$("#phrase").empty();
+		phrase();
+  		randomCompliment();
+	}
+}
+
+
+//Functions to clear name data
+
+function clearName () {
+	document.getElementById("enterName").value = "";
+	localStorage.removeItem("Name");
+	person=null;
+	$("#phrase").empty();
+	phrase();
+	randomCompliment();
+}
+
+//Function to store setting checkboxes data
+
+function saveCheckbox () {
+   var savCheck;
+   var savedChecks = [];
+
+   $('.settingCheck').each (
+	   function () {
+		savCheck = {id: $(this).attr('id'), value: $(this).prop('checked')};
+		savedChecks.push(savCheck);
+		localStorage.setItem("checkedCheckboxes", JSON.stringify(savedChecks));
+	});
+}
+// Function to retrieve checkboxes data and check all by default
+
+function retCheckbox () {
+	var checkedCheckboxes = JSON.parse(localStorage.getItem('checkedCheckboxes'));
+	console.log(checkedCheckboxes); //this code is to check things
+	if (checkedCheckboxes === null) {
+		$('.settingCheck').each(
+			function() {this.checked = true;});
+	}
+
+	else {
+			for (var i=0; i<checkedCheckboxes.length; i++)
+			{$('#' + checkedCheckboxes[i].id ).prop('checked', checkedCheckboxes[i].value);}
+	}
+}
+
+
+// clear checkbox
+
+function clearCheckbox () {
+	localStorage.removeItem("checkedCheckboxes");
+
+	$('.settingCheck').prop('checked', true);
+}
+
+//setting buttons
+function saveSettings(){
+	saveName();
+	saveCheckbox();
+	retName();
+	retCheckbox();
+	clockFormat();
+	checkboxWeather();
+	checkboxToDo();
+	$("#menu").hide();
+	$("#grayBackground").hide();
+}
+
+
+function clearSettings () {
+	clearName();
+	clearCheckbox();
+	clockFormat();
+	checkboxWeather();
+	checkboxToDo();
+	$("#menu").hide();
+	$("#grayBackground").hide();
 }
 
 //toDoMenu
@@ -125,8 +277,15 @@ function toDoMenu() {
 
 	$("#toDoMenu").hide();
 	$( "#toDo" ).click(function() {
-	$( "#toDoMenu" ).toggle("slide", {direction: "right"});});
-	}
+	$( "#toDoMenu" ).toggle("slide", {direction: "right"});
+
+	if ($("#grayBackground").length)
+		{$("#grayBackground").remove();}
+
+	else
+		{$("body").append("<div id='grayBackground'> </div>");}
+	});
+}
 
 //WEATHER MODULE FUNCTIONS////////////////////////////////////////////////////////////////////////////
 let flag = 0;
@@ -180,7 +339,7 @@ function assignWeatherData(data){
 	let tempC = data.current.temp_c;
 	let fcData=[];
 	//Forecast data
-	
+
 	for(let i=0;i<7;i++){
 		fcData.push({
 			fcIcon:data.forecast.forecastday[i].day.condition.icon,
@@ -201,7 +360,7 @@ function assignWeatherData(data){
 
 function toHtml(locationOutput,tempC,icon){
 	let imgPre = '<img src = "https:';
-	$("#wm-icon").html(imgPre+icon+'">')		
+	$("#wm-icon").html(imgPre+icon+'">')
 	$("#wm-temp").html(tempC+"&#176;");
 	$("#wm-location").html(locationOutput);
 }
@@ -223,12 +382,12 @@ function toForecast(fcWeatherDesc,fcTempC,fcIcon,fcData){
 		$("#day"+(i+1)).html(result);
 		$("#wm-fcTemp"+i).html(fcData[i-1].fcTempC+"&#176;");
 		$("#wm-fcDesc"+i).html(fcData[i-1].fcWeatherDesc);
-		$("#wm-fcIcon"+i).html(imgPre+fcData[i-1].fcIcon+'">')	
+		$("#wm-fcIcon"+i).html(imgPre+fcData[i-1].fcIcon+'">')
 	}
 }
 
 function weatherSlider(){
-	
+
 
 	if(flag == 0){
 		$("#forecast-wrapper").addClass("weather-slide-in");
@@ -242,3 +401,7 @@ function weatherSlider(){
 		flag = 0;
 	}
 }
+
+
+
+///Test review, it still got some issues with z-index and the hide/show grayBackground. They aren't that bad.

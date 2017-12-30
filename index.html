@@ -15,12 +15,12 @@
 </head>
 
 <body>
-	<div id="top-row-container">
-		<div id="invisible-flex-item"></div>
-		<div class="quote-container">
-	  		<div class="quote quote-style"></div>
-	  		<div class="author quote-style"></div>
-		</div>
+  <div id="top-row-container">
+      <div id="invisible-flex-item"></div>
+        <div class="quote-container">
+           <div class="quote quote-style"></div>
+           <div class="author quote-style"></div>
+        </div>
 		<div id="current-weather-wrapper" onclick="weatherSlider()">
 			<div id="wm-top-row">
 				<div id ="wm-icon">
@@ -33,7 +33,7 @@
 		</div>
 	</div>
 	<div class="weather-module">
-		
+
 		<div id="forecast-wrapper">
 			<div id="wm-forecast-title">
 				7 Day Forecast
@@ -112,11 +112,6 @@
 			</div>
 		</div>
 	</div>
-
-	<script>
-		getLocation();
-	</script>
-
 <!-- clock element -->
   <p id="clock"></p>
   <p id="phrase"> </p>
@@ -126,12 +121,12 @@
 
   <div id="menu"> <div id="menutitle"> <p> Settings </p></div>
     <ul>
-      <li> <input type="text" name="enterName" id="enterName" placeholder="Enter name ... " onchange="nameChange()"> </input></li>
-      <li> <p> 24-Hour clock </p> <input type="checkbox" name="Setting" id="timeCheck" > </input> </li>
-      <li> <p> Show Weather </p> <input type="checkbox" name="Setting" id="weatherCheck"> </input></li>
-      <li> <p> Show To-dos </p> <input type="checkbox" name="Setting" id="toDoCheck"> </input></li>
-	  <button id="saveSettings" class="buttonSettings"> Save Settings </button>
-      <button id="clearSettings" class="buttonSettings"> Clear Settings </button>
+      <li> <input type="text" name="enterName" id="enterName"  placeholder="Write your name and Press Enter" > </input></li>
+      <li> <p> 24-Hour clock </p> <input type="checkbox" name="Setting" id="timeCheck" class="settingCheck"> </input> </li>
+      <li> <p> Show Weather </p> <input type="checkbox" name="Setting" id="weatherCheck"class="settingCheck"> </input></li>
+      <li> <p> Show To-dos </p> <input type="checkbox" name="Setting" id="toDoCheck" class="settingCheck"> </input></li>
+	  <button id="saveSettings" class="buttonSettings" onclick="saveSettings()"> Save Settings </button>
+      <button id="clearSettings" class="buttonSettings" onclick="clearSettings()"> Clear Settings </button>
     </ul>
   </div>
 
@@ -139,7 +134,6 @@
 <button id="toDo"> To Do </button>
 <div id="toDoMenu">
 <input type="text" name=addTask id="enterTask" placeholder="Enter task"> </input>
-
 </div>
 
 </body>
