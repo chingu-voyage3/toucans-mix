@@ -179,15 +179,10 @@ function saveName () {
 	randomCompliment();
 	}
 
-	else if (storedName == null) {
-		$("#phrase").empty();
-		person = null;
-  		phrase();
-  		randomCompliment();
-	}
 
 	else {
 		$("#phrase").empty();
+		person = null;
 		phrase();
   		randomCompliment();
 	}
