@@ -10,14 +10,17 @@
 
 <body>
 <!-- MAIN INPUT FORM ------------------------------------------------------->
-    <form onsubmit="javascript:displayMainFocus(false); return false">
-      What is your main focus today? <br />
-      <input id="mainFocusQuestion" type="text" placeholder=" "/>
-      <input type="submit" style="display:none" />
-    </form>
+    <div class="mainFocusContainer">
+        <form onsubmit="javascript:getUserInput(); return false">
+        What is your main focus today? <br />
+        <input id="mainFocusQuestion" type="text" placeholder=""/>
+        <input type="submit" style="display:none" />
+        </form>
 
-    <ul id = "mainFocusUl">
-    </ul>
+        <ul id = "mainFocusUl">
+        </ul>
+
+    </div>
 
 <!-- TO DO LIST ELEMENTS --------------------------------------------------->
     <div>

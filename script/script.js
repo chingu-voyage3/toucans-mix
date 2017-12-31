@@ -1,16 +1,22 @@
 //MAIN INPUT//////////////////////////////////////////////////////////////////////////////////////
+window.onload = checkForStorage();
 
-function displayMainFocus(completed) {
-  var userInput = document.getElementById('mainFocusQuestion')
-  userInput.style.display = 'none';
+function checkForStorage() {
+  if (localStorage.getItem('output') !== null) {
+    clearInput();
+    displayMainFocus();
+  }
+}
+
+function displayMainFocus() {
   var checkbox = createCheckbox();
   var mainFocusUl = document.getElementById('mainFocusUl');
   mainFocusUl.innerHTML = '';
   var mainFocusLi = document.createElement('li');
-  var output = document.createTextNode(userInput.value);
+  var output = localStorage.getItem('output');
   mainFocusLi.append(checkbox);
   mainFocusLi.append(output);
-  if (completed === true) {
+  if (checkbox.checked) {
      mainFocusUl.className = 'complete';
      checkbox.checked = true;
      mainFocusLi.append(createAddButton());
@@ -22,7 +28,21 @@ function displayMainFocus(completed) {
   mainFocusUl.appendChild(mainFocusLi);
 }
 
+function getUserInput() {
+  var userInput = document.getElementById('mainFocusQuestion')
+  localStorage.setItem('output', userInput.value);
+  clearInput();
+  displayMainFocus();
+}
+
+function clearInput() {
+  var userInput = document.getElementById('mainFocusQuestion')
+  userInput.style.display = 'none';
+}
+
 function resetDisplay() {
+  localStorage.removeItem('output');
+  localStorage.removeItem('checkbox');
   document.getElementById('mainFocusUl').innerHTML = '';
   document.getElementById('mainFocusQuestion').style.display = 'inline';
   document.getElementById('mainFocusQuestion').value = '';
@@ -32,6 +52,9 @@ function createCheckbox() {
   var checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.className = 'checkbox';
+  if (JSON.parse(localStorage.getItem('checkbox')) === true) {
+    checkbox.checked = true;
+  }
   return checkbox;
 }
 
@@ -58,11 +81,13 @@ function setEventListeners() {
       }
       if (elementClicked.className === 'checkbox') {
         var checkbox = elementClicked;
-        if (elementClicked.checked) {
-          displayMainFocus(true);
+        if (checkbox.checked) {
+          localStorage.setItem('checkbox', true);
+          displayMainFocus();
         }
         else {
-          displayMainFocus(false);
+          localStorage.setItem('checkbox', false);
+          displayMainFocus();
         }
       }
       if (elementClicked.className === 'addButton') {
