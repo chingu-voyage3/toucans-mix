@@ -15,6 +15,35 @@
 </head>
 
 <body>
+  
+<!-- MAIN INPUT FORM ------------------------------------------------------->
+    <div class="mainFocusContainer">
+        <form onsubmit="javascript:getUserInput(); return false">
+        What is your main focus today? <br />
+        <input id="mainFocusQuestion" type="text" placeholder=""/>
+        <input type="submit" style="display:none" />
+        </form>
+
+        <ul id = "mainFocusUl">
+        </ul>
+
+    </div>
+
+<!-- TO DO LIST ELEMENTS --------------------------------------------------->
+    <div>
+        <form name="todoList" onsubmit="handlers.addTodo(); return false">
+        <input id="textInput" type="text" placeholder="Add a task"/>
+        <input type="submit" style="display:none"/>
+        </form>
+    </div>
+
+    <div>
+        <button onclick = "handlers.toggleAll()">Toggle All</button>
+    </div>
+
+    <ul>
+    </ul>
+
   <div id="top-row-container">
       <div id="invisible-flex-item"></div>
         <div class="quote-container">
