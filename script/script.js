@@ -13,7 +13,7 @@ window.onload = function(){
 }
 
 
-/////////////////////////// MAIN FOCUS ////////////////////////////////////////
+//MAIN FOCUS//////////////////////////////////////////////////////////////////////////////////////
 
 function checkForMainFocus() {
   if (localStorage.getItem('output') !== null) {
@@ -115,7 +115,7 @@ function setEventListeners() {
 setEventListeners();
 
 
-///////////////////////////////TO DO LIST///////////////////////////////////////
+//TO DO LIST//////////////////////////////////////////////////////////////////////////////////////
 
 function checkForTodos() {
   if (localStorage.getItem('todos')) {
@@ -227,7 +227,7 @@ var display = {
   },
 
   setEventListeners: function() {
-    var todosUl = document.querySelector('ul');
+    var todosUl = document.getElementById('todosUl');
     todosUl.addEventListener('click', function() {
       var elementClicked = event.target;
       if (elementClicked.className === 'deleteButton') {
@@ -241,7 +241,6 @@ var display = {
 };
 
 display.setEventListeners();
-
 
 ////////////////////// RANDOM QUOTES MODULE ////////////////////////////////////
 function quoteGenerator(){
