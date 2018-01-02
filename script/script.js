@@ -1,7 +1,21 @@
-//MAIN INPUT//////////////////////////////////////////////////////////////////////////////////////
-window.onload = checkForStorage();
+window.onload = function(){
+  retName();
+  retCheckbox();
+  clockFormat();
+  checkboxWeather();
+  checkboxToDo();
+  settingMenu();
+  quoteGenerator();
+  toDoMenu();
+  getLocation();
+  checkForMainFocus();
+  checkForTodos();
+}
 
-function checkForStorage() {
+
+/////////////////////////// MAIN FOCUS ////////////////////////////////////////
+
+function checkForMainFocus() {
   if (localStorage.getItem('output') !== null) {
     clearInput();
     displayMainFocus();
@@ -29,23 +43,25 @@ function displayMainFocus() {
 }
 
 function getUserInput() {
-  var userInput = document.getElementById('mainFocusQuestion')
+  var userInput = document.getElementById('main-focus-input')
   localStorage.setItem('output', userInput.value);
   clearInput();
   displayMainFocus();
 }
 
 function clearInput() {
-  var userInput = document.getElementById('mainFocusQuestion')
+  var userInput = document.getElementById('main-focus-input')
   userInput.style.display = 'none';
+  // document.getElementById('main-focus-question').style.display = 'none';
 }
 
 function resetDisplay() {
   localStorage.removeItem('output');
   localStorage.removeItem('checkbox');
   document.getElementById('mainFocusUl').innerHTML = '';
-  document.getElementById('mainFocusQuestion').style.display = 'inline';
-  document.getElementById('mainFocusQuestion').value = '';
+  document.getElementById('main-focus-question').style.display = 'inline';
+  document.getElementById('main-focus-input').style.display = 'inline';
+  document.getElementById('main-focus-input').value = '';
 }
 
 function createCheckbox() {
@@ -98,7 +114,16 @@ function setEventListeners() {
 
 setEventListeners();
 
-//TO DO LIST//////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////TO DO LIST///////////////////////////////////////
+
+function checkForTodos() {
+  if (localStorage.getItem('todos')) {
+    todoList.todos = JSON.parse(localStorage.getItem('todos'));
+    display.displayTodos();
+  }
+}
+
 var todoList = {
     todos: [],
     addTodo: function(todoText) {
@@ -167,11 +192,12 @@ var handlers = {
 
 var display = {
   displayTodos: function() {
-    var todosUl = document.querySelector('ul');
+    localStorage.setItem('todos', JSON.stringify(todoList.todos));
+    var todosUl = document.getElementById('todosUl');
     todosUl.innerHTML = '';
     todoList.todos.forEach(function(todo, index) {
       var todoLi = document.createElement('li');
-      var checkbox = document.createElement('INPUT');
+      var checkbox = document.createElement('input');
          checkbox.type = "checkbox";
          checkbox.className = "checkbox";
       var todoTextWithCompletion = '';
@@ -181,7 +207,7 @@ var display = {
         todoTextWithCompletion = todo.todoText;
        }
        else {
-         todoLi.classNAme = "incomplete";
+         todoLi.className = "incomplete";
          todoTextWithCompletion = todo.todoText;
        }
        todoLi.id = index;
@@ -215,20 +241,9 @@ var display = {
 };
 
 display.setEventListeners();
-=======
-window.onload = function(){
-  retName();
-  retCheckbox();
-  clockFormat();
-  checkboxWeather();
-  checkboxToDo();
-  settingMenu();
-  quoteGenerator();
-  toDoMenu();
-  getLocation();
-}
 
-/////////////////////// RANDOM QUOTES MODULE/////////////////////////////////////////////////////////////
+
+////////////////////// RANDOM QUOTES MODULE ////////////////////////////////////
 function quoteGenerator(){
   $.get('https://quotes.rest/qod.json', function(responseText) {
       formatter(responseText);
@@ -248,7 +263,7 @@ function quoteGenerator(){
   }
 }
 
-///////////////////////////////////// CLOCK ELEMENT /////////////////////////////////////////////////////////
+///////////////////////////// CLOCK ELEMENT ////////////////////////////////////
 //declaring variables of clock
 var dateObj = new Date();
 var internalhour = dateObj.getHours();
@@ -270,7 +285,8 @@ function clockFormat () {
 	}
 }
 
-//phrase below the time
+
+//////////////////////// WELCOME MESSAGE (PHRASE) //////////////////////////////
 function phrase() {
   if (internalhour>=0 && internalhour<12) {
       $("#phrase").append("Good Morning, ");
@@ -286,17 +302,32 @@ else {
 }
 
 
+/////////////// COMPLIMENT OR NAME AFTER PHRASE ////////////////////////////////
+function randomCompliment () {
+
+if (person !== null)
+{
+  $("#phrase").append(person);
+}
+
+else {
+  var arrayOfCompliments = ["handsome.", "cutie.", "human.", "pal.", "smart.", "sexy.","classy."];
+  var randomCompliment = Math.floor(Math.random()*arrayOfCompliments.length);
+  $("#phrase").append(arrayOfCompliments[randomCompliment]);
+}
+}
+
+
+////////////////////////////// CLOCK ///////////////////////////////////////////
+
 function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
     return i;}
 
-// the clock function
 function startTime() {
   var dateObj = new Date();
 
-
 if ( clockChange === true)
-
 {
   var getHours = dateObj.getHours();
   var getMinutes = dateObj.getMinutes();
@@ -315,21 +346,8 @@ else  {
 
 }
 
-//Compliments or name next to phrase
-function randomCompliment () {
 
-if (person !== null)
-{
-  $("#phrase").append(person);
-}
-
-else {
-  var arrayOfCompliments = ["handsome.", "cutie.", "human.", "pal.", "smart.", "sexy.","classy."];
-  var randomCompliment = Math.floor(Math.random()*arrayOfCompliments.length);
-  $("#phrase").append(arrayOfCompliments[randomCompliment]);
-}
-}
-/////////////////////////////////SETTING MENU ////////////////////////////////////////////////////////////
+/////////////////////////////// SETTING MENU ///////////////////////////////////
 //setting Menu slide
 function settingMenu() {
 
@@ -346,6 +364,7 @@ else
 
 });
 }
+
 
 //Hide and show weather module on click
 function checkboxWeather () {
@@ -505,7 +524,8 @@ function toDoMenu() {
 	});
 }
 
-//WEATHER MODULE FUNCTIONS////////////////////////////////////////////////////////////////////////////
+////////////////////////// WEATHER MODULE FUNCTIONS ////////////////////////////
+
 let flag = 0;
 function getLocation() {
   if (navigator.geolocation) {
