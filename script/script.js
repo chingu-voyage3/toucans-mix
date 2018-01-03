@@ -7,7 +7,41 @@ window.onload = function(){
   quoteGenerator();
   toDoMenu();
 }
+////////////////////////////SHOWOFF MODULE////////////////////////
+let showOffFlag = true;
 
+function openToucanMenu(){
+  if(showOffFlag===true){
+    $("#toucan-logo").addClass("spin-icon");
+    $("#toucan-logo").css("opacity","1");
+    $("#showoff-container").addClass("open-container");
+    $("#showoff-container").removeClass("close-container");
+    setTimeout(function(){
+      $("#showoff-text").css("display","grid");
+    },300);
+    setTimeout(function(){
+      $("#toucan-logo").removeClass("spin-icon");
+      $("#showoff-text").css("display","grid");
+      showOffFlag = false;
+    },1000);
+  }
+  else{
+        $("#showoff-container").removeClass("open-container");
+        $("#showoff-container").addClass("close-container");
+        $("#toucan-logo").addClass("spin-icon-reverse");
+        setTimeout(function(){
+          $("#showoff-text").css("display","none");
+        },150);
+        setTimeout(function(){
+          $("#toucan-logo").removeClass("spin-icon-reverse");
+          $("#showoff-text").css("display","none");
+          $("#toucan-logo").css("opacity","0.6");
+          showOffFlag = true;
+        },800);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
 function quoteGenerator(){
   $.get('https://quotes.rest/qod.json', function(responseText) {
       formatter(responseText);
@@ -91,7 +125,7 @@ else {
 }
 }
 
-//setting Menu slide 
+//setting Menu slide
 function settingMenu() {
 
 $("#menu").hide();
@@ -138,7 +172,7 @@ function getLocation() {
       userInputLocation();
   }
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 function usePosition(position){
 	let lon = position.coords.latitude;
 	let lat = position.coords.longitude;
@@ -180,7 +214,7 @@ function assignWeatherData(data){
 	let tempC = data.current.temp_c;
 	let fcData=[];
 	//Forecast data
-	
+
 	for(let i=0;i<7;i++){
 		fcData.push({
 			fcIcon:data.forecast.forecastday[i].day.condition.icon,
@@ -201,7 +235,7 @@ function assignWeatherData(data){
 
 function toHtml(locationOutput,tempC,icon){
 	let imgPre = '<img src = "https:';
-	$("#wm-icon").html(imgPre+icon+'">')		
+	$("#wm-icon").html(imgPre+icon+'">')
 	$("#wm-temp").html(tempC+"&#176;");
 	$("#wm-location").html(locationOutput);
 }
@@ -223,12 +257,11 @@ function toForecast(fcWeatherDesc,fcTempC,fcIcon,fcData){
 		$("#day"+(i+1)).html(result);
 		$("#wm-fcTemp"+i).html(fcData[i-1].fcTempC+"&#176;");
 		$("#wm-fcDesc"+i).html(fcData[i-1].fcWeatherDesc);
-		$("#wm-fcIcon"+i).html(imgPre+fcData[i-1].fcIcon+'">')	
+		$("#wm-fcIcon"+i).html(imgPre+fcData[i-1].fcIcon+'">')
 	}
 }
 
 function weatherSlider(){
-	
 
 	if(flag == 0){
 		$("#forecast-wrapper").addClass("weather-slide-in");

@@ -2,9 +2,111 @@ html,body{
 	height:100%;
 	margin:0;
 	padding:0;
-	background-color: gray;
 	font-family: Comfortaa;
+	z-index: -10;
+	background-image: url(background-toucan.jpg);
+	background-size: cover;
 }
+
+.showoff-module{
+	position: fixed;
+	top:12px;
+	left:12px;
+}
+
+#toucan-logo{
+	z-index: 2;
+	height:65px;
+	width:65px;
+	border-radius: 20px;
+	opacity:0.6;
+}
+
+#toucan-logo:hover{
+	opacity:1;
+	cursor:pointer;
+}
+#showoff-container{
+	font-size: 20px;
+	z-index:-1;
+	position:absolute;
+	top:5px;
+	left:35px;
+	height:56px;
+	width:0px;
+	background-color: black;
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 25px;
+	opacity:0.8;
+	color:white;
+}
+
+#showoff-text{
+	margin-left: 35px;
+	font-family: consolas;
+	display: none;
+	grid-gap: 5px;
+	grid-template-columns:2fr 1fr 0.5fr 1fr 0.5fr 1fr 0.5fr;
+	grid-template-rows:60px;
+}
+
+#showoff-text-header{
+	justify-self:center;
+	align-self: center;
+	grid-column-start:1;
+	grid-column-end:2;
+}
+
+#team-font{
+	font-family: Lato;
+}
+
+.grid-item-style{
+	justify-self:center;
+	align-self: center;
+	font-size: 18px;
+}
+
+.spin-icon{
+	animation: spin-icon 0.8s;
+}
+
+.open-container{
+	animation: open-container 0.8s;
+	animation-fill-mode: both;
+}
+
+.spin-icon-reverse{
+	animation: spin-icon-reverse 0.8s;
+}
+
+.close-container{
+	animation: close-container 0.7s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes spin-icon {
+0%   {transform: rotate(0deg);}
+100% {transform: rotate(360deg)}
+}
+
+@keyframes open-container {
+0%   {width: 0px;}
+100% {width: 800px;}
+}
+
+@keyframes spin-icon-reverse {
+0%   {transform: rotate(360deg);}
+100% {transform: rotate(deg)}
+}
+
+@keyframes close-container {
+0%   {width: 800px;}
+100% {width: 0px;}
+}
+
+
+
 
 #top-row-container{
 	display:flex;
@@ -308,7 +410,7 @@ img{
   		font-size:12px;
   		font-style:italic;
 	}
-	
+
 }
 
 @media (max-width:450px){
@@ -320,7 +422,7 @@ img{
 		font-size:75%;
 		top: 35%;
 	}
-	
+
 }
 
 
@@ -337,12 +439,12 @@ img{
 	font-weight:bold;
 	font-size: 150%;
   }
-  
+
   #toDo:hover {
 	border-bottom: 2px solid white;
   }
-  
-  #toDoMenu { 
+
+  #toDoMenu {
 	background-color: rgba(0,0,0,0.9);
 	width:30%;
 	height:80vh;
@@ -353,4 +455,3 @@ img{
 	-moz-border-radius: 2%;
 	border-radius: 2%;
   }
-  
