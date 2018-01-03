@@ -24,14 +24,13 @@
 <!-- MAIN FOCUS ELEMENT ------------------------------------------------------>
     <div id="main-focus">
         <form onsubmit="javascript:getUserInput(); return false">
-            <div id="main-focus-question">
-                What is your main focus today?
+            <div id="main-focus-display">
+                <div id="main-focus-question"></div>
+                <input id="main-focus-input" type="text" placeholder=""/>
+                <ul id="mainFocusUl"></ul>
             </div>
-            <input id="main-focus-input" type="text" placeholder=""/>
             <input type="submit" style="display:none" />
         </form>
-        <ul id = "mainFocusUl">
-        </ul>
     </div>
 
 <!-- WEATHER ELEMENT --------------------------------------------------------->

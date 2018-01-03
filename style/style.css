@@ -48,18 +48,24 @@ html,body{
 
 #main-focus-input {
     width: 350px;
-    height: 20px;
+    height: 40px;
+    padding: 0;
+    margin: 20px;
     box-sizing: border-box;
     border: none;
     border-bottom: 10px;
 }
 
-/* * * * * * * * * * * * * * TO DO LIST * * * * * * * * * * * * * */
-.deleteButton {
+.addButton {
     float: right;
 }
 
-.addButton {
+/* #main-focus-question {
+    padding-bottom: 5%;
+} */
+
+/* * * * * * * * * * * * * * MAIN FOCUS & TO DO * * * * * * * * * * * * * */
+.deleteButton {
     float: right;
 }
 
@@ -68,8 +74,12 @@ html,body{
 }
 
 ul {
-  list-style-type: none
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
+
+/* * * * * * * * * * * * * * *  TO DO LIST * * * * * * * * * * * * * * * */
 
 #toDo {
 	position: absolute;

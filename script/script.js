@@ -10,6 +10,7 @@ window.onload = function(){
   getLocation();
   checkForMainFocus();
   checkForTodos();
+  displayTodayOrQuestion();
 }
 
 
@@ -27,6 +28,7 @@ function displayMainFocus() {
   var mainFocusUl = document.getElementById('mainFocusUl');
   mainFocusUl.innerHTML = '';
   var mainFocusLi = document.createElement('li');
+  mainFocusLi.setAttribute('id', 'main-focus-li');
   var output = localStorage.getItem('output');
   mainFocusLi.append(checkbox);
   mainFocusLi.append(output);
@@ -52,16 +54,29 @@ function getUserInput() {
 function clearInput() {
   var userInput = document.getElementById('main-focus-input')
   userInput.style.display = 'none';
-  // document.getElementById('main-focus-question').style.display = 'none';
+  displayTodayOrQuestion();
+}
+
+function displayTodayOrQuestion() {
+  var display = document.getElementById('main-focus-question');
+  var question = "What is your main focus today?";
+  var today = "TODAY";
+  if (display.innerHTML === question) {
+    display.innerHTML = today;
+    display.setAttribute('id', 'main-focus-question');
+  }
+  else {
+    display.innerHTML = question;
+  }
 }
 
 function resetDisplay() {
   localStorage.removeItem('output');
   localStorage.removeItem('checkbox');
   document.getElementById('mainFocusUl').innerHTML = '';
-  document.getElementById('main-focus-question').style.display = 'inline';
   document.getElementById('main-focus-input').style.display = 'inline';
   document.getElementById('main-focus-input').value = '';
+  displayTodayOrQuestion();
 }
 
 function createCheckbox() {
@@ -109,10 +124,11 @@ function setEventListeners() {
       if (elementClicked.className === 'addButton') {
         resetDisplay();
       }
-    })
+  });
   }
 
 setEventListeners();
+
 
 
 //TO DO LIST//////////////////////////////////////////////////////////////////////////////////////
@@ -156,8 +172,8 @@ var todoList = {
           if (all === true) {
              this.todos.forEach(function(todo) {
                todo.completed = false;
-             })
-         };
+           });
+         }
     }
 };
 
@@ -188,7 +204,7 @@ var handlers = {
     todoList.toggleAll();
     display.displayTodos();
   }
-}
+};
 
 var display = {
   displayTodos: function() {
@@ -216,7 +232,7 @@ var display = {
        todoLi.append(textNode);
        todoLi.append(this.createDeleteButton());
        todosUl.appendChild(todoLi);
-    }, this)
+   }, this);
   },
 
   createDeleteButton: function(){
@@ -226,18 +242,18 @@ var display = {
     return deleteButton;
   },
 
-  setEventListeners: function() {
-    var todosUl = document.getElementById('todosUl');
-    todosUl.addEventListener('click', function() {
-      var elementClicked = event.target;
-      if (elementClicked.className === 'deleteButton') {
-        handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
-      }
-      if (elementClicked.className === 'checkbox') {
-        handlers.toggleCompleted(parseInt(elementClicked.parentNode.id));
-      }
-    })
-  }
+    setEventListeners: function() {
+        var todosUl = document.getElementById('todosUl');
+        todosUl.addEventListener('click', function() {
+            var elementClicked = event.target;
+            if (elementClicked.className === 'deleteButton') {
+                handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
+            }
+            if (elementClicked.className === 'checkbox') {
+                handlers.toggleCompleted(parseInt(elementClicked.parentNode.id));
+            }
+        });
+    }
 };
 
 display.setEventListeners();
@@ -320,7 +336,7 @@ else {
 ////////////////////////////// CLOCK ///////////////////////////////////////////
 
 function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    if (i < 10) {i = "0" + i;}  // add zero in front of numbers < 10
     return i;}
 
 function startTime() {
@@ -330,8 +346,8 @@ if ( clockChange === true)
 {
   var getHours = dateObj.getHours();
   var getMinutes = dateObj.getMinutes();
-  h= checkTime(getHours);
-  m = checkTime(getMinutes);
+  var h= checkTime(getHours);
+  var m = checkTime(getMinutes);
   document.getElementById("clock").innerHTML= h + ":" + m;
   var t = setTimeout(startTime, 1000); //this calls the fuction after every second
 }
