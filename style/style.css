@@ -37,7 +37,6 @@ html,body{
 	background-color: black;
 	border-top-right-radius: 25px;
 	border-bottom-right-radius: 25px;
-	opacity:0.8;
 	color:white;
 }
 
@@ -59,6 +58,14 @@ html,body{
 
 #team-font{
 	font-family: Lato;
+}
+
+.fa-github{
+	color:white;
+}
+
+.fa-github:hover{
+	color:orange;
 }
 
 .grid-item-style{
@@ -92,7 +99,7 @@ html,body{
 
 @keyframes open-container {
 0%   {width: 0px;}
-100% {width: 800px;}
+100% {width: 1200px;}
 }
 
 @keyframes spin-icon-reverse {
@@ -101,7 +108,7 @@ html,body{
 }
 
 @keyframes close-container {
-0%   {width: 800px;}
+0%   {width: 1200px;}
 100% {width: 0px;}
 }
 
