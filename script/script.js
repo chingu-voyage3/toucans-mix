@@ -24,35 +24,38 @@ function checkForMainFocus() {
 }
 
 function displayMainFocus() {
-  var checkbox = createCheckbox();
-  var mainFocusUl = document.getElementById('mainFocusUl');
-  mainFocusUl.innerHTML = '';
-  var mainFocusLi = document.createElement('li');
-  mainFocusLi.setAttribute('id', 'main-focus-li');
-  var output = localStorage.getItem('output');
-  mainFocusLi.append(checkbox);
-  mainFocusLi.append(output);
-  if (checkbox.checked) {
-     mainFocusUl.className = 'complete';
-     checkbox.checked = true;
-     mainFocusLi.append(createAddButton());
-   }
-   else {
-     mainFocusLi.append(createDeleteButton());
-     mainFocusUl.className = '';
-   }
-  mainFocusUl.appendChild(mainFocusLi);
+    var checkbox = createCheckbox();
+    var mainFocusUl = document.getElementById('mainFocusUl');
+    mainFocusUl.innerHTML = '';
+    var mainFocusLi = document.createElement('li');
+        mainFocusLi.setAttribute('id', 'main-focus-li');
+    var output = localStorage.getItem('output');
+    var checkboxContainer = document.createElement('span');
+        checkboxContainer.className = "checkboxContainer";
+        checkboxContainer.appendChild(checkbox);
+    mainFocusLi.appendChild(checkboxContainer);
+    mainFocusLi.append(output);
+    if (checkbox.checked) {
+        mainFocusUl.className = 'complete';
+        checkbox.checked = true;
+        mainFocusLi.append(createAddButton());
+    }
+    else {
+        mainFocusLi.append(createDeleteButton());
+        mainFocusUl.className = '';
+    }
+    mainFocusUl.appendChild(mainFocusLi);
 }
 
 function getUserInput() {
-  var userInput = document.getElementById('main-focus-input')
+  var userInput = document.getElementById('main-focus-input');
   localStorage.setItem('output', userInput.value);
   clearInput();
   displayMainFocus();
 }
 
 function clearInput() {
-  var userInput = document.getElementById('main-focus-input')
+  var userInput = document.getElementById('main-focus-input');
   userInput.style.display = 'none';
   displayTodayOrQuestion();
 }
@@ -80,18 +83,18 @@ function resetDisplay() {
 }
 
 function createCheckbox() {
-  var checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.className = 'checkbox';
-  if (JSON.parse(localStorage.getItem('checkbox')) === true) {
-    checkbox.checked = true;
+    var checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.className = 'checkbox';
+    if (JSON.parse(localStorage.getItem('checkbox')) === true) {
+        checkbox.checked = true;
   }
-  return checkbox;
+    return checkbox;
 }
 
 function createDeleteButton() {
     var deleteButton = document.createElement('button');
-    deleteButton.textContent = 'X';
+    deleteButton.textContent = 'x';
     deleteButton.className = 'deleteButton';
     return deleteButton;
   }
