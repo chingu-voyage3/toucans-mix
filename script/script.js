@@ -25,26 +25,26 @@ function checkForMainFocus() {
 
 function displayMainFocus() {
     var checkbox = createCheckbox();
-    var mainFocusUl = document.getElementById('mainFocusUl');
-    mainFocusUl.innerHTML = '';
-    var mainFocusLi = document.createElement('li');
-        mainFocusLi.setAttribute('id', 'main-focus-li');
+    var label = document.createElement('label');
+        label.setAttribute('for', 'checkbox');
+    var mainFocusContainer = document.getElementById('mainFocusContainer');
+    mainFocusContainer.innerHTML = '';
     var output = localStorage.getItem('output');
-    var checkboxContainer = document.createElement('span');
+    var checkboxContainer = document.createElement('div');
         checkboxContainer.className = "checkboxContainer";
         checkboxContainer.appendChild(checkbox);
-    mainFocusLi.appendChild(checkboxContainer);
-    mainFocusLi.append(output);
+        checkboxContainer.appendChild(label);
+    mainFocusContainer.appendChild(checkboxContainer);
+    mainFocusContainer.append(output);
     if (checkbox.checked) {
-        mainFocusUl.className = 'complete';
+        mainFocusContainer.className = 'complete';
         checkbox.checked = true;
-        mainFocusLi.append(createAddButton());
+        mainFocusContainer.append(createAddButton());
     }
     else {
-        mainFocusLi.append(createDeleteButton());
-        mainFocusUl.className = '';
+        mainFocusContainer.append(createDeleteButton());
+        mainFocusContainer.className = '';
     }
-    mainFocusUl.appendChild(mainFocusLi);
 }
 
 function getUserInput() {
@@ -76,7 +76,7 @@ function displayTodayOrQuestion() {
 function resetDisplay() {
   localStorage.removeItem('output');
   localStorage.removeItem('checkbox');
-  document.getElementById('mainFocusUl').innerHTML = '';
+  document.getElementById('mainFocusContainer').innerHTML = '';
   document.getElementById('main-focus-input').style.display = 'inline';
   document.getElementById('main-focus-input').value = '';
   displayTodayOrQuestion();
@@ -86,6 +86,8 @@ function createCheckbox() {
     var checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.className = 'checkbox';
+    var checkboxLabel = document.createElement('label');
+        checkboxLabel.setAttribute('for', 'checkbox');
     if (JSON.parse(localStorage.getItem('checkbox')) === true) {
         checkbox.checked = true;
   }
@@ -107,8 +109,8 @@ function createAddButton() {
 }
 
 function setEventListeners() {
-    var mainFocusUl = document.getElementById('mainFocusUl');
-    mainFocusUl.addEventListener('click', function() {
+    var mainFocusContainer = document.getElementById('mainFocusContainer');
+    mainFocusContainer.addEventListener('click', function() {
       var elementClicked = event.target;
       if (elementClicked.className === 'deleteButton') {
         resetDisplay();
