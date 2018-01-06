@@ -247,9 +247,9 @@ var display = {
 
   createDeleteButton: function(){
     var deleteButton = document.createElement('button');
-    deleteButton.textContent = 'X';
-    deleteButton.className = 'deleteButton';
-    deleteButton.id = 'deleteTodo';
+        deleteButton.textContent = 'x';
+        deleteButton.className = 'deleteButton';
+        deleteButton.id = 'deleteTodo';
     return deleteButton;
   },
 

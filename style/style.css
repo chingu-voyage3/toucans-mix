@@ -63,12 +63,13 @@ html,body{
 
 #mainFocusContainer {
     margin: 30px;
+    height: 60px;
 }
 
 /* * * * * * * * * * * * * * MAIN FOCUS & TO DO * * * * * * * * * * * * * */
 .checkboxContainer {
     display: inline-block;
-    margin-right: 1%;
+    margin-right: 1.5%;
     position: relative;
 }
 
@@ -81,25 +82,30 @@ html,body{
 }
 
 .checkboxContainer label {
-    height: 20px;
-    width: 20px;
+    height: 22px;
+    width: 22px;
     border: 2px solid white;
     border-radius: 5px;
     display: block;
+    text-align: center;
 }
 
 .checkboxContainer input[type=checkbox]:checked + label:after {
     content: '\2713';
     vertical-align: top;
+    font-size: 90%;
+    height: 100%;
 }
 
 .deleteButton, .addButton {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    font-size: 24px;
+    font-weight: 100;
     color: white;
-    margin-left: 1%;
+    margin-left: 2%;
+    padding: 0;
+    font-size: 60%;
 }
 
 .complete {
@@ -115,14 +121,22 @@ ul {
 	font-size: 24px;
 }
 
+ul .checkboxContainer label {
+    height: 12px;
+    width: 12px;
+}
+
+#todosUl li {
+    margin-top: 2%;
+    font-size: 70%;
+}
+
 #todoCheckboxContainer {
 	margin: 0 3% 0 5%;
 }
 
 #deleteTodo {
 	float: right;
-	font-size: 16px;
-	margin-right: 3%;
 	padding: 0;
 	vertical-align: bottom;
 }
@@ -131,7 +145,7 @@ ul {
 	width: 80%;
     height: 80%;
     padding: 2%;
-    font-size: 24px;
+    font-size: 16px;
     color: white;
     box-sizing: border-box;
     border: 0;
@@ -148,10 +162,6 @@ ul {
 	text-align: center;
 }
 
-#todosUl li {
-	margin-top: 5%;
-}
-
 #toDo {
 	position: absolute;
 	bottom:0;
@@ -163,8 +173,9 @@ ul {
 	color: white;
 	font-family: "Roboto", arial;
 	font-weight:bold;
-	font-size: 150%;
+	font-size: 125%;
 	z-index:50;
+    padding: 1%;
   }
 
   #toDo:hover {
@@ -173,8 +184,8 @@ ul {
 
   #toDoMenu {
 	background-color: rgba(0,0,0,0.9);
-	width:30%;
-	height:80vh;
+	width:20%;
+	/* height:80vh; */
 	position:absolute;
 	bottom:10vh;
 	color:white;
@@ -182,6 +193,7 @@ ul {
 	-moz-border-radius: 2%;
 	border-radius: 2%;
 	z-index: 50;
+    padding: 1%;
   }
 
 /* * * * * * * * * * * * * QUOTE AND WEATHER * * * * * * * * * * * * */
