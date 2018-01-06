@@ -103,7 +103,7 @@ html,body{
 }
 
 .complete {
-    text-decoration: line-through;
+	text-decoration: line-through;
 }
 
 /* * * * * * * * * * * * * * *  TO DO LIST * * * * * * * * * * * * * * * */
@@ -112,6 +112,44 @@ ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+	font-size: 24px;
+}
+
+#todoCheckboxContainer {
+	margin: 0 3% 0 5%;
+}
+
+#deleteTodo {
+	float: right;
+	font-size: 16px;
+	margin-right: 3%;
+	padding: 0;
+	vertical-align: bottom;
+}
+
+#textInput {
+	width: 80%;
+    height: 80%;
+    padding: 2%;
+    font-size: 24px;
+    color: white;
+    box-sizing: border-box;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    border-bottom: 1px solid white;
+    text-align: center;
+	display: block;
+	margin: 5% auto 10% auto;
+}
+
+.todo-form {
+	position: relative;
+	text-align: center;
+}
+
+#todosUl li {
+	margin-top: 5%;
 }
 
 #toDo {

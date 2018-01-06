@@ -86,8 +86,6 @@ function createCheckbox() {
     var checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.className = 'checkbox';
-    var checkboxLabel = document.createElement('label');
-        checkboxLabel.setAttribute('for', 'checkbox');
     if (JSON.parse(localStorage.getItem('checkbox')) === true) {
         checkbox.checked = true;
   }
@@ -219,8 +217,15 @@ var display = {
     todoList.todos.forEach(function(todo, index) {
       var todoLi = document.createElement('li');
       var checkbox = document.createElement('input');
-         checkbox.type = "checkbox";
-         checkbox.className = "checkbox";
+        checkbox.type = "checkbox";
+        checkbox.className = "checkbox";
+      var label = document.createElement('label');
+        label.setAttribute('for', 'checkbox');
+      var checkboxContainer = document.createElement('div');
+        checkboxContainer.className = 'checkboxContainer';
+        checkboxContainer.id = 'todoCheckboxContainer';
+      checkboxContainer.appendChild(checkbox);
+      checkboxContainer.appendChild(label);
       var todoTextWithCompletion = '';
       if (todo.completed === true) {
         todoLi.className = "complete";
@@ -232,7 +237,7 @@ var display = {
          todoTextWithCompletion = todo.todoText;
        }
        todoLi.id = index;
-       todoLi.append(checkbox);
+       todoLi.append(checkboxContainer);
        var textNode = document.createTextNode(todoTextWithCompletion);
        todoLi.append(textNode);
        todoLi.append(this.createDeleteButton());
@@ -244,6 +249,7 @@ var display = {
     var deleteButton = document.createElement('button');
     deleteButton.textContent = 'X';
     deleteButton.className = 'deleteButton';
+    deleteButton.id = 'deleteTodo';
     return deleteButton;
   },
 
@@ -255,7 +261,7 @@ var display = {
                 handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
             }
             if (elementClicked.className === 'checkbox') {
-                handlers.toggleCompleted(parseInt(elementClicked.parentNode.id));
+                handlers.toggleCompleted(parseInt(elementClicked.parentNode.parentNode.id));
             }
         });
     }

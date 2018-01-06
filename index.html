@@ -133,15 +133,15 @@
 <!-- TO DO LIST ELEMENT *** Not yet functioning *** --------------------------------------------------->
     <button id="toDo"> To Do </button>
     <div id="toDoMenu">
-        <div>
+        <div className="todo-form">
             <form name="todoList" onsubmit="handlers.addTodo(); return false">
                 <input id="textInput" type="text" placeholder="Add a task"/>
                 <input type="submit" style="display:none"/>
             </form>
         </div>
-        <div>
-            <button onclick = "handlers.toggleAll()">Toggle All</button>
-        </div>
+        <!-- <div>
+            <button onclick = "handlers.toggleAll()"></button>
+        </div> -->
         <ul id="todosUl"></ul>
     </div>
 
