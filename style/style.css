@@ -103,12 +103,13 @@ width:75px;
 }
 
 #menu ul p {
-    display:inline;
+	display:inline-block;
+	width:50%;
 }
 
 #menutitle {
   display: block;
-  text-align: center;
+  text-align:left;
   font-family: "Josefin Sans", "arial";
   font-weight: bold;
   font-size: 180%;
@@ -122,8 +123,10 @@ input[placeholder] {
 
 #wrapperTitles {
 width: 30%;
+height:45vh;
 display: inline-block;
-margin-top: 20%;
+margin-top: 10%;
+margin-left:5%;
 border-right: 1px solid rgba(255, 255, 255, .5);
 }
 
@@ -150,6 +153,7 @@ float: right;
 	display: block;
 	border-radius: 100px;
 	position: relative;
+	display:inline-block;
 }
 
 #menu label:after {
@@ -181,6 +185,21 @@ float: right;
 	width: 50%;
 }
 
+
+#clearSettings {
+	padding:5px 15px; background:rgb(255, 255, 255); border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+	border-radius: 5px; 
+	margin-top:2vh;
+}
+
+#menu input[type=text] {
+	padding:5px; border:2px solid rgb(255, 255, 255); 
+		-webkit-border-radius: 5px;
+			border-radius: 5px;
+	margin-bottom: 2vh;
+}
 
 #current-weather-wrapper{
 	color:white;
@@ -435,6 +454,6 @@ img{
   }
 
  #enterName {
-	 width: 60%;
+	 width: 70%;
  }
   
