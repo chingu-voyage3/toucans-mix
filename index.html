@@ -134,14 +134,12 @@
 	
 	<div id="menutitle"> <p> General </p></div>
     <ul>
-      <li> <label> <input type="text" name="enterName" id="enterName"  placeholder="Write your name and Press Enter" onchange="saveName(); retName();" > </input></label></li>
+      <li> <input type="text" name="enterName" id="enterName"  placeholder="Write your name and Press Enter" onchange="saveName(); retName();" > </input></li>
 	  
-	  <label>
-	  <li> <p> 24-Hour clock </p> <input type="checkbox" name="Setting" id="timeCheck" class="settingCheck" onclick="saveCheckbox(); retCheckbox(); clockFormat();"> </input> </li>
-      <li> <p> Show Weather </p> <input type="checkbox" name="Setting" id="weatherCheck"class="settingCheck" onclick="saveCheckbox(); retCheckbox(); checkboxWeather();"> </input></li>
-	  <li> <p> Show To-dos </p> <input type="checkbox" name="Setting" id="toDoCheck" class="settingCheck" onclick="saveCheckbox(); retCheckbox(); checkboxToDo();"> </input></li>
-	  <li> <p> Show Links </p> <input type="checkbox" name="Setting" id="linkCheck" class="settingCheck" onclick="saveCheckbox(); retCheckbox();"> </input></li>
-	  </label>
+	  <li> <p> 24-Hour clock </p> <input type="checkbox" name="Setting" id="timeCheck" class="settingCheck" onclick="saveCheckbox(); retCheckbox(); clockFormat();"> <label for="timeCheck"></label></input> </li>
+      <li> <p> Show Weather </p> <input type="checkbox" name="Setting" id="weatherCheck"class="settingCheck" onclick="saveCheckbox(); retCheckbox(); checkboxWeather();"> <label for="weatherCheck"></label></input></li>
+	  <li> <p> Show To-dos </p> <input type="checkbox" name="Setting" id="toDoCheck" class="settingCheck" onclick="saveCheckbox(); retCheckbox(); checkboxToDo();"> <label for="toDoCheck"></label> </input></li>
+	  <li> <p> Show Links </p> <input type="checkbox" name="Setting" id="linkCheck" class="settingCheck" onclick="saveCheckbox(); retCheckbox();"> <label for="linkCheck"></label> </input></li>
 	 
 	  <button id="clearSettings" class="buttonSettings" onclick="clearSettings()"> Clear Settings </button>
     </ul>
