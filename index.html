@@ -123,15 +123,16 @@
 	  
 		<div id="wrapperTitles">
 				<ul>
-					<li> General </li>
+					<li onclick="generalSettings()"> General </li>
 					<!--<li> Photos</li>
 					<li> Quotes </li> -->
-					<li> Balance</li>
+					<li onclick="balanceSettings()"> Balance</li>
 				</ul>
 		</div>
 
 	<div id="wrapperSettingsContent">
 	
+	<div id="generalMenu">
 	<div id="menutitle"> <p> General </p></div>
     <ul>
       <li> <input type="text" name="enterName" id="enterName"  placeholder="Enter your name ..." onchange="saveName(); retName();" > </input></li>
@@ -142,7 +143,12 @@
 	  <li> <p> Show Links </p> <input type="checkbox" name="Setting" id="linkCheck" class="settingCheck" onclick="saveCheckbox(); retCheckbox();"> <label for="linkCheck"></label> </input></li>
 	 
 	  <button id="clearSettings" class="buttonSettings" onclick="clearSettings()"> Clear Settings </button>
-    </ul>
+	</ul>
+	</div>
+
+	<div id="balanceMenu">
+		<p>Testing this</p>
+	</div>
   
 	</div>
 </div>

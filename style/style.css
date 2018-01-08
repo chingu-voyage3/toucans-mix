@@ -132,7 +132,14 @@ border-right: 1px solid rgba(255, 255, 255, .5);
 
 #wrapperTitles ul li {
 	margin-top:10%;
+	color:rgb(207, 205, 205);
 }
+
+#wrapperTitles ul li:hover {
+	color:white;
+	cursor:pointer;
+}
+
 #wrapperSettingsContent {
 width: 60%;
 float: right;
@@ -169,7 +176,7 @@ float: right;
 }
 
 #menu input:checked + label {
-	background: #d1d1d1;
+	background: #d4d3d3;
 }
 
 #menu input:checked + label:after {

@@ -8,6 +8,7 @@ window.onload = function(){
   quoteGenerator();
   toDoMenu();
   getLocation();
+  hideOnLoad();
 }
 
 /////////////////////// RANDOM QUOTES MODULE/////////////////////////////////////////////////////////////
@@ -248,9 +249,7 @@ function clearCheckbox () {
 	$('.settingCheck').prop('checked', true);
 }
 
-function savRetSettings() {
-
-}
+//button clearSettings
 
 function clearSettings () {
 	clearName();
@@ -262,6 +261,23 @@ function clearSettings () {
 	$("#grayBackground").hide();
 }
 
+
+//functions to hide and show sub-menus
+
+function generalSettings () {
+	$("#balanceMenu").hide();
+	$("#generalMenu").show();
+}
+
+function balanceSettings () {
+	$("#generalMenu").hide();
+	$("#balanceMenu").show();	
+}
+
+//functions to hide sub-menus on load
+function hideOnLoad () {
+	$("#balanceMenu").hide();
+}
 //toDoMenu
 function toDoMenu() {
 
