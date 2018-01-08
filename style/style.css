@@ -84,7 +84,7 @@ width:75px;
 #menu {
   background-color: rgba(0,0,0,0.9);
   width:30%;
-  height:50vh;
+  height:60vh;
   position:absolute;
   bottom:10vh;
   color:white;
@@ -110,12 +110,30 @@ width:75px;
   font-family: "Josefin Sans", "arial";
   font-weight: bold;
   font-size: 180%;
-  border-bottom: 1px solid rgba(255, 255, 255, .5);
-    -webkit-background-clip: padding-box; /* for Safari */
-    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
   padding:0px;
   margin-bottom: 0;
 }
+
+input[placeholder] {
+	text-overflow: ellipsis;
+  }
+
+#wrapperTitles {
+width: 30%;
+display: inline-block;
+margin-top: 20%;
+border-right: 1px solid rgba(255, 255, 255, .5);
+}
+
+#wrapperTitles ul li {
+	margin-top:10%;
+}
+#wrapperSettingsContent {
+width: 60%;
+float: right;
+
+}
+
 
 #current-weather-wrapper{
 	color:white;
@@ -372,6 +390,4 @@ img{
  #enterName {
 	 width: 60%;
  }
-  input[placeholder] {
-	  text-overflow: ellipsis;
-	}
+  

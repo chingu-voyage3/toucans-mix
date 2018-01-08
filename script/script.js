@@ -80,19 +80,19 @@ function startTime() {
 if ( clockChange === true)
 
 {
-  var getHours = dateObj.getHours();
-  var getMinutes = dateObj.getMinutes();
-  h= checkTime(getHours);
-  m = checkTime(getMinutes);
+  let getHours = dateObj.getHours();
+  let getMinutes = dateObj.getMinutes();
+  let h= checkTime(getHours);
+  let m = checkTime(getMinutes);
   document.getElementById("clock").innerHTML= h + ":" + m;
-  var t = setTimeout(startTime, 1000); //this calls the fuction after every second
+  let t = setTimeout(startTime, 1000); //this calls the fuction after every second
 }
 
 else  {
 
-  var h = dateObj.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
+  let h = dateObj.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
   document.getElementById("clock").innerHTML= h;
-  var t = setTimeout(startTime, 1000); //this calls the fuction after every second
+  let t = setTimeout(startTime, 1000); //this calls the fuction after every second
 }
 
 }
@@ -184,10 +184,15 @@ function saveName () {
 	randomCompliment();
 	}
 
+	else if (storedName == null) {
+		$("#phrase").empty();
+		person = null;
+  		phrase();
+  		randomCompliment();
+	}
 
 	else {
 		$("#phrase").empty();
-		person = null;
 		phrase();
   		randomCompliment();
 	}
@@ -243,19 +248,9 @@ function clearCheckbox () {
 	$('.settingCheck').prop('checked', true);
 }
 
-//setting buttons
-function saveSettings(){
-	saveName();
-	saveCheckbox();
-	retName();
-	retCheckbox();
-	clockFormat();
-	checkboxWeather();
-	checkboxToDo();
-	$("#menu").hide();
-	$("#grayBackground").hide();
-}
+function savRetSettings() {
 
+}
 
 function clearSettings () {
 	clearName();
