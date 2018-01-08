@@ -10,16 +10,34 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js" type="text/javascript"></script>
-  <script src="script/script.js" type="text/javascript"></script>
   <title> Momentum Project </title>
 </head>
 
 <body>
-  <div id="top-row-container">
-      <div id="invisible-flex-item"></div>
+
+<!-- CLOCK/WELCOME MESSAGE --------------------------------------------------->
+    <div id="center-elements-container">
+        <p id="clock"></p>
+        <p id="phrase"> </p>
+    </div>
+
+<!-- MAIN FOCUS ELEMENT ------------------------------------------------------>
+    <form onsubmit="javascript:getUserInput(); return false">
+        <div id="main-focus-display">
+            <div id="main-focus-question"></div>
+            <input id="main-focus-input" type="text" placeholder=""/>
+            <div id="mainFocusContainer"></div>
+        </div>
+        <input type="submit" style="display:none" />
+    </form>
+
+
+<!-- WEATHER ELEMENT --------------------------------------------------------->
+    <div id="top-row-container">
+        <div id="invisible-flex-item"></div>
         <div class="quote-container">
-           <div class="quote quote-style"></div>
-           <div class="author quote-style"></div>
+            <div class="quote quote-style"></div>
+            <div class="author quote-style"></div>
         </div>
 		<div id="current-weather-wrapper" onclick="weatherSlider()">
 			<div id="wm-top-row">
@@ -33,7 +51,6 @@
 		</div>
 	</div>
 	<div class="weather-module">
-
 		<div id="forecast-wrapper">
 			<div id="wm-forecast-title">
 				7 Day Forecast
@@ -112,29 +129,37 @@
 			</div>
 		</div>
 	</div>
-<!-- clock element -->
-  <p id="clock"></p>
-  <p id="phrase"> </p>
 
-<!-- settings element -->
-  <button id="setting"><i class="fa fa-3x fa-cog" aria-hidden="true"></i></button>
+<!-- TO DO LIST ELEMENT *** Not yet functioning *** --------------------------------------------------->
+    <button id="toDo"> To Do </button>
+    <div id="toDoMenu">
+        <div className="todo-form">
+            <form name="todoList" onsubmit="handlers.addTodo(); return false">
+                <input id="textInput" type="text" placeholder="Add a task"/>
+                <input type="submit" style="display:none"/>
+            </form>
+        </div>
+        <!-- <div>
+            <button onclick = "handlers.toggleAll()"></button>
+        </div> -->
+        <ul id="todosUl"></ul>
+    </div>
 
-  <div id="menu"> <div id="menutitle"> <p> Settings </p></div>
-    <ul>
-      <li> <input type="text" name="enterName" id="enterName"  placeholder="Write your name and Press Enter" > </input></li>
-      <li> <p> 24-Hour clock </p> <input type="checkbox" name="Setting" id="timeCheck" class="settingCheck"> </input> </li>
-      <li> <p> Show Weather </p> <input type="checkbox" name="Setting" id="weatherCheck"class="settingCheck"> </input></li>
-      <li> <p> Show To-dos </p> <input type="checkbox" name="Setting" id="toDoCheck" class="settingCheck"> </input></li>
-	  <button id="saveSettings" class="buttonSettings" onclick="saveSettings()"> Save Settings </button>
-      <button id="clearSettings" class="buttonSettings" onclick="clearSettings()"> Clear Settings </button>
-    </ul>
-  </div>
+<!-- SETTINGS ELEMENT -------------------------------------------------------->
+    <button id="setting"><i class="fa fa-3x fa-cog" aria-hidden="true"></i></button>
 
-<!-- Todo element -->
-<button id="toDo"> To Do </button>
-<div id="toDoMenu">
-<input type="text" name=addTask id="enterTask" placeholder="Enter task"> </input>
-</div>
+    <div id="menu"> <div id="menutitle"> <p> Settings </p></div>
+        <ul>
+            <li> <input type="text" name="enterName" id="enterName"  placeholder="Write your name and Press Enter" > </input></li>
+            <li> <p> 24-Hour clock </p> <input type="checkbox" name="Setting" id="timeCheck" class="settingCheck"> </input> </li>
+            <li> <p> Show Weather </p> <input type="checkbox" name="Setting" id="weatherCheck"class="settingCheck"> </input></li>
+            <li> <p> Show To-dos </p> <input type="checkbox" name="Setting" id="toDoCheck" class="settingCheck"> </input></li>
+            <button id="saveSettings" class="buttonSettings" onclick="saveSettings()"> Save Settings </button>
+            <button id="clearSettings" class="buttonSettings" onclick="clearSettings()"> Clear Settings </button>
+        </ul>
+    </div>
+
+    <script src="script/script.js" type="text/javascript"></script>
 
 </body>
 </html>

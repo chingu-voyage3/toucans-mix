@@ -8,9 +8,268 @@ window.onload = function(){
   quoteGenerator();
   toDoMenu();
   getLocation();
+  checkForMainFocus();
+  checkForTodos();
+  displayTodayOrQuestion();
 }
 
-/////////////////////// RANDOM QUOTES MODULE/////////////////////////////////////////////////////////////
+
+//MAIN FOCUS//////////////////////////////////////////////////////////////////////////////////////
+
+function checkForMainFocus() {
+  if (localStorage.getItem('output') !== null) {
+    clearInput();
+    displayMainFocus();
+  }
+}
+
+function displayMainFocus() {
+    var checkbox = createCheckbox();
+    var label = document.createElement('label');
+        label.setAttribute('for', 'checkbox');
+    var mainFocusContainer = document.getElementById('mainFocusContainer');
+    mainFocusContainer.innerHTML = '';
+    var output = localStorage.getItem('output');
+    var checkboxContainer = document.createElement('div');
+        checkboxContainer.className = "checkboxContainer";
+        checkboxContainer.appendChild(checkbox);
+        checkboxContainer.appendChild(label);
+    mainFocusContainer.appendChild(checkboxContainer);
+    mainFocusContainer.append(output);
+    if (checkbox.checked) {
+        mainFocusContainer.className = 'complete';
+        checkbox.checked = true;
+        mainFocusContainer.append(createAddButton());
+    }
+    else {
+        mainFocusContainer.append(createDeleteButton());
+        mainFocusContainer.className = '';
+    }
+}
+
+function getUserInput() {
+  var userInput = document.getElementById('main-focus-input');
+  localStorage.setItem('output', userInput.value);
+  clearInput();
+  displayMainFocus();
+}
+
+function clearInput() {
+  var userInput = document.getElementById('main-focus-input');
+  userInput.style.display = 'none';
+  displayTodayOrQuestion();
+}
+
+function displayTodayOrQuestion() {
+  var display = document.getElementById('main-focus-question');
+  var question = "What is your main focus today?";
+  var today = "TODAY";
+  if (display.innerHTML === question) {
+    display.innerHTML = today;
+    display.setAttribute('id', 'main-focus-question');
+  }
+  else {
+    display.innerHTML = question;
+  }
+}
+
+function resetDisplay() {
+  localStorage.removeItem('output');
+  localStorage.removeItem('checkbox');
+  document.getElementById('mainFocusContainer').innerHTML = '';
+  document.getElementById('main-focus-input').style.display = 'inline';
+  document.getElementById('main-focus-input').value = '';
+  displayTodayOrQuestion();
+}
+
+function createCheckbox() {
+    var checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.className = 'checkbox';
+    if (JSON.parse(localStorage.getItem('checkbox')) === true) {
+        checkbox.checked = true;
+  }
+    return checkbox;
+}
+
+function createDeleteButton() {
+    var deleteButton = document.createElement('button');
+    deleteButton.textContent = 'x';
+    deleteButton.className = 'deleteButton';
+    return deleteButton;
+  }
+
+function createAddButton() {
+  var addButton = document.createElement('button');
+  addButton.textContent = '+';
+  addButton.className = 'addButton';
+  return addButton;
+}
+
+function setEventListeners() {
+    var mainFocusContainer = document.getElementById('mainFocusContainer');
+    mainFocusContainer.addEventListener('click', function() {
+      var elementClicked = event.target;
+      if (elementClicked.className === 'deleteButton') {
+        resetDisplay();
+      }
+      if (elementClicked.className === 'checkbox') {
+        var checkbox = elementClicked;
+        if (checkbox.checked) {
+          localStorage.setItem('checkbox', true);
+          displayMainFocus();
+        }
+        else {
+          localStorage.setItem('checkbox', false);
+          displayMainFocus();
+        }
+      }
+      if (elementClicked.className === 'addButton') {
+        resetDisplay();
+      }
+  });
+  }
+
+setEventListeners();
+
+
+
+//TO DO LIST//////////////////////////////////////////////////////////////////////////////////////
+
+function checkForTodos() {
+  if (localStorage.getItem('todos')) {
+    todoList.todos = JSON.parse(localStorage.getItem('todos'));
+    display.displayTodos();
+  }
+}
+
+var todoList = {
+    todos: [],
+    addTodo: function(todoText) {
+      this.todos.push({
+            todoText: todoText,
+            completed: false
+        });
+    },
+    changeTodo: function(index, todoText) {
+        this.todos[index].todoText = todoText;
+    },
+    deleteTodo: function(index) {
+        this.todos.splice(index, 1);
+    },
+    //Toggle one specific todo
+    toggleCompleted: function(index) {
+      var todo = this.todos[index];
+      todo.completed = !todo.completed;
+    },
+    //Toggle all todos to incomplete or to complete
+    toggleAll: function() {
+        var all = true;
+        //If a todo is not complete, change to completed
+        this.todos.forEach(function(todo) {
+          if (todo.completed === false) {
+            todo.completed = true;
+            all = false;
+          }
+        });
+          if (all === true) {
+             this.todos.forEach(function(todo) {
+               todo.completed = false;
+           });
+         }
+    }
+};
+
+var handlers = {
+  addTodo: function() {
+    var textInput = document.getElementById('textInput');
+    todoList.addTodo(textInput.value);
+    textInput.value = '';
+    display.displayTodos();
+  },
+
+  deleteTodo: function(index) {
+    todoList.deleteTodo(index);
+    display.displayTodos();
+  },
+
+  completeTodo: function(index) {
+    todoList.completeTodo(index);
+    display.displayTodos();
+  },
+
+  toggleCompleted: function(index) {
+    todoList.toggleCompleted(index);
+    display.displayTodos();
+  },
+
+  toggleAll: function() {
+    todoList.toggleAll();
+    display.displayTodos();
+  }
+};
+
+var display = {
+  displayTodos: function() {
+    localStorage.setItem('todos', JSON.stringify(todoList.todos));
+    var todosUl = document.getElementById('todosUl');
+    todosUl.innerHTML = '';
+    todoList.todos.forEach(function(todo, index) {
+      var todoLi = document.createElement('li');
+      var checkbox = document.createElement('input');
+        checkbox.type = "checkbox";
+        checkbox.className = "checkbox";
+      var label = document.createElement('label');
+        label.setAttribute('for', 'checkbox');
+      var checkboxContainer = document.createElement('div');
+        checkboxContainer.className = 'checkboxContainer';
+        checkboxContainer.id = 'todoCheckboxContainer';
+      checkboxContainer.appendChild(checkbox);
+      checkboxContainer.appendChild(label);
+      var todoTextWithCompletion = '';
+      if (todo.completed === true) {
+        todoLi.className = "complete";
+        checkbox.checked = true;
+        todoTextWithCompletion = todo.todoText;
+       }
+       else {
+         todoLi.className = "incomplete";
+         todoTextWithCompletion = todo.todoText;
+       }
+       todoLi.id = index;
+       todoLi.append(checkboxContainer);
+       var textNode = document.createTextNode(todoTextWithCompletion);
+       todoLi.append(textNode);
+       todoLi.append(this.createDeleteButton());
+       todosUl.appendChild(todoLi);
+   }, this);
+  },
+
+  createDeleteButton: function(){
+    var deleteButton = document.createElement('button');
+        deleteButton.textContent = 'x';
+        deleteButton.className = 'deleteButton';
+        deleteButton.id = 'deleteTodo';
+    return deleteButton;
+  },
+
+    setEventListeners: function() {
+        var todosUl = document.getElementById('todosUl');
+        todosUl.addEventListener('click', function() {
+            var elementClicked = event.target;
+            if (elementClicked.className === 'deleteButton') {
+                handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
+            }
+            if (elementClicked.className === 'checkbox') {
+                handlers.toggleCompleted(parseInt(elementClicked.parentNode.parentNode.id));
+            }
+        });
+    }
+};
+
+display.setEventListeners();
+
+////////////////////// RANDOM QUOTES MODULE ////////////////////////////////////
 function quoteGenerator(){
   $.get('https://quotes.rest/qod.json', function(responseText) {
       formatter(responseText);
@@ -30,7 +289,7 @@ function quoteGenerator(){
   }
 }
 
-///////////////////////////////////// CLOCK ELEMENT /////////////////////////////////////////////////////////
+///////////////////////////// CLOCK ELEMENT ////////////////////////////////////
 //declaring variables of clock
 var dateObj = new Date();
 var internalhour = dateObj.getHours();
@@ -52,7 +311,8 @@ function clockFormat () {
 	}
 }
 
-//phrase below the time
+
+//////////////////////// WELCOME MESSAGE (PHRASE) //////////////////////////////
 function phrase() {
   if (internalhour>=0 && internalhour<12) {
       $("#phrase").append("Good Morning, ");
@@ -68,36 +328,7 @@ else {
 }
 
 
-function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-    return i;}
-
-// the clock function
-function startTime() {
-  var dateObj = new Date();
-
-
-if ( clockChange === true)
-
-{
-  var getHours = dateObj.getHours();
-  var getMinutes = dateObj.getMinutes();
-  h= checkTime(getHours);
-  m = checkTime(getMinutes);
-  document.getElementById("clock").innerHTML= h + ":" + m;
-  var t = setTimeout(startTime, 1000); //this calls the fuction after every second
-}
-
-else  {
-
-  var h = dateObj.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
-  document.getElementById("clock").innerHTML= h;
-  var t = setTimeout(startTime, 1000); //this calls the fuction after every second
-}
-
-}
-
-//Compliments or name next to phrase
+/////////////// COMPLIMENT OR NAME AFTER PHRASE ////////////////////////////////
 function randomCompliment () {
 
 if (person !== null)
@@ -111,7 +342,38 @@ else {
   $("#phrase").append(arrayOfCompliments[randomCompliment]);
 }
 }
-/////////////////////////////////SETTING MENU ////////////////////////////////////////////////////////////
+
+
+////////////////////////////// CLOCK ///////////////////////////////////////////
+
+function checkTime(i) {
+    if (i < 10) {i = "0" + i;}  // add zero in front of numbers < 10
+    return i;}
+
+function startTime() {
+  var dateObj = new Date();
+
+if ( clockChange === true)
+{
+  var getHours = dateObj.getHours();
+  var getMinutes = dateObj.getMinutes();
+  var h= checkTime(getHours);
+  var m = checkTime(getMinutes);
+  document.getElementById("clock").innerHTML= h + ":" + m;
+  var t = setTimeout(startTime, 1000); //this calls the fuction after every second
+}
+
+else  {
+
+  var h = dateObj.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
+  document.getElementById("clock").innerHTML= h;
+  var t = setTimeout(startTime, 1000); //this calls the fuction after every second
+}
+
+}
+
+
+/////////////////////////////// SETTING MENU ///////////////////////////////////
 //setting Menu slide
 function settingMenu() {
 
@@ -128,6 +390,7 @@ else
 
 });
 }
+
 
 //Hide and show weather module on click
 function checkboxWeather () {
@@ -287,7 +550,8 @@ function toDoMenu() {
 	});
 }
 
-//WEATHER MODULE FUNCTIONS////////////////////////////////////////////////////////////////////////////
+////////////////////////// WEATHER MODULE FUNCTIONS ////////////////////////////
+
 let flag = 0;
 function getLocation() {
   if (navigator.geolocation) {

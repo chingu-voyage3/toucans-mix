@@ -1,3 +1,4 @@
+/* * * * * * * * * * * * * * * GENERAL * * * * * * * * * * * * * * */
 html,body{
 	height:100%;
 	margin:0;
@@ -6,6 +7,196 @@ html,body{
 	font-family: Comfortaa;
 }
 
+/* * * * * * * * * * * CLOCK AND WELCOME MESSAGE * * * * * * * * * * */
+#center-elements-container {
+    font-family: "Josefin Sans", sans-serif;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    color:white;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-shadow: 0 0 15px #000;
+}
+
+#clock {
+  font-size: 800%;
+  margin: 0;
+  font-weight: 700;
+}
+
+#phrase {
+  font-size: 300%;
+  margin: 0;
+  font-weight: 700;
+}
+
+/* * * * * * * * * * * * * * MAIN FOCUS * * * * * * * * * * * * * */
+
+#main-focus-display {
+    width: 100%;
+    height: 100px;
+    font-family: "Josefin Sans", sans-serif;
+    text-align: center;
+    color: white;
+    font-size: 200%;
+    font-weight: 100;
+    position: absolute;
+    bottom: 15%;
+}
+
+#main-focus-input {
+    width: 400px;
+    height: 50px;
+    padding: 0;
+    margin: 20px;
+    font-size: 36px;
+    color: white;
+    box-sizing: border-box;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    border-bottom: 1px solid white;
+    text-align: center;
+}
+
+#mainFocusContainer {
+    margin: 30px;
+    height: 60px;
+}
+
+/* * * * * * * * * * * * * * MAIN FOCUS & TO DO * * * * * * * * * * * * * */
+.checkboxContainer {
+    display: inline-block;
+    margin-right: 1.5%;
+    position: relative;
+}
+
+.checkboxContainer input {
+    opacity: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+}
+
+.checkboxContainer label {
+    height: 22px;
+    width: 22px;
+    border: 2px solid white;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+}
+
+.checkboxContainer input[type=checkbox]:checked + label:after {
+    content: '\2713';
+    vertical-align: top;
+    font-size: 90%;
+    height: 100%;
+}
+
+.deleteButton, .addButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: 100;
+    color: white;
+    margin-left: 2%;
+    padding: 0;
+    font-size: 60%;
+}
+
+.complete {
+	text-decoration: line-through;
+}
+
+/* * * * * * * * * * * * * * *  TO DO LIST * * * * * * * * * * * * * * * */
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+	font-size: 24px;
+}
+
+ul .checkboxContainer label {
+    height: 12px;
+    width: 12px;
+}
+
+#todosUl li {
+    margin-top: 2%;
+    font-size: 70%;
+}
+
+#todoCheckboxContainer {
+	margin: 0 3% 0 5%;
+}
+
+#deleteTodo {
+	float: right;
+	padding: 0;
+	vertical-align: bottom;
+}
+
+#textInput {
+	width: 80%;
+    height: 80%;
+    padding: 2%;
+    font-size: 16px;
+    color: white;
+    box-sizing: border-box;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    border-bottom: 1px solid white;
+    text-align: center;
+	display: block;
+	margin: 5% auto 10% auto;
+}
+
+.todo-form {
+	position: relative;
+	text-align: center;
+}
+
+#toDo {
+	position: absolute;
+	bottom:0;
+	right:0;
+	cursor:pointer;
+	outline:none;
+	border:none;
+	background: none;
+	color: white;
+	font-family: "Roboto", arial;
+	font-weight:bold;
+	font-size: 125%;
+	z-index:50;
+    padding: 1%;
+  }
+
+  #toDo:hover {
+	border-bottom: 2px solid white;
+  }
+
+  #toDoMenu {
+	background-color: rgba(0,0,0,0.9);
+	width:20%;
+	/* height:80vh; */
+	position:absolute;
+	bottom:10vh;
+	color:white;
+	right:0;
+	-moz-border-radius: 2%;
+	border-radius: 2%;
+	z-index: 50;
+    padding: 1%;
+  }
+
+/* * * * * * * * * * * * * QUOTE AND WEATHER * * * * * * * * * * * * */
 #top-row-container{
 	display:flex;
 	flex-direction: row;
@@ -34,30 +225,6 @@ width:75px;
 .author{
   font-size:15px;
   font-style:italic;
-}
-
-#clock {
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 800%;
-  position: absolute;
-  left: 50%;
-  top: 25%;
-  color:white;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-shadow: 0 0 15px #000;
-}
-
-#phrase {
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 300%;
-  position: absolute;
-  left: 50%;
-  top: 60%;
-  color:white;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-shadow: 0 0 15px #000;
 }
 
 #setting {
@@ -325,40 +492,7 @@ img{
 
 }
 
-
-#toDo {
-	position: absolute;
-	bottom:0;
-	right:0;
-	cursor:pointer;
-	outline:none;
-	border:none;
-	background: none;
-	color: white;
-	font-family: "Roboto", arial;
-	font-weight:bold;
-	font-size: 150%;
-	z-index:50;
-  }
-
-  #toDo:hover {
-	border-bottom: 2px solid white;
-  }
-
-  #toDoMenu {
-	background-color: rgba(0,0,0,0.9);
-	width:30%;
-	height:80vh;
-	position:absolute;
-	bottom:10vh;
-	color:white;
-	right:0;
-	-moz-border-radius: 2%;
-	border-radius: 2%;
-	z-index: 50;
-  }
-
-  #grayBackground {
+#grayBackground {
 	position: fixed;
     top: 0;
     left: 0;
@@ -369,7 +503,7 @@ img{
     z-index: 5;
   }
 
- #enterName {
+#enterName {
 	 width: 60%;
  }
   input[placeholder] {
