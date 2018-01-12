@@ -18,7 +18,7 @@ window.onload = function(){
 //BACKGROUND LOADER/////////////////////////////////////////////////////////////////////////////////
 
 function backgroundLoader(){
-	let imageURL = 'https://source.unsplash.com/1900x768/?nature,skyline';	
+	let imageURL = 'https://source.unsplash.com/1900x768/?nature|?skyline';	
 	$('#background-container').css('background-image', 'url('+ imageURL +')');
 	$('#background-container').animate({ opacity: 0.4 }, { duration: 2500 });
 }
@@ -608,7 +608,7 @@ function assignWeatherData(data){
 	let region = data.location.region;
 	let weatherDesc = data.current.condition.text;
 	let icon = data.current.condition.icon
-	let tempC = data.current.temp_c;
+	let tempC = Math.round(data.current.temp_c);
 	let fcData=[];
 	//Forecast data
 
@@ -616,7 +616,7 @@ function assignWeatherData(data){
 		fcData.push({
 			fcIcon:data.forecast.forecastday[i].day.condition.icon,
 			fcWeatherDesc:data.forecast.forecastday[i].day.condition.text,
-			fcTempC:data.forecast.forecastday[i].day.avgtemp_c
+			fcTempC:Math.round(data.forecast.forecastday[i].day.avgtemp_c)
 		})
 	}
 	let fcIcon = data.forecast.forecastday[0].day.condition.icon;
@@ -675,5 +675,3 @@ function weatherSlider(){
 }
 
 
-
-///Test review, it still got some issues with z-index and the hide/show grayBackground. They aren't that bad.
