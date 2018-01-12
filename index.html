@@ -9,12 +9,12 @@
   <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js" type="text/javascript"></script>
   <title> Momentum Project </title>
 </head>
 
 <body>
-
+<div id="background-container">
+</div>
 <!-- CLOCK/WELCOME MESSAGE -->
     <div id="center-elements-container">
         <p id="clock"></p>
@@ -145,7 +145,7 @@
         <ul id="todosUl"></ul>
     </div>
 
-<!-- SETTINGS ELEMENT -------------------------------------------------------->
+<!-- SETTINGS ELEMENT -->
     <button id="setting"><i class="fa fa-3x fa-cog" aria-hidden="true"></i></button>
 
     <div id="menu"> 
@@ -160,9 +160,10 @@
 	            <button id="saveSettings" class="buttonSettings" onclick="saveSettings()"> Save Settings </button>
 	            <button id="clearSettings" class="buttonSettings" onclick="clearSettings()"> Clear Settings </button>
 	        </ul>
-    </div>
+   	</div>
 
     <script src="script/script.js" type="text/javascript"></script>
+
 
 </body>
 </html>

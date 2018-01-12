@@ -11,8 +11,17 @@ window.onload = function(){
   checkForMainFocus();
   checkForTodos();
   displayTodayOrQuestion();
+  backgroundLoader()
 }
 
+
+//BACKGROUND LOADER/////////////////////////////////////////////////////////////////////////////////
+
+function backgroundLoader(){
+	let imageURL = 'https://source.unsplash.com/1900x768/?nature,skyline,beach';	
+	$('#background-container').css('background-image', 'url('+ imageURL +')');
+	$('#background-container').animate({ opacity: 0.4 }, { duration: 2500 });
+}
 
 //MAIN FOCUS//////////////////////////////////////////////////////////////////////////////////////
 
@@ -490,7 +499,6 @@ function saveCheckbox () {
 
 function retCheckbox () {
 	var checkedCheckboxes = JSON.parse(localStorage.getItem('checkedCheckboxes'));
-	console.log(checkedCheckboxes); //this code is to check things
 	if (checkedCheckboxes === null) {
 		$('.settingCheck').each(
 			function() {this.checked = true;});
