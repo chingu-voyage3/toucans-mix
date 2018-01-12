@@ -18,7 +18,7 @@ window.onload = function(){
 //BACKGROUND LOADER/////////////////////////////////////////////////////////////////////////////////
 
 function backgroundLoader(){
-	let imageURL = 'https://source.unsplash.com/1900x768/?nature,skyline,beach';	
+	let imageURL = 'https://source.unsplash.com/1900x768/?nature,skyline';	
 	$('#background-container').css('background-image', 'url('+ imageURL +')');
 	$('#background-container').animate({ opacity: 0.4 }, { duration: 2500 });
 }
