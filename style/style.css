@@ -210,11 +210,12 @@ width:75px;
 .quote-container{
   display:flex;
   flex-direction:column;
+  width:65%;
 }
 
 .quote-style{
   text-align:center;
-  font-size:20px;
+  font-size:14px;
   color:#fff;
   font-family:Josefin Sans;
   align-self:center;
@@ -241,12 +242,12 @@ width:75px;
   color:white;
   height:10%;
   border-bottom: 2px solid grey;
-
 }
 
 #setting:hover {
   border-bottom: 2px solid white;
 }
+
 
 #menu {
   background-color: rgba(0,0,0,0.9);
@@ -287,8 +288,12 @@ width:75px;
 #current-weather-wrapper{
 	color:white;
 	opacity: 0.5;
-	font-size: 15px;
+	font-size: 12px;
 	border-top: 3px solid grey;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 #current-weather-wrapper:hover{
@@ -299,26 +304,22 @@ width:75px;
 }
 
 img{
-	width:50px;
-	height:50px;
+	width:35px;
+	height:35px;
+}
+
+#wm-top-row{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin-right:5px;
 }
 
 
-#wm-icon,#wm-temp,#wm-top-row{
-		display: inline;
-}
-
-#wm-location{
-	position: relative;
-	bottom:8px;
-	padding-left: 8px;
-}
 
 #wm-temp{
-	font-size: 20px;
-	position: relative;
-	bottom:15px;
-	right:5px;
+	font-size: 18px;
 }
 
 #forecast-wrapper{
@@ -339,7 +340,6 @@ img{
 	text-align: left;
 	margin-left:12px;
 	font-size: 25px;
-
 }
 
 #forecast-data{
@@ -456,6 +456,7 @@ img{
 
 	#current-weather-wrapper{
 		border-top: 0px;
+		margin-top: 15px;
 	}
 
 	#current-weather-wrapper:hover{
