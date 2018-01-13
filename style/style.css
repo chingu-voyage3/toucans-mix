@@ -146,7 +146,7 @@ float: right;
 
 }
 
-#menu input[type=checkbox]{
+#menu #generalMenu input[type=checkbox]{
 	height: 0;
 	width: 0;
 	visibility: hidden;
@@ -207,6 +207,28 @@ float: right;
 			border-radius: 5px;
 	margin-bottom: 2vh;
 }
+
+#balanceMenu .contentBalance {
+font-size: 70%;
+}
+
+#balanceMenu {
+	width: 80%;
+}
+
+.BalanceHours  {
+	display: inline-block;
+}
+
+.balanceTitle {
+	font-weight: bold;
+}
+
+#EnableBalance {
+	display: inline-block;
+	font-weight: bold;
+}
+
 
 #current-weather-wrapper{
 	color:white;
