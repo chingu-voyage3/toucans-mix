@@ -21,98 +21,109 @@ html,body{
 
 /**********************SHOWOFF ELEMENT******************************/
 
+.showoff-module{
+	position: fixed;
+	top:12px;
+	left:12px;
+	z-index: 60;
+}
+
 #toucan-logo{
-	position: absolute;
-	top:0;
-    z-index: 60;
-    height:65px;
-     width:65px;
-     border-radius: 20px;
-     opacity:0.2;
-}  
-    #toucan-logo:hover{
-      opacity:1;
-      cursor:pointer;
-    }
-    #showoff-container{
-      font-size: 20px;
-      z-index:60;
-      position:absolute;
-      top:12px;
-      left:45px;
-      height:56px;
-      width:0px;
-      background-color: black;
-      border-top-right-radius: 25px;
-      border-bottom-right-radius: 25px;
-      opacity:0.8;
-      color:white;
-    }
 
-    #showoff-text{
-      margin-left: 35px;
-      font-family: consolas;
-      display: none;
-      grid-gap: 5px;
-      grid-template-columns:2fr 1fr 0.5fr 1fr 0.5fr 1fr 0.5fr;
-      grid-template-rows:60px;
-    }
+	height:65px;
+	width:65px;
+	border-radius: 20px;
+	opacity:0.2;
+}
 
-    #showoff-text-header{
-      justify-self:center;
-      align-self: center;
-      grid-column-start:1;
-      grid-column-end:2;
-    }
+#toucan-logo:hover{
+	cursor:pointer;
+}
+#showoff-container{
+	font-size: 20px;
+	z-index:-1;
+	position:absolute;
+	top:5px;
+	left:35px;
+	height:56px;
+	width:0px;
+	background-color: black;
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 25px;
+	color:white;
+}
 
-    #team-font{
-      font-family: Comfortaa;
-    }
+#showoff-text{
+	margin-left: 35px;
+	font-family: Roboto;
+	display: none;
+	grid-gap: 5px;
+	grid-template-columns:2fr 1fr 0.5fr 1fr 0.5fr 1fr 0.5fr;
+	grid-template-rows:60px;
+}
 
-    .grid-item-style{
-      justify-self:center;
-      align-self: center;
-      font-size: 18px;
-    }
+#showoff-text-header{
+	justify-self:center;
+	align-self: center;
+	grid-column-start:1;
+	grid-column-end:2;
+}
 
-    .spin-icon{
-      animation: spin-icon 0.8s;
-    }
+#team-font{
+	font-family: Comfortaa;
+}
 
-    .open-container{
-      animation: open-container 0.8s;
-      animation-fill-mode: both;
-    }
+.fa-github{
+	color:white;
+}
 
-    .spin-icon-reverse{
-      animation: spin-icon-reverse 0.8s;
-    }
+.fa-github:hover{
+	color:yellow;
+}
 
-    .close-container{
-      animation: close-container 0.7s;
-      animation-fill-mode: forwards;
-    }
+.grid-item-style{
+	justify-self:center;
+	align-self: center;
+	font-size: 18px;
+}
 
-    @keyframes spin-icon {
-    0%   {transform: rotate(0deg);}
-    100% {transform: rotate(360deg)}
-    }
+.spin-icon{
+	animation: spin-icon 0.8s;
+}
 
-    @keyframes open-container {
-    0%   {width: 0px;}
-    100% {width: 800px;}
-    }
+.open-container{
+	animation: open-container 0.8s;
+	animation-fill-mode: both;
+}
 
-    @keyframes spin-icon-reverse {
-    0%   {transform: rotate(360deg);}
-    100% {transform: rotate(deg)}
-    }
+.spin-icon-reverse{
+	animation: spin-icon-reverse 0.8s;
+}
 
-    @keyframes close-container {
-    0%   {width: 800px;}
-    100% {width: 0px;}
-    }
+.close-container{
+	animation: close-container 0.7s;
+	animation-fill-mode: forwards;
+}
 
+@keyframes spin-icon {
+0%   {transform: rotate(0deg);}
+100% {transform: rotate(360deg)}
+}
+
+@keyframes open-container {
+0%   {width: 0px;}
+100% {width: 1000px;}
+}
+
+@keyframes spin-icon-reverse {
+0%   {transform: rotate(360deg);}
+100% {transform: rotate(deg)}
+}
+
+@keyframes close-container {
+0%   {width: 1000px;}
+100% {width: 0px;}
+}
 
 
 /* * * * * * * * * * * CLOCK AND WELCOME MESSAGE * * * * * * * * * * */
@@ -283,6 +294,7 @@ ul .checkboxContainer label {
 	font-size: 125%;
 	z-index:50;
     padding: 1%;
+    border-bottom: 2px solid transparent;
   }
 
   #toDo:hover {
@@ -307,12 +319,13 @@ ul .checkboxContainer label {
 #top-row-container{
 	position: absolute;
 	width: 100%;
-	margin:auto;
 	z-index: 57;
 	display:flex;
 	flex-direction: row;
 	justify-content: space-between;
-	top:3px;
+	align-items: flex-start;
+	top:5px;
+
 }
 
 #invisible-flex-item{
@@ -336,7 +349,7 @@ width:75px;
 .quote{padding:15px;}
 
 .author{
-  font-size:15px;
+  font-size:12px;
   font-style:italic;
 }
 
@@ -353,7 +366,7 @@ width:75px;
   opacity: 1;
   color:white;
   height:10%;
-  border-bottom: 2px solid grey;
+  border-bottom: 2px solid transparent;
 }
 
 #setting:hover {
@@ -405,6 +418,7 @@ width:75px;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin-right:10px;
 }
 
 #current-weather-wrapper:hover{
@@ -423,7 +437,7 @@ img{
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	margin-right:5px;
+
 }
 
 
@@ -520,6 +534,11 @@ img{
 }
 
 @media (max-width:900px){
+
+	.showoff-module{
+		display:none;
+	}
+
 	#clock{
 		font-size: 550%;
 	}
@@ -532,6 +551,10 @@ img{
 }
 
 @media (max-width:750px){
+
+	#center-elements-container{
+		top:45%;
+	}
 	#clock{
 		font-size: 450%;
 	}
@@ -547,57 +570,24 @@ img{
 
 	}
 
+	.quote-container{
+	  display:none;
+	}
+
+
+
+
+
 }
 
-@media (max-width:600px){
-	#clock{
-		font-size: 300%;
-	}
-
-	#phrase{
-		font-size:100%;
-		top: 40%;
-	}
-
-	#top-row-container{
-		flex-direction: column;
-		align-items: center;
-	}
-
-	#current-weather-wrapper{
-		border-top: 0px;
-		margin-top: 15px;
-	}
-
-	#current-weather-wrapper:hover{
-		border-top: 0px;
-	}
-
-	#forecast-wrapper{
-		right:-600px;
-		width:100%;
-		height:75%;
-	}
-
-
-	.quote-style{
-	  font-size:15px;
-	}
-
-	.author{
-  		font-size:12px;
-  		font-style:italic;
-	}
-
-}
 
 @media (max-width:450px){
 	#clock{
-		font-size: 200%;
+		font-size: 500%;
 	}
 
 	#phrase{
-		font-size:75%;
+		font-size:150%;
 		top: 35%;
 	}
 
