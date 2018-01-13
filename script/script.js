@@ -23,6 +23,44 @@ function backgroundLoader(){
 	$('#background-container').animate({ opacity: 0.4 }, { duration: 2500 });
 }
 
+//SHOWOFF ELEMENT/////////////////////////////////////////////////////////////////////////////////
+
+  let showOffFlag = true;
+
+function openToucanMenu(){
+  if(showOffFlag===true){
+    $("#toucan-logo").addClass("spin-icon");
+    $("#toucan-logo").css("opacity","1");
+    $("#showoff-container").addClass("open-container");
+    $("#showoff-container").removeClass("close-container");
+    setTimeout(function(){
+      $("#showoff-text").css("display","grid");
+    },300);
+    setTimeout(function(){
+      $("#toucan-logo").removeClass("spin-icon");
+      $("#showoff-text").css("display","grid");
+      showOffFlag = false;
+    },1000);
+  }
+  else{
+        $("#showoff-container").removeClass("open-container");
+        $("#showoff-container").addClass("close-container");
+        $("#toucan-logo").addClass("spin-icon-reverse");
+        setTimeout(function(){
+          $("#showoff-text").css("display","none");
+        },150);
+        setTimeout(function(){
+          $("#toucan-logo").removeClass("spin-icon-reverse");
+          $("#showoff-text").css("display","none");
+          $("#toucan-logo").css("opacity","0.2");
+          showOffFlag = true;
+        },800);
+  }
+}
+
+
+
+
 //MAIN FOCUS//////////////////////////////////////////////////////////////////////////////////////
 
 function checkForMainFocus() {
@@ -675,3 +713,5 @@ function weatherSlider(){
 }
 
 
+
+///Test review, it still got some issues with z-index and the hide/show grayBackground. They aren't that bad.
