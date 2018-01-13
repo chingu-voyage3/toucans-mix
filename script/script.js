@@ -11,19 +11,19 @@ window.onload = function(){
   checkForMainFocus();
   checkForTodos();
   displayTodayOrQuestion();
-  backgroundLoader()
-}
+  backgroundLoader();
+};
 
 
-//BACKGROUND LOADER/////////////////////////////////////////////////////////////////////////////////
+//BACKGROUND LOADER/////////////////////////////////////////////////////////////
 
 function backgroundLoader(){
-	let imageURL = 'https://source.unsplash.com/1900x768/?nature|?skyline';	
+	let imageURL = 'https://source.unsplash.com/1900x768/?nature|?skyline';
 	$('#background-container').css('background-image', 'url('+ imageURL +')');
 	$('#background-container').animate({ opacity: 0.4 }, { duration: 2500 });
 }
 
-//SHOWOFF ELEMENT/////////////////////////////////////////////////////////////////////////////////
+//SHOWOFF ELEMENT///////////////////////////////////////////////////////////////
 
   let showOffFlag = true;
 
@@ -61,7 +61,7 @@ function openToucanMenu(){
 
 
 
-//MAIN FOCUS//////////////////////////////////////////////////////////////////////////////////////
+//MAIN FOCUS////////////////////////////////////////////////////////////////////
 
 function checkForMainFocus() {
   if (localStorage.getItem('output') !== null) {
@@ -181,7 +181,22 @@ setEventListeners();
 
 
 
-//TO DO LIST//////////////////////////////////////////////////////////////////////////////////////
+//TO DO LIST////////////////////////////////////////////////////////////////////
+
+//Slide todo menu on click
+function toDoMenu() {
+
+	$("#toDoMenu").hide();
+	$( "#toDo" ).click(function() {
+	$( "#toDoMenu" ).toggle("slide");
+
+	if ($("#grayBackground").length)
+		{$("#grayBackground").remove();}
+
+	else
+		{$("body").append("<div id='grayBackground'> </div>");}
+	});
+}
 
 function checkForTodos() {
   if (localStorage.getItem('todos')) {
@@ -581,21 +596,6 @@ function clearSettings () {
 	$("#grayBackground").hide();
 }
 
-//toDoMenu
-function toDoMenu() {
-
-	$("#toDoMenu").hide();
-	$( "#toDo" ).click(function() {
-	$( "#toDoMenu" ).toggle("slide", {direction: "right"});
-
-	if ($("#grayBackground").length)
-		{$("#grayBackground").remove();}
-
-	else
-		{$("body").append("<div id='grayBackground'> </div>");}
-	});
-}
-
 ////////////////////////// WEATHER MODULE FUNCTIONS ////////////////////////////
 
 let flag = 0;
@@ -603,7 +603,7 @@ function getLocation() {
   if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(usePosition);
   } else {
-      alert("Geolocation is not supported by this browser. You can still use manuel search.");
+      alert("Geolocation is not supported by this browser. You can still use manual search.");
       userInputLocation();
   }
 }
