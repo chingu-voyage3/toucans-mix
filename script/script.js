@@ -15,15 +15,15 @@ window.onload = function(){
 }
 
 
-//BACKGROUND LOADER/////////////////////////////////////////////////////////////////////////////////
+//////////////////////////BACKGROUND LOADER/////////////////////////////////////
 
 function backgroundLoader(){
-	let imageURL = 'https://source.unsplash.com/1900x768/?nature|?skyline';	
+	let imageURL = 'https://source.unsplash.com/1900x768/?nature|?skyline';
 	$('#background-container').css('background-image', 'url('+ imageURL +')');
 	$('#background-container').animate({ opacity: 0.4 }, { duration: 2500 });
 }
 
-//SHOWOFF ELEMENT/////////////////////////////////////////////////////////////////////////////////
+//////////////////////////SHOWOFF ELEMENT///////////////////////////////////////
 
   let showOffFlag = true;
 
@@ -61,7 +61,7 @@ function openToucanMenu(){
 
 
 
-//MAIN FOCUS//////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////MAIN FOCUS//////////////////////////////////////////
 
 function checkForMainFocus() {
   if (localStorage.getItem('output') !== null) {
@@ -181,13 +181,27 @@ setEventListeners();
 
 
 
-//TO DO LIST//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////TO DO LIST////////////////////////////////////////
 
 function checkForTodos() {
   if (localStorage.getItem('todos')) {
     todoList.todos = JSON.parse(localStorage.getItem('todos'));
     display.displayTodos();
   }
+}
+let flag = 0;
+function todoSlider() {
+    if(flag == 0) {
+		$("#toDoMenu").addClass("todo-slide-in");
+		$("#toDoMenu").removeClass("todo-slide-out");
+		flag = 1;
+	}
+
+	else if(flag == 1) {
+		$("#toDoMenu").addClass("todo-slide-out");
+		$("#toDoMenu").removeClass("todo-slide-in");
+		flag = 0;
+	}
 }
 
 var todoList = {
@@ -363,31 +377,30 @@ function clockFormat () {
 function phrase() {
   if (internalhour>=0 && internalhour<12) {
       $("#phrase").append("Good Morning, ");
-}
-
-else if (internalhour>=12 && internalhour<17) {
+  }
+  else if (internalhour>=12 && internalhour<17) {
       $("#phrase").append("Good Afternoon, ");
-}
+  }
 
-else {
+  else {
       $("#phrase").append("Good Evening, ");
-}
+  }
 }
 
 
 /////////////// COMPLIMENT OR NAME AFTER PHRASE ////////////////////////////////
 function randomCompliment () {
 
-if (person !== null)
-{
-  $("#phrase").append(person);
-}
+    if (person !== null)
+    {
+      $("#phrase").append(person);
+    }
 
-else {
-  var arrayOfCompliments = ["handsome.", "cutie.", "human.", "pal.", "smart.", "sexy.","classy."];
-  var randomCompliment = Math.floor(Math.random()*arrayOfCompliments.length);
-  $("#phrase").append(arrayOfCompliments[randomCompliment]);
-}
+    else {
+      var arrayOfCompliments = ["handsome.", "cutie.", "human.", "pal.", "smarty pants.", "sexy.","classy."];
+      var randomCompliment = Math.floor(Math.random()*arrayOfCompliments.length);
+      $("#phrase").append(arrayOfCompliments[randomCompliment]);
+    }
 }
 
 
@@ -400,22 +413,22 @@ function checkTime(i) {
 function startTime() {
   var dateObj = new Date();
 
-if ( clockChange === true)
-{
-  var getHours = dateObj.getHours();
-  var getMinutes = dateObj.getMinutes();
-  var h= checkTime(getHours);
-  var m = checkTime(getMinutes);
-  document.getElementById("clock").innerHTML= h + ":" + m;
-  var t = setTimeout(startTime, 1000); //this calls the fuction after every second
-}
+    if ( clockChange === true)
+    {
+      var getHours = dateObj.getHours();
+      var getMinutes = dateObj.getMinutes();
+      var h= checkTime(getHours);
+      var m = checkTime(getMinutes);
+      document.getElementById("clock").innerHTML= h + ":" + m;
+      var t = setTimeout(startTime, 1000); //this calls the fuction after every second
+    }
 
-else  {
+    else  {
 
-  var h = dateObj.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
-  document.getElementById("clock").innerHTML= h;
-  var t = setTimeout(startTime, 1000); //this calls the fuction after every second
-}
+      var h = dateObj.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
+      document.getElementById("clock").innerHTML= h;
+      var t = setTimeout(startTime, 1000); //this calls the fuction after every second
+    }
 
 }
 
@@ -424,18 +437,18 @@ else  {
 //setting Menu slide
 function settingMenu() {
 
-$("#menu").hide();
-$( "#setting" ).click(function() {
+    $("#menu").hide();
+    $( "#setting" ).click(function() {
 
-	$( "#menu" ).toggle("slide");
+    	$( "#menu" ).toggle("slide");
 
-if ($("#grayBackground").length)
-{$("#grayBackground").remove();}
+    if ($("#grayBackground").length)
+    {$("#grayBackground").remove();}
 
-else
-{$("body").append("<div id='grayBackground'> </div>");}
+    else
+    {$("body").append("<div id='grayBackground'> </div>");}
 
-});
+    });
 }
 
 
@@ -485,8 +498,8 @@ function saveName () {
 	var string = "";
 	var storedName = localStorage.getItem("Name") + string;
 
-		if ( storedName !== "null" && storedName !== "" && storedName !== undefined && storedName.length>0)
-	{
+	if ( storedName !== "null" && storedName !== "" && storedName !== undefined && storedName.length>0)
+    {
 	document.getElementById("enterName").value = storedName;
 	person = storedName;
 	$("#phrase").empty();
