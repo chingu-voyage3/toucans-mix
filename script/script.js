@@ -22,7 +22,7 @@ window.onload = function(){
 function backgroundLoader(){
 	let imageURL = 'https://source.unsplash.com/1900x768/?nature|?skyline';
 	$('#background-container').css('background-image', 'url('+ imageURL +')');
-	$('#background-container').animate({ opacity: 0.4 }, { duration: 2500 });
+	$('#background-container').animate({ opacity: 0.6 }, { duration: 2500 });
 }
 
 //SHOWOFF ELEMENT///////////////////////////////////////////////////////////////
