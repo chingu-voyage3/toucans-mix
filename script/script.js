@@ -8,6 +8,8 @@ window.onload = function(){
   quoteGenerator();
   toDoMenu();
   getLocation();
+
+  hideOnLoad();
   checkForMainFocus();
   checkForTodos();
   displayTodayOrQuestion();
@@ -417,19 +419,21 @@ function startTime() {
 
 if ( clockChange === true)
 {
-  var getHours = dateObj.getHours();
-  var getMinutes = dateObj.getMinutes();
-  var h= checkTime(getHours);
-  var m = checkTime(getMinutes);
+
+  let getHours = dateObj.getHours();
+  let getMinutes = dateObj.getMinutes();
+  let h= checkTime(getHours);
+  let m = checkTime(getMinutes);
+  
   document.getElementById("clock").innerHTML= h + ":" + m;
-  var t = setTimeout(startTime, 1000); //this calls the fuction after every second
+  let t = setTimeout(startTime, 1000); //this calls the fuction after every second
 }
 
 else  {
 
-  var h = dateObj.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
+  let h = dateObj.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
   document.getElementById("clock").innerHTML= h;
-  var t = setTimeout(startTime, 1000); //this calls the fuction after every second
+  let t = setTimeout(startTime, 1000); //this calls the fuction after every second
 }
 
 }
@@ -572,19 +576,7 @@ function clearCheckbox () {
 	$('.settingCheck').prop('checked', true);
 }
 
-//setting buttons
-function saveSettings(){
-	saveName();
-	saveCheckbox();
-	retName();
-	retCheckbox();
-	clockFormat();
-	checkboxWeather();
-	checkboxToDo();
-	$("#menu").hide();
-	$("#grayBackground").hide();
-}
-
+//button clearSettings
 
 function clearSettings () {
 	clearName();
@@ -594,6 +586,37 @@ function clearSettings () {
 	checkboxToDo();
 	$("#menu").hide();
 	$("#grayBackground").hide();
+}
+
+//functions to hide and show sub-menus
+
+function generalSettings () {
+	$("#balanceMenu").hide();
+	$("#generalMenu").show();
+}
+
+function balanceSettings () {
+	$("#generalMenu").hide();
+	$("#balanceMenu").show();	
+}
+
+//functions to hide sub-menus on load
+function hideOnLoad () {
+	$("#balanceMenu").hide();
+}
+//toDoMenu
+function toDoMenu() {
+
+	$("#toDoMenu").hide();
+	$( "#toDo" ).click(function() {
+	$( "#toDoMenu" ).toggle("slide", {direction: "right"});
+
+	if ($("#grayBackground").length)
+		{$("#grayBackground").remove();}
+
+	else
+		{$("body").append("<div id='grayBackground'> </div>");}
+	});
 }
 
 ////////////////////////// WEATHER MODULE FUNCTIONS ////////////////////////////
