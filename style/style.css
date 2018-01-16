@@ -1,15 +1,331 @@
+/* * * * * * * * * * * * * * * GENERAL * * * * * * * * * * * * * * */
 html,body{
 	height:100%;
+	width:100%;
 	margin:0;
 	padding:0;
-	background-color: gray;
+	background-color: #444;
+	background: linear-gradient(black, #444);
 	font-family: Comfortaa;
 }
 
+/**********************BACKGROUND LOADER******************************/
+
+#background-container{
+	width: 100%;
+	height: 100%;
+	background-size:cover;
+	background-repeat: no-repeat;
+	opacity: 0;
+}
+
+/**********************SHOWOFF ELEMENT******************************/
+
+.showoff-module{
+	position: fixed;
+	top:12px;
+	left:12px;
+	z-index: 60;
+}
+
+#toucan-logo{
+
+	height:65px;
+	width:65px;
+	border-radius: 20px;
+	opacity:0.2;
+}
+
+#toucan-logo:hover{
+	cursor:pointer;
+}
+#showoff-container{
+	font-size: 20px;
+	z-index:-1;
+	position:absolute;
+	top:5px;
+	left:35px;
+	height:56px;
+	width:0px;
+	background-color: black;
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 25px;
+	color:white;
+}
+
+#showoff-text{
+	margin-left: 35px;
+	font-family: Roboto;
+	display: none;
+	grid-gap: 5px;
+	grid-template-columns:2fr 1fr 0.5fr 1fr 0.5fr 1fr 0.5fr;
+	grid-template-rows:60px;
+}
+
+#showoff-text-header{
+	justify-self:center;
+	align-self: center;
+	grid-column-start:1;
+	grid-column-end:2;
+}
+
+#team-font{
+	font-family: Comfortaa;
+}
+
+.fa-github{
+	color:white;
+}
+
+.fa-github:hover{
+	color:yellow;
+}
+
+.grid-item-style{
+	justify-self:center;
+	align-self: center;
+	font-size: 18px;
+}
+
+.spin-icon{
+	animation: spin-icon 0.8s;
+}
+
+.open-container{
+	animation: open-container 0.8s;
+	animation-fill-mode: both;
+}
+
+.spin-icon-reverse{
+	animation: spin-icon-reverse 0.8s;
+}
+
+.close-container{
+	animation: close-container 0.7s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes spin-icon {
+0%   {transform: rotate(0deg);}
+100% {transform: rotate(360deg)}
+}
+
+@keyframes open-container {
+0%   {width: 0px;}
+100% {width: 1000px;}
+}
+
+@keyframes spin-icon-reverse {
+0%   {transform: rotate(360deg);}
+100% {transform: rotate(deg)}
+}
+
+@keyframes close-container {
+0%   {width: 1000px;}
+100% {width: 0px;}
+}
+
+
+/* * * * * * * * * * * CLOCK AND WELCOME MESSAGE * * * * * * * * * * */
+#center-elements-container {
+    font-family: "Josefin Sans", sans-serif;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    color:white;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-shadow: 0 0 15px #000;
+}
+
+#clock {
+  font-size: 800%;
+  margin: 0;
+  font-weight: 700;
+}
+
+#phrase {
+  font-size: 300%;
+  margin: 0;
+  font-weight: 700;
+}
+
+/* * * * * * * * * * * * * * MAIN FOCUS * * * * * * * * * * * * * */
+
+#main-focus-display {
+    width: 100%;
+    height: 100px;
+    font-family: "Josefin Sans", sans-serif;
+    text-align: center;
+    color: white;
+    font-size: 200%;
+    font-weight: 100;
+    position: absolute;
+    bottom: 15%;
+}
+
+#main-focus-input {
+    width: 400px;
+    height: 50px;
+    padding: 0;
+    margin: 20px;
+    font-size: 36px;
+    color: white;
+    box-sizing: border-box;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    border-bottom: 1px solid white;
+    text-align: center;
+}
+
+#mainFocusContainer {
+
+}
+
+/* * * * * * * * * * * * * * MAIN FOCUS & TO DO * * * * * * * * * * * * * */
+.checkboxContainer {
+    display: inline-block;
+    margin-right: 1.5%;
+    position: relative;
+}
+
+.checkboxContainer input {
+    opacity: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+}
+
+.checkboxContainer label {
+    height: 22px;
+    width: 22px;
+    border: 2px solid white;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+}
+
+.checkboxContainer input[type=checkbox]:checked + label:after {
+    content: '\2713';
+    vertical-align: top;
+    font-size: 90%;
+    height: 100%;
+}
+
+.deleteButton, .addButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: 100;
+    color: white;
+    margin-left: 2%;
+    padding: 0;
+    font-size: 60%;
+}
+
+.complete {
+	text-decoration: line-through;
+}
+
+/* * * * * * * * * * * * * * *  TO DO LIST * * * * * * * * * * * * * * * */
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+	font-size: 24px;
+}
+
+ul .checkboxContainer label {
+    height: 12px;
+    width: 12px;
+}
+
+#todosUl li {
+    margin-top: 2%;
+    font-size: 70%;
+}
+
+#todoCheckboxContainer {
+	margin: 0 3% 0 5%;
+}
+
+#deleteTodo {
+	float: right;
+	padding: 0;
+	vertical-align: bottom;
+}
+
+#textInput {
+	width: 80%;
+    height: 80%;
+    padding: 2%;
+    font-size: 16px;
+    color: white;
+    box-sizing: border-box;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    border-bottom: 1px solid white;
+    text-align: center;
+	display: block;
+	margin: 5% auto 10% auto;
+}
+
+.todo-form {
+	position: relative;
+	text-align: center;
+}
+
+#toDo {
+	position: absolute;
+	bottom:0;
+	right:0;
+	cursor:pointer;
+	outline:none;
+	border:none;
+	background: none;
+	color: white;
+	font-family: "Roboto", arial;
+	font-weight:bold;
+	font-size: 125%;
+	z-index:50;
+    padding: 1%;
+    border-bottom: 2px solid transparent;
+  }
+
+  #toDo:hover {
+	border-bottom: 2px solid white;
+  }
+
+  #toDoMenu {
+	background-color: rgba(0,0,0,0.9);
+	width:20%;
+	/* height:80vh; */
+	position:absolute;
+	bottom:10vh;
+	color:white;
+	right:0;
+	-moz-border-radius: 2%;
+	border-radius: 2%;
+	z-index: 50;
+    padding: 1%;
+  }
+
+/* * * * * * * * * * * * * QUOTE AND WEATHER * * * * * * * * * * * * */
 #top-row-container{
+	position: absolute;
+	width: 100%;
+	z-index: 57;
 	display:flex;
 	flex-direction: row;
 	justify-content: space-between;
+	align-items: flex-start;
+	top:5px;
+
 }
 
 #invisible-flex-item{
@@ -19,11 +335,12 @@ width:75px;
 .quote-container{
   display:flex;
   flex-direction:column;
+  width:65%;
 }
 
 .quote-style{
   text-align:center;
-  font-size:20px;
+  font-size:14px;
   color:#fff;
   font-family:Josefin Sans;
   align-self:center;
@@ -32,32 +349,8 @@ width:75px;
 .quote{padding:15px;}
 
 .author{
-  font-size:15px;
+  font-size:12px;
   font-style:italic;
-}
-
-#clock {
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 800%;
-  position: absolute;
-  left: 50%;
-  top: 25%;
-  color:white;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-shadow: 0 0 15px #000;
-}
-
-#phrase {
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 300%;
-  position: absolute;
-  left: 50%;
-  top: 60%;
-  color:white;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-shadow: 0 0 15px #000;
 }
 
 #setting {
@@ -73,13 +366,13 @@ width:75px;
   opacity: 1;
   color:white;
   height:10%;
-  border-bottom: 2px solid grey;
-
+  border-bottom: 2px solid transparent;
 }
 
 #setting:hover {
   border-bottom: 2px solid white;
 }
+
 
 #menu {
   background-color: rgba(0,0,0,0.9);
@@ -233,38 +526,37 @@ font-size: 70%;
 #current-weather-wrapper{
 	color:white;
 	opacity: 0.5;
-	font-size: 15px;
-	border-top: 3px solid grey;
+	font-size: 12px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-right:10px;
 }
 
 #current-weather-wrapper:hover{
 	color:white;
 	cursor:pointer;
-	border-top: 3px solid white;
 	opacity: 1;
 }
 
 img{
-	width:50px;
-	height:50px;
+	width:35px;
+	height:35px;
+}
+
+#wm-top-row{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
 }
 
 
-#wm-icon,#wm-temp,#wm-top-row{
-		display: inline;
-}
-
-#wm-location{
-	position: relative;
-	bottom:8px;
-	padding-left: 8px;
-}
 
 #wm-temp{
-	font-size: 20px;
-	position: relative;
-	bottom:15px;
-	right:5px;
+	font-size: 18px;
 }
 
 #forecast-wrapper{
@@ -276,7 +568,7 @@ img{
 	position:fixed;
 	width:450px;
 	background-color: rgba(0, 0, 0, 0.9);
-	top: 120px;
+	top: 75px;
 	border-radius: 5px;
 }
 
@@ -285,7 +577,6 @@ img{
 	text-align: left;
 	margin-left:12px;
 	font-size: 25px;
-
 }
 
 #forecast-data{
@@ -356,6 +647,11 @@ img{
 }
 
 @media (max-width:900px){
+
+	.showoff-module{
+		display:none;
+	}
+
 	#clock{
 		font-size: 550%;
 	}
@@ -368,6 +664,10 @@ img{
 }
 
 @media (max-width:750px){
+
+	#center-elements-container{
+		top:45%;
+	}
 	#clock{
 		font-size: 450%;
 	}
@@ -383,95 +683,30 @@ img{
 
 	}
 
+	.quote-container{
+	  display:none;
+	}
+
+
+
+
+
 }
 
-@media (max-width:600px){
-	#clock{
-		font-size: 300%;
-	}
-
-	#phrase{
-		font-size:100%;
-		top: 40%;
-	}
-
-	#top-row-container{
-		flex-direction: column;
-		align-items: center;
-	}
-
-	#current-weather-wrapper{
-		border-top: 0px;
-	}
-
-	#current-weather-wrapper:hover{
-		border-top: 0px;
-	}
-
-	#forecast-wrapper{
-		right:-600px;
-		width:100%;
-		height:75%;
-	}
-
-
-	.quote-style{
-	  font-size:15px;
-	}
-
-	.author{
-  		font-size:12px;
-  		font-style:italic;
-	}
-
-}
 
 @media (max-width:450px){
 	#clock{
-		font-size: 200%;
+		font-size: 500%;
 	}
 
 	#phrase{
-		font-size:75%;
+		font-size:150%;
 		top: 35%;
 	}
 
 }
 
-
-#toDo {
-	position: absolute;
-	bottom:0;
-	right:0;
-	cursor:pointer;
-	outline:none;
-	border:none;
-	background: none;
-	color: white;
-	font-family: "Roboto", arial;
-	font-weight:bold;
-	font-size: 150%;
-	z-index:50;
-  }
-
-  #toDo:hover {
-	border-bottom: 2px solid white;
-  }
-
-  #toDoMenu {
-	background-color: rgba(0,0,0,0.9);
-	width:30%;
-	height:80vh;
-	position:absolute;
-	bottom:10vh;
-	color:white;
-	right:0;
-	-moz-border-radius: 2%;
-	border-radius: 2%;
-	z-index: 50;
-  }
-
-  #grayBackground {
+#grayBackground {
 	position: fixed;
     top: 0;
     left: 0;
