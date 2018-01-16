@@ -303,7 +303,7 @@ ul .checkboxContainer label {
 
   #toDoMenu {
 	background-color: rgba(0,0,0,0.9);
-	width:20%;
+	width:200px;
 	/* height:80vh; */
 	position:absolute;
 	bottom:10vh;
@@ -391,7 +391,7 @@ width:75px;
 }
 #menu ul li {
   font-family:"Josefin Sans", "arial";
-  font-size: 100%;
+  font-size: 65%;
   list-style-type: none;
 }
 
@@ -405,7 +405,6 @@ width:75px;
   text-align:left;
   font-family: "Josefin Sans", "arial";
   font-weight: bold;
-  font-size: 180%;
   padding:0px;
   margin-bottom: 0;
 }
@@ -617,6 +616,17 @@ img{
 	animation-fill-mode: both;
 }
 
+#grayBackground {
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.5;
+    z-index: 5;
+  }
+
 @keyframes weather-slide-in{
 	from{right:-600px;}
 	to{right:0%;}
@@ -644,6 +654,12 @@ img{
 		top: 50%;
 	}
 
+		#menu {
+  		width:300px;
+  		height:400px;
+
+	}
+
 }
 
 @media (max-width:900px){
@@ -661,6 +677,7 @@ img{
 		top: 50%;
 	}
 
+
 }
 
 @media (max-width:750px){
@@ -677,19 +694,10 @@ img{
 		top: 45%;
 	}
 
-	#menu {
-  		width:75%;
-  		height:75%;
-
-	}
 
 	.quote-container{
 	  display:none;
 	}
-
-
-
-
 
 }
 
@@ -704,20 +712,8 @@ img{
 		top: 35%;
 	}
 
-}
-
-#grayBackground {
-	position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    opacity: 0.5;
-    z-index: 5;
-  }
-
  #enterName {
 	 width: 70%;
  }
   
+}
