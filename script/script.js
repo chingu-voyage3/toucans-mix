@@ -424,7 +424,7 @@ if ( clockChange === true)
   let getMinutes = dateObj.getMinutes();
   let h= checkTime(getHours);
   let m = checkTime(getMinutes);
-  
+
   document.getElementById("clock").innerHTML= h + ":" + m;
   let t = setTimeout(startTime, 1000); //this calls the fuction after every second
 }
@@ -597,26 +597,12 @@ function generalSettings () {
 
 function balanceSettings () {
 	$("#generalMenu").hide();
-	$("#balanceMenu").show();	
+	$("#balanceMenu").show();
 }
 
 //functions to hide sub-menus on load
 function hideOnLoad () {
 	$("#balanceMenu").hide();
-}
-//toDoMenu
-function toDoMenu() {
-
-	$("#toDoMenu").hide();
-	$( "#toDo" ).click(function() {
-	$( "#toDoMenu" ).toggle("slide", {direction: "right"});
-
-	if ($("#grayBackground").length)
-		{$("#grayBackground").remove();}
-
-	else
-		{$("body").append("<div id='grayBackground'> </div>");}
-	});
 }
 
 ////////////////////////// WEATHER MODULE FUNCTIONS ////////////////////////////
