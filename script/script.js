@@ -579,7 +579,7 @@ function clearSettings () {
 	checkboxWeather();
 	checkboxToDo();
 	$("#menu").hide();
-	$("#grayBackground").hide();
+	$("#grayBackground").remove();
 }
 
 //functions to hide and show sub-menus
