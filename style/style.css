@@ -180,11 +180,7 @@ html,body{
     text-align: center;
 }
 
-#mainFocusContainer {
-
-}
-
-/* * * * * * * * * * * * * * MAIN FOCUS & TO DO * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * MAIN FOCUS & TO DO * * * * * * * * * * * * * */
 .checkboxContainer {
     display: inline-block;
     margin-right: 1.5%;
@@ -477,7 +473,7 @@ float: right;
 	background: white;
 	width: 55%;
 	height: 100%;
-	
+
 }
 
 #menu label:active:after {
@@ -489,12 +485,12 @@ float: right;
 	padding:5px 15px; background:rgb(255, 255, 255); border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
-	border-radius: 5px; 
+	border-radius: 5px;
 	margin-top:2vh;
 }
 
 #menu input[type=text] {
-	padding:5px; border:2px solid rgb(255, 255, 255); 
+	padding:5px; border:2px solid rgb(255, 255, 255);
 		-webkit-border-radius: 5px;
 			border-radius: 5px;
 	margin-bottom: 2vh;
@@ -715,5 +711,5 @@ img{
  #enterName {
 	 width: 70%;
  }
-  
+
 }

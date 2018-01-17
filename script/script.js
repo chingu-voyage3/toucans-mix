@@ -191,12 +191,6 @@ function toDoMenu() {
 	$("#toDoMenu").hide();
 	$( "#toDo" ).click(function() {
 	$( "#toDoMenu" ).toggle("slide");
-
-	if ($("#grayBackground").length)
-		{$("#grayBackground").remove();}
-
-	else
-		{$("body").append("<div id='grayBackground'> </div>");}
 	});
 }
 
@@ -401,7 +395,7 @@ if (person !== null)
 }
 
 else {
-  var arrayOfCompliments = ["handsome.", "cutie.", "human.", "pal.", "smart.", "sexy.","classy."];
+  var arrayOfCompliments = ["handsome.", "cutie.", "human.", "pal.", "smarty pants.", "sexy.","classy."];
   var randomCompliment = Math.floor(Math.random()*arrayOfCompliments.length);
   $("#phrase").append(arrayOfCompliments[randomCompliment]);
 }
@@ -443,18 +437,18 @@ else  {
 //setting Menu slide
 function settingMenu() {
 
-$("#menu").hide();
-$( "#setting" ).click(function() {
+    $("#menu").hide();
+    $( "#setting" ).click(function() {
 
-	$( "#menu" ).toggle("slide");
+    	$( "#menu" ).toggle("slide");
 
-if ($("#grayBackground").length)
-{$("#grayBackground").remove();}
+    if ($("#grayBackground").length)
+    {$("#grayBackground").remove();}
 
-else
-{$("body").append("<div id='grayBackground'> </div>");}
+    else
+    {$("body").append("<div id='grayBackground'> </div>");}
 
-});
+    });
 }
 
 
